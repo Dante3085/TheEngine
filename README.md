@@ -1,2 +1,2 @@
 # TheEngine
-2DGameEngine base on XNA-MonoGame Framework
+2DGameEngine based on XNA-MonoGame Framework
