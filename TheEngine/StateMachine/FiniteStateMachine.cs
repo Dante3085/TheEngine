@@ -38,6 +38,7 @@ namespace TheEngine.StateMachine
         public EState CurrentState => _currentState;
 
         #endregion
+        #region Methods
 
         /// <summary>
         /// Constructs a FiniteStateMachine with the given States.
@@ -110,5 +111,7 @@ namespace TheEngine.StateMachine
                                                       + state + " is not known to this FiniteStateMachine!");
             _states.Remove(state);
         }
+
+        #endregion
     }
 }

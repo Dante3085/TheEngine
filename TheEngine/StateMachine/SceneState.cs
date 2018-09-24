@@ -14,6 +14,8 @@ namespace TheEngine.StateMachine
     /// </summary>
     public class SceneState : State
     {
+        #region MemberVariables
+
         /// <summary>
         /// BackgroundTexture for the Scene.
         /// </summary>
@@ -24,6 +26,8 @@ namespace TheEngine.StateMachine
         /// </summary>
         private Rectangle _backgroundRec;
 
+        #endregion
+        #region Methods
         public SceneState(Texture2D background, int screenWidth, int screenHeight, List<IEntity> entities, 
             List<EState> next, Action keyboardHandler = null, Action gamePadHandler = null) 
             : base(entities, next, keyboardHandler, gamePadHandler)
@@ -66,5 +70,7 @@ namespace TheEngine.StateMachine
         {
             base.OnExit();
         }
+
+        #endregion
     }
 }

@@ -57,7 +57,7 @@
     <Compile Include="Graphics\Menu\MenuComponents\AnimatedMenuElement.cs" />
     <Compile Include="Graphics\Menu\MenuComponents\ElementNotFoundException.cs" />
     <Compile Include="Graphics\Menu\MenuComponents\MenuButton.cs" />
-    <Compile Include="Graphics\Menu\MenuComponents\MenuButton2.cs" />
+    <Compile Include="Graphics\Menu\MenuComponents\TextButton.cs" />
     <Compile Include="Graphics\Menu\MenuComponents\MenuElement.cs" />
     <Compile Include="Graphics\Menu\MenuComponents\Text.cs" />
     <Compile Include="Graphics\Sprites\AnimatedSprite.cs" />

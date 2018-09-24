@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,9 @@ namespace TheEngine.Input
 
         private static MouseState _previousMouseState;
         private static MouseState _currentMouseState;
+
+        private const double doubleClickDelay = 500;
+        private static double doubleClickTimer;
 
         #endregion
         #region UpdateStatesMethods
@@ -133,6 +137,16 @@ namespace TheEngine.Input
         public static bool IsMouseHoverRectangle(Rectangle rectangle)
         {
             return rectangle.Contains(_currentMouseState.Position);
+        }
+
+        /// <summary>
+        /// Gets whether or not Left Mouse has been double clicked (no holding).
+        /// </summary>
+        /// <returns></returns>
+        public static bool OnLeftDoubleClick(GameTime gameTime)
+        {
+           // TODO
+            throw new NotImplementedException();
         }
 
         #endregion

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/SpriteFonts/ConsoleFont.spritefont</File>
+    <File>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/SpriteFonts/DefaultText.spritefont</File>
+  </SourceFiles>
+</SourceFileCollection>

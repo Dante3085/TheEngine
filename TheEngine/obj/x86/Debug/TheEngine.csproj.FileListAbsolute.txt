@@ -23,3 +23,5 @@ Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngi
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.csproj.CopyComplete
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.exe
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.pdb
+Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\ConsoleFont.xnb
+Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\DefaultText.xnb

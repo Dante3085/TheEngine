@@ -13,3 +13,17 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin SpriteFonts/ConsoleFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:SpriteFonts/ConsoleFont.spritefont
+
+#begin SpriteFonts/DefaultText.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:SpriteFonts/DefaultText.spritefont
+

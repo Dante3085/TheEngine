@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace TheEngine.Graphics.Menu.MenuComponents
 {
-    public class MenuButton2 : MenuElement
+    public class TextButton : MenuElement
     {
         #region MemberVariables
 
@@ -26,25 +26,25 @@ namespace TheEngine.Graphics.Menu.MenuComponents
 
         #endregion
 
-        public MenuButton2(string name, string text, Rectangle rec, Action functionality) 
-            : base(rec.X, rec.Y, functionality)
+        public TextButton(int x, int y, string text, Action functionality = null) 
+            : base(x, y, functionality)
         {
-            // _text = new Text(text: text, rec.X, rec.Y, text);
-            _rec = new Rectangle(rec.X, rec.Y, _text.Width, _text.Height);
+            _text = new Text(x * 2, y * 2, text, null);
+            _rec = new Rectangle(x, y, _text.Width * 2, _text.Height * 2);
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             _text.Update(gameTime);
-            _rec.Width = _text.Width;
-            _rec.Height = _text.Height;
+            //_rec.Width = _text.Width;
+            //_rec.Height = _text.Height;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            _text.Draw(spriteBatch);
             Primitives.DrawRectangle(_rec, Color.DarkRed, spriteBatch, 0.5);
+            _text.Draw(spriteBatch);
         }
 
         public override void MouseHoverReaction()

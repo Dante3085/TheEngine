@@ -45,7 +45,6 @@ namespace TheEngine.StateMachine
         private string _name;
 
         #endregion
-
         #region Properties
 
         public List<EState> Next => _next;
@@ -65,6 +64,7 @@ namespace TheEngine.StateMachine
         public string Name => _name;
 
         #endregion
+        #region Methods
 
         /// <summary>
         /// Constructs a State with the given entities name.
@@ -146,5 +146,7 @@ namespace TheEngine.StateMachine
         {
             Logger.Log("Exited State: " + _name);
         }
+
+        #endregion
     }
 }

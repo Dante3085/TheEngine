@@ -21,9 +21,9 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public static bool drawTexRec = false;
 
         private string _text;
-        private SpriteFont _activeSpriteFont;
-        private SpriteFont _spriteFontNoHover;
-        private SpriteFont _spriteFontHover;
+        private SpriteFont _activeSpriteFont = Contents.defaultText;
+        private SpriteFont _spriteFontNoHover = Contents.defaultText;
+        private SpriteFont _spriteFontHover = Contents.defaultText;
         private Vector2 _textSize;
         private Vector2 _position = new Vector2();
         private Color _color = Color.DarkSlateGray;
@@ -36,13 +36,6 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public bool _drawTextRec;
 
         #endregion
-
-        private SpriteFont[] fonts =
-        {
-            //Contents.manaSpace18, Contents.manaSpace19, Contents.manaSpace20, Contents.manaSpace21,
-            //Contents.manaSpace22, Contents.manaSpace23, Contents.manaSpace24, Contents.manaSpace25,
-            Contents.manaSpace26, Contents.manaSpace27, Contents.manaSpace28
-        };
 
         private int currentAnim = 0;
         private double elapsedTime = 0;
@@ -77,10 +70,12 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public Text(SpriteFont fontNoHover, SpriteFont fontHover, int x = 0, int y = 0, string text = "", Action functionality = null) 
             : base(x, y, functionality)
         {
+            
+
             _text = text;
             _spriteFontNoHover = fontNoHover;
             _spriteFontHover = fontHover;
-            _activeSpriteFont = _spriteFontNoHover;
+            _activeSpriteFont = Contents.defaultText;
 
             _textSize = _activeSpriteFont.MeasureString(_text);
             _textRec = new Rectangle(_x, _y, (int)_textSize.X, (int)_textSize.Y);
@@ -97,18 +92,7 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public Text(int x = 0, int y = 0, string text = "", Action functionality = null) 
             : base(x, y, functionality)
         {
-            //if (Game1.screenWidth > 1920)
-            //{
-            //    _spriteFontNoHover = Contents.manaSpace25;
-            //    _spriteFontHover = Contents.manaSpace28;
-            //    _activeSpriteFont = _spriteFontNoHover;
-            //}
-            //else
-            //{
-            //    _spriteFontNoHover = Contents.manaSpace22;
-            //    _spriteFontHover = Contents.manaSpace25;
-            //    _activeSpriteFont = _spriteFontNoHover;
-            //}
+            _activeSpriteFont = Contents.defaultText;
 
             _text = text;
 
@@ -151,31 +135,31 @@ namespace TheEngine.Graphics.Menu.MenuComponents
                 ExecuteFunctionality();
         }
 
-        public void Animate(GameTime gameTime, int speed)
-        {
-            elapsedTime += gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (elapsedTime >= speed)
-            {
-                elapsedTime = 0;
-                if (forward)
-                {
-                    currentAnim++;
-                    if (currentAnim == fonts.Length)
-                        forward = false;
-                }
-                if(!forward)
-                {
-                    currentAnim--;
-                    if (currentAnim == -1)
-                    {
-                        currentAnim++;
-                        forward = true;
-                    }
-                }
-            }
+        //public void Animate(GameTime gameTime, int speed)
+        //{
+        //    elapsedTime += gameTime.ElapsedGameTime.TotalMilliseconds;
+        //    if (elapsedTime >= speed)
+        //    {
+        //        elapsedTime = 0;
+        //        if (forward)
+        //        {
+        //            currentAnim++;
+        //            if (currentAnim == fonts.Length)
+        //                forward = false;
+        //        }
+        //        if(!forward)
+        //        {
+        //            currentAnim--;
+        //            if (currentAnim == -1)
+        //            {
+        //                currentAnim++;
+        //                forward = true;
+        //            }
+        //        }
+        //    }
 
-            _activeSpriteFont = fonts[currentAnim];
-        }
+        //    _activeSpriteFont = fonts[currentAnim];
+        //}
 
         public override void ExecuteFunctionality()
         {
@@ -193,11 +177,11 @@ namespace TheEngine.Graphics.Menu.MenuComponents
 
         public override void CursorReaction(GameTime gameTime)
         {
-            if (_cursorOnIt)
-            {
-                _activeSpriteFont = _spriteFontHover;
-                Animate(gameTime, 200);
-            }
+            //if (_cursorOnIt)
+            //{
+            //    _activeSpriteFont = _spriteFontHover;
+            //    Animate(gameTime, 200);
+            //}
         }
 
         public override void Draw(SpriteBatch spriteBatch)

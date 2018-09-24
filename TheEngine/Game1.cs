@@ -1,6 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TheEngine.DataManagement;
+using TheEngine.Graphics.Menu.MenuComponents;
+using TheEngine.Input;
+using VosSoft.Xna.GameConsole;
 
 namespace TheEngine
 {
@@ -12,10 +16,19 @@ namespace TheEngine
         public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public static GameConsole gameConsole;
+
+        #region Test
+
+        private TextButton textBtn;
+
+        #endregion
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -27,6 +40,7 @@ namespace TheEngine
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            gameConsole = new GameConsole(this, "german", Content);
 
             base.Initialize();
         }
@@ -41,6 +55,9 @@ namespace TheEngine
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Contents.LoadAll(Content, GraphicsDevice);
+
+            textBtn = new TextButton(0, 0, "TextButton", () => gameConsole.Log("BtnPressed"));
         }
 
         /// <summary>
@@ -62,7 +79,14 @@ namespace TheEngine
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            InputManager.UpdateCurrentStates();
+
+            if (InputManager.OnKeyDown(Keys.Tab))
+                gameConsole.Open(Keys.Tab);
+
+            InputManager.UpdatePreviousStates();
+
+            textBtn.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -76,6 +100,11 @@ namespace TheEngine
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            textBtn.Draw(spriteBatch);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

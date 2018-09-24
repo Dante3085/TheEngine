@@ -11,10 +11,6 @@ namespace TheEngine.StateMachine
     /// </summary>
     public class EmptyState : State
     {
-
-        public EmptyState() : base()
-        {
-
-        }
+        public EmptyState() : base() { }
     }
 }
