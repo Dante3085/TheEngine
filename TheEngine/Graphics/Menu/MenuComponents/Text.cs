@@ -21,9 +21,9 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public static bool drawTexRec = false;
 
         private string _text;
-        private SpriteFont _activeSpriteFont = Contents.defaultText;
-        private SpriteFont _spriteFontNoHover = Contents.defaultText;
-        private SpriteFont _spriteFontHover = Contents.defaultText;
+        private SpriteFont _activeSpriteFont = Contents.Arial12;
+        private SpriteFont _spriteFontNoHover = Contents.Arial12;
+        private SpriteFont _spriteFontHover = Contents.Arial12;
         private Vector2 _textSize;
         private Vector2 _position = new Vector2();
         private Color _color = Color.DarkSlateGray;
@@ -75,7 +75,7 @@ namespace TheEngine.Graphics.Menu.MenuComponents
             _text = text;
             _spriteFontNoHover = fontNoHover;
             _spriteFontHover = fontHover;
-            _activeSpriteFont = Contents.defaultText;
+            _activeSpriteFont = Contents.Arial12;
 
             _textSize = _activeSpriteFont.MeasureString(_text);
             _textRec = new Rectangle(_x, _y, (int)_textSize.X, (int)_textSize.Y);
@@ -92,7 +92,7 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public Text(int x = 0, int y = 0, string text = "", Action functionality = null) 
             : base(x, y, functionality)
         {
-            _activeSpriteFont = Contents.defaultText;
+            _activeSpriteFont = Contents.Arial12;
 
             _text = text;
 

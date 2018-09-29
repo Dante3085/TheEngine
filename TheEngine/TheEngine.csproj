@@ -48,7 +48,6 @@
     <Compile Include="DataManagement\Contents.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Graphics\Camera\Camera.cs" />
-    <Compile Include="Graphics\Menu\Layouts\AdvancedVBox.cs" />
     <Compile Include="Graphics\Menu\Layouts\HBox.cs" />
     <Compile Include="Graphics\Menu\Layouts\Layout.cs" />
     <Compile Include="Graphics\Menu\Layouts\VBox.cs" />

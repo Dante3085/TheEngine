@@ -25,3 +25,41 @@ Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngi
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.pdb
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\ConsoleFont.xnb
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\DefaultText.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\ConsoleFont.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\TheEngine.exe
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\TheEngine.pdb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.csprojAssemblyReference.cache
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.csproj.CoreCompileInputs.cache
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.csproj.CopyComplete
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.exe
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.pdb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial12.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial15.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial18.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial21.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial24.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial30.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial36.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial42.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial48.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial56.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial64.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial72.xnb

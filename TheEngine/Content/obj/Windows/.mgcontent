@@ -4,7 +4,18 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/SpriteFonts/ConsoleFont.spritefont</File>
-    <File>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/SpriteFonts/DefaultText.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/ConsoleFont.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial12.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial15.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial18.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial21.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial24.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial30.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial36.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial42.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial48.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial56.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial64.spritefont</File>
+    <File>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial72.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

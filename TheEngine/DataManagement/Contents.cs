@@ -47,7 +47,18 @@ namespace TheEngine.DataManagement
         #endregion
         #region SpriteFonts
 
-        public static SpriteFont defaultText;
+        public static SpriteFont Arial12;
+        public static SpriteFont Arial15;
+        public static SpriteFont Arial18;
+        public static SpriteFont Arial21;
+        public static SpriteFont Arial24;
+        public static SpriteFont Arial30;
+        public static SpriteFont Arial36;
+        public static SpriteFont Arial42;
+        public static SpriteFont Arial48;
+        public static SpriteFont Arial56;
+        public static SpriteFont Arial64;
+        public static SpriteFont Arial72;
 
         #endregion
         #region Methods
@@ -57,7 +68,7 @@ namespace TheEngine.DataManagement
         /// <param name="c"></param>
         public static void LoadAll(ContentManager c, GraphicsDevice g)
         {
-            defaultText = c.Load<SpriteFont>("SpriteFonts/DefaultText");
+            Arial12 = c.Load<SpriteFont>("SpriteFonts/DefaultText");
 
             rectangleTex = new Texture2D(g, 1, 1, false, SurfaceFormat.Color);
             rectangleTex.SetData(new[] { Color.White });
