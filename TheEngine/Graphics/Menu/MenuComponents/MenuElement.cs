@@ -26,6 +26,16 @@ namespace TheEngine.Graphics.Menu.MenuComponents
 
         protected int _x;
         protected int _y;
+
+        /// <summary>
+        /// Previous X Position. For noticing a change in X Position.
+        /// </summary>
+        protected int _prevX;
+
+        /// <summary>
+        /// Previous Y Position. For noticing a change in Y Position.
+        /// </summary>
+        protected int _prevY;
         protected Action _functionality;
         protected bool _cursorOnIt = false;
 
@@ -42,6 +52,24 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         {
             get => _y;
             set => _y = value;
+        }
+
+        /// <summary>
+        /// Previous X Position. For noticing a change in X Position.
+        /// </summary>
+        public int PrevX
+        {
+            get => _prevX;
+            set => _prevX = value;
+        }
+
+        /// <summary>
+        /// Previous Y Position. For noticing a change in Y Position.
+        /// </summary>
+        public int PrevY
+        {
+            get => _prevY;
+            set => _prevY = value;
         }
 
         public bool CursorOnIt

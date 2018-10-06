@@ -11,46 +11,101 @@ using TheEngine.Input;
 
 namespace TheEngine.Graphics.Menu.MenuComponents
 {
+    /// <summary>
+    /// UI-Button with Text.
+    /// </summary>
     public class TextButton : MenuElement
     {
         #region MemberVariables
 
+        /// <summary>
+        /// Visible Text of this TextButton.
+        /// </summary>
         private Text _text;
+
+        /// <summary>
+        /// Describes the Bounds of this TextButton.
+        /// </summary>
         private Rectangle _rec;
-        
+
+        /// <summary>
+        /// Stores opacity values for this TextButton.
+        /// </summary>
         private Dictionary<string , double> _opacities = new Dictionary<string, double>()
         {
             { "noHover", 0.5 },
             { "hover", 1.0 },
         };
 
+        /// <summary>
+        /// Stores opacity of this TextButton that is currently used.
+        /// </summary>
         private double _activeOpacity;
-        private TextPos _currentPos;
+
+        /// <summary>
+        /// Stores the Color of this TextButton.
+        /// </summary>
         private Color _color = Color.AliceBlue;
 
+        /// <summary>
+        /// Stores 4 Rectangles used to draw the BoundingBox of this TextButton.
+        /// </summary>
         private Rectangle[] _outlineLines = new Rectangle[]
         {
             new Rectangle(), new Rectangle(),
             new Rectangle(), new Rectangle(),  
         };
 
+        /// <summary>
+        /// Stores the current Position of the Text relative to this TextButton.
+        /// </summary>
+        private TextPos _currentPos;
+
         #endregion
 
         #region Properties
 
+        /// <summary>
+        /// Returns Width of this TextButton.
+        /// </summary>
         public override int Width => _rec.Width;
+
+        /// <summary>
+        /// Returns Height of this TextButton.
+        /// </summary>
         public override int Height => _rec.Height;
+
+        /// <summary>
+        /// Returns the Rectangle describing the Bounds of this TextButton.
+        /// </summary>
         public override Rectangle Rectangle => _rec;
 
+        /// <summary>
+        /// Returns a Dictionary storing Opacity values for this TextButton.
+        /// </summary>
         public Dictionary<string, double> Opacities => _opacities;
 
+        /// <summary>
+        /// Returns the Color of this TextButton.
+        /// </summary>
         public Color Color
         {
             get => _color;
             set => _color = value;
         }
 
+        /// <summary>
+        /// Returns the Text of this TextButton.
+        /// </summary>
+        public Text Text
+        {
+            get => _text;
+            set => _text = value;
+        }
+
         #endregion
+
+        #region Enums
 
         public enum TextPos
         {
@@ -58,6 +113,8 @@ namespace TheEngine.Graphics.Menu.MenuComponents
             CenterLeft, Center, CenterRight,
             BottomLeft, BottomCenter, BottomRight
         }
+
+        #endregion
 
         public TextButton(int x, int y, string text, Action functionality = null) 
             : base(x, y, functionality)
@@ -71,9 +128,17 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            
+
             _rec.X = _x;
             _rec.Y = _y;
+
+            // Position has changed.
+            if (_rec.X != _prevX ||
+                _rec.Y != _prevY)
+                SetTextPosition(_currentPos);
+
+            _prevX = _rec.X;
+            _prevY = _rec.Y;
 
             _text.Update(gameTime);
         }

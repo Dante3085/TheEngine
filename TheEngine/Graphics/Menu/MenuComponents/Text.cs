@@ -68,6 +68,15 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public override int Height => _textRec.Height;
         public override Rectangle Rectangle => _textRec;
 
+        /// <summary>
+        /// Returns the string text of this Text.
+        /// </summary>
+        public string StringText
+        {
+            get => _text;
+            set => _text = value;
+        }
+
         #endregion
         #region Methods
 

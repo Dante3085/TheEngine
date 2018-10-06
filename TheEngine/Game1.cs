@@ -31,6 +31,9 @@ namespace TheEngine
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
         }
 
         /// <summary>
@@ -59,17 +62,21 @@ namespace TheEngine
             // TODO: use this.Content to load your game content here
             Contents.LoadAll(Content, GraphicsDevice);
 
-            textBtn = new TextButton(0, 0, "TextButton", () => gameConsole.Log("BtnPressed"));
+            textBtn = new TextButton(0, 0, "TextButton1", () => gameConsole.Log("BtnPressed"));
             textBtn.SetTextPosition(TextButton.TextPos.Center);
 
-            TextButton textBtn2 = new TextButton(0, 0, "TextButton", () => gameConsole.Log("BtnPressed"));
+            TextButton textBtn2 = new TextButton(0, 0, "TextButton2", () => gameConsole.Log("BtnPressed"));
             textBtn2.SetTextPosition(TextButton.TextPos.Center);
 
-            vbox = new VBox(spacing: 10, elements: new MenuElement[]
+            TextButton[] btns = new TextButton[20];
+            for (int i = 0; i < btns.Length; i++)
             {
-                textBtn,
-                textBtn2
-            });
+                btns[i] = new TextButton(0, 0, "TextButton " + i,
+                    () => gameConsole.Log("TextButton " + i + " pressed."));
+                btns[i].SetTextPosition(TextButton.TextPos.Center);
+            }
+
+            vbox = new VBox(spacing: 0, elements: btns);
         }
 
         /// <summary>
