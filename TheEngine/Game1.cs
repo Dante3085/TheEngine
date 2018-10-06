@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TheEngine.DataManagement;
+using TheEngine.Graphics.Menu.Layouts;
 using TheEngine.Graphics.Menu.MenuComponents;
 using TheEngine.Input;
 using VosSoft.Xna.GameConsole;
@@ -21,6 +22,7 @@ namespace TheEngine
         #region Test
 
         private TextButton textBtn;
+        private VBox vbox;
 
         #endregion
 
@@ -58,6 +60,16 @@ namespace TheEngine
             Contents.LoadAll(Content, GraphicsDevice);
 
             textBtn = new TextButton(0, 0, "TextButton", () => gameConsole.Log("BtnPressed"));
+            textBtn.SetTextPosition(TextButton.TextPos.Center);
+
+            TextButton textBtn2 = new TextButton(0, 0, "TextButton", () => gameConsole.Log("BtnPressed"));
+            textBtn2.SetTextPosition(TextButton.TextPos.Center);
+
+            vbox = new VBox(spacing: 10, elements: new MenuElement[]
+            {
+                textBtn,
+                textBtn2
+            });
         }
 
         /// <summary>
@@ -84,9 +96,9 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
-            InputManager.UpdatePreviousStates();
+            vbox.Update(gameTime);
 
-            textBtn.Update(gameTime);
+            InputManager.UpdatePreviousStates();
 
             base.Update(gameTime);
         }
@@ -102,7 +114,7 @@ namespace TheEngine
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            textBtn.Draw(spriteBatch);
+            vbox.Draw(spriteBatch);
 
             spriteBatch.End();
 

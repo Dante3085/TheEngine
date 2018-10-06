@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial18.spritefont</SourceFile>
-  <SourceTime>2018-09-24T12:46:00.6507841+02:00</SourceTime>
-  <DestFile>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/bin/Windows/SpriteFonts/Arial18.xnb</DestFile>
-  <DestTime>2018-09-24T12:48:03.892181+02:00</DestTime>
+  <SourceFile>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/SpriteFonts/Arial18.spritefont</SourceFile>
+  <SourceTime>2018-09-29T14:07:49.4639243+02:00</SourceTime>
+  <DestFile>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/bin/Windows/SpriteFonts/Arial18.xnb</DestFile>
+  <DestTime>2018-09-30T00:33:21.3447087+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

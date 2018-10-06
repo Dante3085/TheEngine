@@ -18,13 +18,33 @@ namespace TheEngine.Graphics.Menu.MenuComponents
     {
         #region MemberVariables
 
-        public static bool drawTexRec = false;
-
+        /// <summary>
+        /// Text's text.
+        /// </summary>
         private string _text;
+
+        /// <summary>
+        /// SpriteFont used while drawing this Text.
+        /// </summary>
         private SpriteFont _activeSpriteFont = Contents.Arial12;
-        private SpriteFont _spriteFontNoHover = Contents.Arial12;
-        private SpriteFont _spriteFontHover = Contents.Arial12;
+
+        /// <summary>
+        /// Stores various fonts this Text can use.
+        /// </summary>
+        private Dictionary<string, SpriteFont> _fonts = new Dictionary<string, SpriteFont>()
+        {
+            { "noHover", Contents.Arial12 },
+            { "hover", Contents.Arial15 }
+        };
+
+        /// <summary>
+        /// Stores size of this Text.
+        /// </summary>
         private Vector2 _textSize;
+
+        /// <summary>
+        /// Only used for DrawString.
+        /// </summary>
         private Vector2 _position = new Vector2();
         private Color _color = Color.DarkSlateGray;
         private Color _colorHover = Color.DeepSkyBlue;
@@ -48,12 +68,6 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         public override int Height => _textRec.Height;
         public override Rectangle Rectangle => _textRec;
 
-        public Vector2 Position
-        {
-            get => _position;
-            set => _position = value;
-        }
-
         #endregion
         #region Methods
 
@@ -73,8 +87,6 @@ namespace TheEngine.Graphics.Menu.MenuComponents
             
 
             _text = text;
-            _spriteFontNoHover = fontNoHover;
-            _spriteFontHover = fontHover;
             _activeSpriteFont = Contents.Arial12;
 
             _textSize = _activeSpriteFont.MeasureString(_text);
@@ -120,16 +132,17 @@ namespace TheEngine.Graphics.Menu.MenuComponents
             base.Update(gameTime);
             _textSize = _activeSpriteFont.MeasureString(_text);
 
-            // Update _textRec x,y, Position
+            // Update Rec position.
             _textRec.X = _x;
             _textRec.Y = _y;
 
+            // Update Rec size.
+            _textRec.Width = (int)_textSize.X;
+            _textRec.Height = (int)_textSize.Y;
+
+            // Update Vector2 for DrawString.
             _position.X = _x;
             _position.Y = _y;
-
-            // Update _textRec size.
-            _textRec.Width = (int)_textSize.X;
-            _textRec.Height = (int) _textSize.Y;
 
             if (OnLeftMouseClick())
                 ExecuteFunctionality();
@@ -172,7 +185,7 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         /// </summary>
         public override void MouseHoverReaction()
         {
-            _activeSpriteFont = IsMouseHover() ? _spriteFontHover : _spriteFontNoHover;
+            _activeSpriteFont = IsMouseHover() ? _fonts["hover"] : _fonts["noHover"];
         }
 
         public override void CursorReaction(GameTime gameTime)
@@ -188,7 +201,7 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         {
             spriteBatch.DrawString(_activeSpriteFont, _text, _position, CursorOnIt == true ? _colorHover : _color);
 
-            if (drawTexRec)
+            if (MenuElement._drawRecs)
                 Primitives.DrawRectangleOutline(_textRec, _textRecLines, Contents.rectangleTex, Color.Red, spriteBatch);
         }
 

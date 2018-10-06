@@ -19,6 +19,11 @@ namespace TheEngine.Graphics.Menu.MenuComponents
     {
         #region MemberVariables
 
+        /// <summary>
+        /// Flag for deciding to draw all MenuElement's Rectangles.
+        /// </summary>
+        public static bool _drawRecs = true;
+
         protected int _x;
         protected int _y;
         protected Action _functionality;

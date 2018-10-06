@@ -68,7 +68,18 @@ namespace TheEngine.DataManagement
         /// <param name="c"></param>
         public static void LoadAll(ContentManager c, GraphicsDevice g)
         {
-            Arial12 = c.Load<SpriteFont>("SpriteFonts/DefaultText");
+            Arial12 = c.Load<SpriteFont>("SpriteFonts/Arial12");
+            Arial15 = c.Load<SpriteFont>("SpriteFonts/Arial15");
+            Arial18 = c.Load<SpriteFont>("SpriteFonts/Arial18");
+            Arial21 = c.Load<SpriteFont>("SpriteFonts/Arial21");
+            Arial24 = c.Load<SpriteFont>("SpriteFonts/Arial24");
+            Arial30 = c.Load<SpriteFont>("SpriteFonts/Arial30");
+            Arial36 = c.Load<SpriteFont>("SpriteFonts/Arial36");
+            Arial42 = c.Load<SpriteFont>("SpriteFonts/Arial42");
+            Arial48 = c.Load<SpriteFont>("SpriteFonts/Arial48");
+            Arial56 = c.Load<SpriteFont>("SpriteFonts/Arial56");
+            Arial64 = c.Load<SpriteFont>("SpriteFonts/Arial64");
+            Arial72 = c.Load<SpriteFont>("SpriteFonts/Arial72");
 
             rectangleTex = new Texture2D(g, 1, 1, false, SurfaceFormat.Color);
             rectangleTex.SetData(new[] { Color.White });

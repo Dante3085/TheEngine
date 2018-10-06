@@ -13,8 +13,6 @@ namespace TheEngine.Graphics.Menu.MenuComponents
 {
     public class MenuButton : MenuElement
     {
-        public static bool drawRec = false;
-
         #region MemberVariables
         private Texture2D _buttonTextureNoHover;
         private Texture2D _buttonTextureHover;
@@ -49,7 +47,7 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         {
             spriteBatch.Draw(_activeButtonTexture, _buttonRec, Color.White);
 
-            if (drawRec)
+            if (MenuElement._drawRecs)
                 Primitives.DrawRectangleOutline(_buttonRec, _buttonRecLines, 
                     Contents.rectangleTex, Color.Blue, spriteBatch);
         }
