@@ -42,7 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Graphics\Menu\Layouts\AdvancedVBox.cs" />
     <Compile Include="Graphics\Primitives.cs" />
+    <Compile Include="Graphics\ScreenManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataManagement\Contents.cs" />

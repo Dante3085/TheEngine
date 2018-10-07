@@ -67,10 +67,9 @@ namespace TheEngine.Graphics
         /// <param name="color"></param>
         /// <param name="spriteBatch"></param>
         /// <param name="opacity"></param>
-        public static void DrawRectangle(Rectangle rec, Color color, SpriteBatch spriteBatch, 
+        public static void DrawRectangle(Rectangle rec, Texture2D recTex, Color color, SpriteBatch spriteBatch, 
             double opacity = 1.0)
         {
-            Texture2D recTex = new Texture2D(Game1.graphics.GraphicsDevice, rec.Width, rec.Height);
             Color[] data = new Color[rec.Width * rec.Height];
             Vector2 pos = new Vector2(rec.Location.X, rec.Location.Y);
 

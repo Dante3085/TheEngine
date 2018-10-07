@@ -9,6 +9,8 @@ namespace TheEngine.DataManagement
     /// </summary>
     public static class Contents
     {
+        public static GraphicsDevice graphicsDevice;
+
         #region Texture2Ds
     
         #region BackgroundImages
@@ -84,7 +86,11 @@ namespace TheEngine.DataManagement
             rectangleTex = new Texture2D(g, 1, 1, false, SurfaceFormat.Color);
             rectangleTex.SetData(new[] { Color.White });
 
-            
+        }
+
+        public static Texture2D RecTex(int width, int height)
+        {
+            return new Texture2D(graphicsDevice, width, height);
         }
 
         #endregion

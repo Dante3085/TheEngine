@@ -24,7 +24,14 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         /// </summary>
         public static bool _drawRecs = true;
 
+        /// <summary>
+        /// X Position of this MenuElement.
+        /// </summary>
         protected int _x;
+
+        /// <summary>
+        /// Y Position of this MenuElement.
+        /// </summary>
         protected int _y;
 
         /// <summary>
@@ -36,18 +43,33 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         /// Previous Y Position. For noticing a change in Y Position.
         /// </summary>
         protected int _prevY;
+
+        /// <summary>
+        /// Function of this MenuElement.
+        /// </summary>
         protected Action _functionality;
+
+
+        /// <summary>
+        /// Stores if MenuCursor is on this MenuElement.
+        /// </summary>
         protected bool _cursorOnIt = false;
 
         #endregion
         #region Properties
 
+        /// <summary>
+        /// X Position of this MenuElement.
+        /// </summary>
         public int X
         {
             get => _x;
             set => _x = value;
         }
 
+        /// <summary>
+        /// Y Position of this MenuElement.
+        /// </summary>
         public int Y
         {
             get => _y;
@@ -72,15 +94,28 @@ namespace TheEngine.Graphics.Menu.MenuComponents
             set => _prevY = value;
         }
 
+        /// <summary>
+        /// Stores if MenuCursor is on this MenuElement.
+        /// </summary>
         public bool CursorOnIt
         {
             get => _cursorOnIt;
             set => _cursorOnIt = value;
         }
 
+        /// <summary>
+        /// Width of this MenuElement.
+        /// </summary>
         public abstract int Width { get; }
+
+        /// <summary>
+        /// Height of this MenuElement.
+        /// </summary>
         public abstract int Height { get; }
 
+        /// <summary>
+        /// Rectangle describing the Bounds of this MenuElement.
+        /// </summary>
         public abstract Rectangle Rectangle { get; }
 
         #endregion

@@ -29,6 +29,11 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         private Rectangle _rec;
 
         /// <summary>
+        /// Stores Texture of the TextButton.
+        /// </summary>
+        private Texture2D _texture;
+
+        /// <summary>
         /// Stores opacity values for this TextButton.
         /// </summary>
         private Dictionary<string , double> _opacities = new Dictionary<string, double>()
@@ -116,11 +121,12 @@ namespace TheEngine.Graphics.Menu.MenuComponents
 
         #endregion
 
-        public TextButton(int x, int y, string text, Action functionality = null) 
+        public TextButton(int x, int y, int width, int height, string text, Action functionality = null) 
             : base(x, y, functionality)
         {
             _text = new Text(x, y, text, () => Game1.gameConsole.Log(text + " gedrueckt."));
-            _rec = new Rectangle(x, y, _text.Width * 3, _text.Height * 3);
+            _rec = new Rectangle(x, y, width, height);
+            _texture = Contents.RecTex(width, height);
 
             _activeOpacity = _opacities["noHover"];
         }
@@ -145,7 +151,7 @@ namespace TheEngine.Graphics.Menu.MenuComponents
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Primitives.DrawRectangle(_rec, _color, spriteBatch, _activeOpacity);
+            Primitives.DrawRectangle(_rec, _texture, _color, spriteBatch, _activeOpacity);
             _text.Draw(spriteBatch);
 
             if (MenuElement._drawRecs)

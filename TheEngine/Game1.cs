@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TheEngine.DataManagement;
+using TheEngine.Graphics;
 using TheEngine.Graphics.Menu.Layouts;
 using TheEngine.Graphics.Menu.MenuComponents;
 using TheEngine.Input;
@@ -31,9 +32,6 @@ namespace TheEngine
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-
-            graphics.PreferredBackBufferWidth = 1920;
-            graphics.PreferredBackBufferHeight = 1080;
         }
 
         /// <summary>
@@ -60,23 +58,18 @@ namespace TheEngine
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
-
-            textBtn = new TextButton(0, 0, "TextButton1", () => gameConsole.Log("BtnPressed"));
-            textBtn.SetTextPosition(TextButton.TextPos.Center);
-
-            TextButton textBtn2 = new TextButton(0, 0, "TextButton2", () => gameConsole.Log("BtnPressed"));
-            textBtn2.SetTextPosition(TextButton.TextPos.Center);
 
             TextButton[] btns = new TextButton[20];
             for (int i = 0; i < btns.Length; i++)
             {
-                btns[i] = new TextButton(0, 0, "TextButton " + i,
+                btns[i] = new TextButton(0, 0, 100, 50, "TextButton " + i,
                     () => gameConsole.Log("TextButton " + i + " pressed."));
                 btns[i].SetTextPosition(TextButton.TextPos.Center);
             }
 
-            vbox = new VBox(spacing: 0, elements: btns);
+            vbox = new VBox(spacing: 1, elements: btns);
         }
 
         /// <summary>
@@ -97,6 +90,8 @@ namespace TheEngine
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            ScreenManager.Update();
 
             InputManager.UpdateCurrentStates();
 
