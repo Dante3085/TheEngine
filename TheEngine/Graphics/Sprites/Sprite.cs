@@ -10,11 +10,11 @@ using Microsoft.Xna.Framework.Input;
 using TheEngine;
 using TheEngine.DataManagement;
 using TheEngine.Input;
-using IDrawable = TheEngine.StateMachine.IDrawable;
+using IDrawable = TheEngine.StateManagement.IDrawable;
 
 namespace TheEngine.Graphics.Sprites
 {
-    public class Sprite : GameObject, ICollidable, IInputable, IDrawable
+    public class Sprite : GameObject, ICollidable, IInputable, StateManagement.IDrawable
     {
         public static bool drawBoundingBox = true;
 

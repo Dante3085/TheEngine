@@ -1,21 +1,14 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TheEngine;
 using TheEngine.Input;
-using IDrawable = TheEngine.StateMachine.IDrawable;
 
-namespace TheEngine.Graphics.Menu.MenuComponents
+namespace TheEngine.Graphics.Menu.MenuElements
 {
     /// <summary>
     /// MenuElements can be added to a Menu.
     /// </summary>
-    public abstract class MenuElement : GameObject, IDrawable
+    public abstract class MenuElement : GameObject, StateManagement.IDrawable
     {
         #region MemberVariables
 

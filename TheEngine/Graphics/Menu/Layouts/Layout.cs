@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using TheEngine.Graphics.Menu.MenuComponents;
+using TheEngine.Graphics.Menu.MenuElements;
 
 namespace TheEngine.Graphics.Menu.Layouts
 {

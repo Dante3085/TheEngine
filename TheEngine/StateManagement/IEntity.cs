@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
-namespace TheEngine.StateMachine
+namespace TheEngine.StateManagement
 {
     /// <summary>
     /// Contract for objects that can be understood by FiniteStateMachine.

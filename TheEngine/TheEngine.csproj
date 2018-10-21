@@ -42,7 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Graphics\Menu\Layouts\AdvancedHBox.cs" />
     <Compile Include="Graphics\Menu\Layouts\AdvancedVBox.cs" />
+    <Compile Include="Graphics\Menu\MenuAnimation.cs" />
     <Compile Include="Graphics\Primitives.cs" />
     <Compile Include="Graphics\ScreenManager.cs" />
     <Compile Include="Program.cs" />
@@ -54,13 +56,13 @@
     <Compile Include="Graphics\Menu\Layouts\Layout.cs" />
     <Compile Include="Graphics\Menu\Layouts\VBox.cs" />
     <Compile Include="Graphics\Menu\Menu.cs" />
-    <Compile Include="Graphics\Menu\MenuComponents\AnimatedMenuButton.cs" />
-    <Compile Include="Graphics\Menu\MenuComponents\AnimatedMenuElement.cs" />
-    <Compile Include="Graphics\Menu\MenuComponents\ElementNotFoundException.cs" />
-    <Compile Include="Graphics\Menu\MenuComponents\MenuButton.cs" />
-    <Compile Include="Graphics\Menu\MenuComponents\TextButton.cs" />
-    <Compile Include="Graphics\Menu\MenuComponents\MenuElement.cs" />
-    <Compile Include="Graphics\Menu\MenuComponents\Text.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\AnimatedMenuButton.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\AnimatedMenuElement.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\ElementNotFoundException.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\MenuButton.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\TextButton.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\MenuElement.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\Text.cs" />
     <Compile Include="Graphics\Sprites\AnimatedSprite.cs" />
     <Compile Include="Graphics\Sprites\CollisionManager.cs" />
     <Compile Include="Graphics\Sprites\Combos\Combo.cs" />
@@ -77,15 +79,15 @@
     <Compile Include="Input\KeyboardInput.cs" />
     <Compile Include="Input\MouseInput.cs" />
     <Compile Include="Logging\Logger.cs" />
-    <Compile Include="StateMachine\EmptyState.cs" />
-    <Compile Include="StateMachine\EState.cs" />
-    <Compile Include="StateMachine\FiniteStateMachine.cs" />
-    <Compile Include="StateMachine\FiniteStateMachineException.cs" />
-    <Compile Include="StateMachine\IDrawable.cs" />
-    <Compile Include="StateMachine\IEntity.cs" />
-    <Compile Include="StateMachine\IInteractable.cs" />
-    <Compile Include="StateMachine\SceneState.cs" />
-    <Compile Include="StateMachine\State.cs" />
+    <Compile Include="StateManagement\EmptyState.cs" />
+    <Compile Include="StateManagement\EState.cs" />
+    <Compile Include="StateManagement\FiniteStateMachine.cs" />
+    <Compile Include="StateManagement\FiniteStateMachineException.cs" />
+    <Compile Include="StateManagement\IDrawable.cs" />
+    <Compile Include="StateManagement\IEntity.cs" />
+    <Compile Include="StateManagement\IInteractable.cs" />
+    <Compile Include="StateManagement\SceneState.cs" />
+    <Compile Include="StateManagement\State.cs" />
     <Compile Include="Utils\GameConsole\Command.cs" />
     <Compile Include="Utils\GameConsole\CommandEventArgs.cs" />
     <Compile Include="Utils\GameConsole\GameConsole.cs" />

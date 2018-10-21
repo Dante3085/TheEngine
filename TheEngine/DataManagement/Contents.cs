@@ -88,7 +88,13 @@ namespace TheEngine.DataManagement
 
         }
 
-        public static Texture2D RecTex(int width, int height)
+        /// <summary>
+        /// Returns a Texture2D with given width and height.
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public static Texture2D Texture(int width, int height)
         {
             return new Texture2D(graphicsDevice, width, height);
         }

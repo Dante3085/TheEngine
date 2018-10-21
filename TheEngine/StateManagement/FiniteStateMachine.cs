@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TheEngine;
-using TheEngine.Input;
 
-namespace TheEngine.StateMachine
+namespace TheEngine.StateManagement
 {
     /// <summary>
     /// FiniteStateMachine manages updating, drawing and switching between States.

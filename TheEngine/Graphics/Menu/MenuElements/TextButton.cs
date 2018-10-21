@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using TheEngine.DataManagement;
 using TheEngine.Input;
 
-namespace TheEngine.Graphics.Menu.MenuComponents
+namespace TheEngine.Graphics.Menu.MenuElements
 {
     /// <summary>
     /// UI-Button with Text.
@@ -126,7 +122,7 @@ namespace TheEngine.Graphics.Menu.MenuComponents
         {
             _text = new Text(x, y, text, () => Game1.gameConsole.Log(text + " gedrueckt."));
             _rec = new Rectangle(x, y, width, height);
-            _texture = Contents.RecTex(width, height);
+            _texture = Contents.Texture(width, height);
 
             _activeOpacity = _opacities["noHover"];
         }

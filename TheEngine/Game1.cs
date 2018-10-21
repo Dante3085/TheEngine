@@ -1,10 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TheEngine.DataManagement;
 using TheEngine.Graphics;
+using TheEngine.Graphics.Menu;
 using TheEngine.Graphics.Menu.Layouts;
-using TheEngine.Graphics.Menu.MenuComponents;
+using TheEngine.Graphics.Menu.MenuElements;
 using TheEngine.Input;
 using VosSoft.Xna.GameConsole;
 
@@ -23,7 +25,7 @@ namespace TheEngine
         #region Test
 
         private TextButton textBtn;
-        private VBox vbox;
+        private MenuAnimation btnAnimation;
 
         #endregion
 
@@ -32,6 +34,11 @@ namespace TheEngine
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            ScreenManager.Update();
+
+            graphics.PreferredBackBufferWidth = ScreenManager.ScreenWidth;
+            graphics.PreferredBackBufferHeight = ScreenManager.ScreenHeight;
         }
 
         /// <summary>
@@ -61,15 +68,8 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            TextButton[] btns = new TextButton[20];
-            for (int i = 0; i < btns.Length; i++)
-            {
-                btns[i] = new TextButton(0, 0, 100, 50, "TextButton " + i,
-                    () => gameConsole.Log("TextButton " + i + " pressed."));
-                btns[i].SetTextPosition(TextButton.TextPos.Center);
-            }
-
-            vbox = new VBox(spacing: 1, elements: btns);
+            textBtn = new TextButton(0, 0, 50, 50, "Button", () => gameConsole.Log("Button pressed!"));
+            btnAnimation = new MenuAnimation(textBtn, new Point(0, 0), new Point(2000, 0), 1000);
         }
 
         /// <summary>
@@ -98,7 +98,14 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
-            vbox.Update(gameTime);
+            if (InputManager.OnKeyDown(Keys.Enter))
+            {
+                btnAnimation.Start();
+                gameConsole.Log("Animation gestartet!");
+            }
+
+            textBtn.Update(gameTime);
+            btnAnimation.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
 
@@ -116,7 +123,7 @@ namespace TheEngine
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            vbox.Draw(spriteBatch);
+            textBtn.Draw(spriteBatch);
 
             spriteBatch.End();
 

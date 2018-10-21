@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TheEngine.StateMachine
+﻿namespace TheEngine.StateManagement
 {
     /// <summary>
     /// Enum used by FiniteStateMachine to switch between States.

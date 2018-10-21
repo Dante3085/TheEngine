@@ -5,13 +5,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TheEngine;
 using TheEngine.Graphics.Menu.Layouts;
-using TheEngine.Graphics.Menu.MenuComponents;
+using TheEngine.Graphics.Menu.MenuElements;
 using TheEngine.Input;
-using IDrawable = TheEngine.StateMachine.IDrawable;
+using IDrawable = TheEngine.StateManagement.IDrawable;
 
 namespace TheEngine.Graphics.Menu
 {
-    public class Menu : GameObject, IDrawable
+    /// <summary>
+    /// TODO: Questionable Purpose
+    /// Adds MenuCursor feature on given Layout.
+    /// </summary>
+    public class Menu : GameObject, StateManagement.IDrawable
     {
         #region MemberVariables
 

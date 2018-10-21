@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace TheEngine.Graphics
 {
+    /// <summary>
+    /// Provides utility for dealing with ScreenSize, etc.
+    /// </summary>
     public static class ScreenManager
     {
         #region MemberVariables
@@ -19,6 +22,9 @@ namespace TheEngine.Graphics
 
         #region Methods
 
+        /// <summary>
+        /// TODO
+        /// </summary>
         public static void Update()
         {
             // Update Screen Size.

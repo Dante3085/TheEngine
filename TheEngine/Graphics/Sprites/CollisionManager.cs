@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using TheEngine.StateMachine;
+using TheEngine.StateManagement;
 
 namespace TheEngine.Graphics.Sprites
 {

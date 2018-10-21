@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TheEngine.StateMachine
+namespace TheEngine.StateManagement
 {
     /// <summary>
     /// A SceneState is a State that displays visible information, meaning that it has a

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TheEngine.Graphics.Menu.MenuComponents;
+using TheEngine.Graphics.Menu.MenuElements;
 
 namespace TheEngine.Graphics.Menu.Layouts
 {
@@ -17,12 +17,12 @@ namespace TheEngine.Graphics.Menu.Layouts
         #region MemberVariables
 
         /// <summary>
-        /// Amount of vertical spacing in the VBox.
+        /// Stores the amount of vertical space between each Element of the VBox.
         /// </summary>
         private int _spacing;
 
         /// <summary>
-        /// 
+        /// Rectangle describing the Bounds of the VBox.
         /// </summary>
         private Rectangle _rec;
 
@@ -30,19 +30,40 @@ namespace TheEngine.Graphics.Menu.Layouts
 
         #region Properties
 
+        /// <summary>
+        /// Returns Width of VBox.
+        /// </summary>
         public override int Width => WidthWidestElement();
+
+        /// <summary>
+        /// Returns Height of VBox.
+        /// </summary>
         public override int Height => CalcHeight();
 
+        /// <summary>
+        /// Returns, sets spacing inside VBox.
+        /// </summary>
         public override int Spacing
         {
             get => _spacing;
             set => _spacing = value;
         }
 
+        /// <summary>
+        /// Returns Bounding Rec of VBox.
+        /// </summary>
         public override Rectangle Rectangle => _rec;
 
         #endregion
 
+        /// <summary>
+        /// Assigns given Parameters and initially orders Elements.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="spacing"></param>
+        /// <param name="functionality"></param>
+        /// <param name="elements"></param>
         public VBox(int x = 0, int y = 0, int spacing = 0, Action functionality = null, params MenuElement[] elements) 
             : base(x, y, functionality, elements)
         {
@@ -51,6 +72,10 @@ namespace TheEngine.Graphics.Menu.Layouts
             _rec = new Rectangle(x, y, Width, Height);
         }
 
+        /// <summary>
+        /// Updates Layout(base.Update()) and the VBox's Rectangle position and size.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -126,6 +151,11 @@ namespace TheEngine.Graphics.Menu.Layouts
             }
         }
 
+
+        /// <summary>
+        /// Draws every Element of the VBox using the given SpriteBatch.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
             foreach (MenuElement m in _elements)

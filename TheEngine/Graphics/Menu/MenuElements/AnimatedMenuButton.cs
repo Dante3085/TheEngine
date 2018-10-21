@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using TheEngine.Graphics.Sprites;
 
-namespace TheEngine.Graphics.Menu.MenuComponents
+namespace TheEngine.Graphics.Menu.MenuElements
 {
     /// <summary>
     /// MenuButton that uses an AnimatedSprite to animate itself.
