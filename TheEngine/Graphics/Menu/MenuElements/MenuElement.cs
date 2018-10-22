@@ -15,7 +15,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Flag for deciding to draw all MenuElement's Rectangles.
         /// </summary>
-        public static bool _drawRecs = true;
+        public static bool _drawRecs = false;
 
         /// <summary>
         /// X Position of this MenuElement.
@@ -131,6 +131,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             MouseHoverReaction();
             CursorReaction(gameTime);
+
+            Game1.gameConsole.Log("X: " + X + ", Y: " + Y);
         }
 
         /// <summary>

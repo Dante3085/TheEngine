@@ -25,7 +25,7 @@ namespace TheEngine
         #region Test
 
         private TextButton textBtn;
-        private MenuAnimation btnAnimation;
+        private TranslateTransition btnAnimation;
 
         #endregion
 
@@ -68,8 +68,9 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            textBtn = new TextButton(0, 0, 50, 50, "Button", () => gameConsole.Log("Button pressed!"));
-            btnAnimation = new MenuAnimation(textBtn, new Point(0, 0), new Point(2000, 0), 1000);
+            textBtn = new TextButton(0, 0, 200, 100, "Button", () => gameConsole.Log("Button pressed!"));
+            textBtn.SetTextPosition(TextButton.TextPos.Center);
+            btnAnimation = new TranslateTransition(textBtn, new Point(0, 0), new Point(50, 0), 3000);
         }
 
         /// <summary>

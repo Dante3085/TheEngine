@@ -88,8 +88,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
         public Text(SpriteFont fontNoHover, SpriteFont fontHover, int x = 0, int y = 0, string text = "", Action functionality = null) 
             : base(x, y, functionality)
         {
-            
-
             _text = text;
             _activeSpriteFont = Contents.Arial12;
 

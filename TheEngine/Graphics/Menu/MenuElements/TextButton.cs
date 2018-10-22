@@ -135,8 +135,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
             _rec.Y = _y;
 
             // Position has changed.
-            if (_rec.X != _prevX ||
-                _rec.Y != _prevY)
+            if (_rec.X != _prevX || _rec.Y != _prevY)
                 SetTextPosition(_currentPos);
 
             _prevX = _rec.X;
