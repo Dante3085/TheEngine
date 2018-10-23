@@ -56,8 +56,8 @@ namespace TheEngine.Graphics.Menu
                 
                 Game1.gameConsole.Log("xInc: " + _xInc + ", yInc: " + _yInc);
 
-                    _menuElement.X += _xInc;
-                    _menuElement.Y += _yInc;
+                _menuElement.X += _xInc;
+                _menuElement.Y += _yInc;
                 
 
                 // Reset
