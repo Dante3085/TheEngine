@@ -45,7 +45,8 @@
     <Compile Include="Graphics\Menu\Layouts\AdvancedHBox.cs" />
     <Compile Include="Graphics\Menu\Layouts\AdvancedVBox.cs" />
     <Compile Include="Graphics\Menu\TranslateTransition.cs" />
-    <Compile Include="Graphics\Primitives.cs" />
+    <Compile Include="Graphics\Primitive\Primitives.cs" />
+    <Compile Include="Graphics\Primitive\RectangleF.cs" />
     <Compile Include="Graphics\ScreenManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

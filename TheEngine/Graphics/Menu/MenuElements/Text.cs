@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using TheEngine.DataManagement;
+using TheEngine.Graphics.Primitive;
 
 namespace TheEngine.Graphics.Menu.MenuElements
 {

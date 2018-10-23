@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TheEngine;
 using TheEngine.DataManagement;
+using TheEngine.Graphics.Primitive;
 using TheEngine.Input;
 using IDrawable = TheEngine.StateManagement.IDrawable;
 

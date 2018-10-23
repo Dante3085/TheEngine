@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TheEngine.DataManagement;
 
-namespace TheEngine.Graphics
+namespace TheEngine.Graphics.Primitive
 {
     /// <summary>
     /// Provides Methods for drawing simple geometric shapes.
