@@ -14,15 +14,15 @@ namespace TheEngine.Graphics.Menu.MenuElements
         #endregion
         #region Properties
 
-        public override int Width => _animSprite.Width;
-        public override int Height => _animSprite.Height;
+        public override float Width => _animSprite.Width;
+        public override float Height => _animSprite.Height;
 
         public AnimatedSprite AnimatedSprite => _animSprite;
 
         #endregion
 
-        protected AnimatedMenuElement(string name, AnimatedSprite animSprite, int x = 0, int y = 0, Action functionality = null) 
-            : base(x, y, functionality)
+        protected AnimatedMenuElement(Vector2 position, string name, AnimatedSprite animSprite, Action functionality = null) 
+            : base(position, functionality)
         {
             _animSprite = animSprite;
         }
@@ -38,8 +38,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
             base.Update(gameTime);
             _animSprite.Update(gameTime);
 
-            _animSprite._position.X = _x;
-            _animSprite._position.Y = _y;
+            _animSprite._position.X = _position.X;
+            _animSprite._position.Y = _position.Y;
         }
         #endregion
     }

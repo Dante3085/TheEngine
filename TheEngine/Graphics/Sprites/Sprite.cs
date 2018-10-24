@@ -79,14 +79,15 @@ namespace TheEngine.Graphics.Sprites
         #region BoundingBox
 
         /// <summary>
-        /// Rectangle specifying a Box that can be drawn around the Sprite using Util.DrawRectangleOutline()
+        /// RectangleF specifying a Box that can be drawn around the Sprite using Util.DrawRectangleOutline()
         /// </summary>
-        protected Rectangle _boundingBox;
+        protected RectangleF _boundingBox;
 
         /// <summary>
-        /// Rectangle array with 4 Rectangle objects, to be used for drawing the BoundingBox with Util.DrawRectangleOutline()
+        /// RectangleF array with 4 RectangleF objects, to be used for drawing the BoundingBox with Util.DrawRectangleOutline()
         /// </summary>
-        protected Rectangle[] _boundingBoxLines = { new Rectangle(), new Rectangle(), new Rectangle(), new Rectangle() };
+        protected Rectangle[] _boundingBoxLines = { new Rectangle(), new Rectangle(),
+            new Rectangle(), new Rectangle() };
 
         #endregion
 
@@ -104,9 +105,9 @@ namespace TheEngine.Graphics.Sprites
         public string Name => _name;
 
         /// <summary>
-        /// Rectangle specifying a Box that can be drawn around the Sprite using Util.DrawRectangleOutline()
+        /// RectangleF specifying a Box that can be drawn around the Sprite using Util.DrawRectangleOutline()
         /// </summary>
-        public Rectangle BoundingBox => _boundingBox;
+        public RectangleF BoundingBox => _boundingBox;
 
         /// <summary>
         /// PlayerIndex of this Sprite.
@@ -205,7 +206,7 @@ namespace TheEngine.Graphics.Sprites
             _isInteractable = isInteractable;
             _collisionHandler = collisionHandler;
 
-            _boundingBox = new Rectangle((int)position.X, (int)position.Y, spritesheet.Width, spritesheet.Height);
+            _boundingBox = new RectangleF((int)position.X, (int)position.Y, spritesheet.Width, spritesheet.Height);
 
             if (_collisionHandler == null)
             {
@@ -235,7 +236,7 @@ namespace TheEngine.Graphics.Sprites
             _isInteractable = isInteractable;
             _collisionHandler = collisionHandler;
 
-            _boundingBox = new Rectangle((int)position.X, (int)position.Y, spritesheet.Width, spritesheet.Height);
+            _boundingBox = new RectangleF((int)position.X, (int)position.Y, spritesheet.Width, spritesheet.Height);
 
             if (_collisionHandler == null)
             {

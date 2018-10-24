@@ -4,17 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using TheEngine.Utils;
 
 namespace TheEngine.Graphics.Primitive
 {
     public struct RectangleF : IEquatable<RectangleF>
     {
         private static RectangleF emptyRectangleF = new RectangleF();
-
-        /// <summary>
-        /// Tolerance for comparing floats.
-        /// </summary>
-        private const double TOLERANCE = 0.001;
 
         /// <summary>
         /// The x coordinate of the top-left corner of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
@@ -69,8 +65,9 @@ namespace TheEngine.Graphics.Primitive
         {
             get
             {
-                if (Math.Abs(this.Width) < TOLERANCE && Math.Abs(this.Height) < TOLERANCE && Math.Abs(this.X) < TOLERANCE)
-                    return Math.Abs(this.Y) < TOLERANCE;
+                if (Math.Abs(this.Width) < Constants.TOLERANCE && 
+                    Math.Abs(this.Height) < Constants.TOLERANCE && Math.Abs(this.X) < Constants.TOLERANCE)
+                    return Math.Abs(this.Y) < Constants.TOLERANCE;
                 return false;
             }
         }
@@ -150,8 +147,9 @@ namespace TheEngine.Graphics.Primitive
         /// <returns><c>true</c> if the instances are equal; <c>false</c> otherwise.</returns>
         public static bool operator ==(RectangleF a, RectangleF b)
         {
-            if (Math.Abs(a.X - b.X) < TOLERANCE && Math.Abs(a.Y - b.Y) < TOLERANCE && Math.Abs(a.Width - b.Width) < TOLERANCE)
-                return Math.Abs(a.Height - b.Height) < TOLERANCE;
+            if (Math.Abs(a.X - b.X) < Constants.TOLERANCE && 
+                Math.Abs(a.Y - b.Y) < Constants.TOLERANCE && Math.Abs(a.Width - b.Width) < Constants.TOLERANCE)
+                return Math.Abs(a.Height - b.Height) < Constants.TOLERANCE;
             return false;
         }
 

@@ -10,9 +10,9 @@ namespace TheEngine.Graphics.Primitive
     public static class Primitives
     {
         /// <summary>
-        /// Draws a Rectangle outline (unfilled Rectangle) using the given Rectangle object. <para></para>
-        /// "lines" parameter has to be exactly 4 Rectangle objects.
-        /// "lines" parameter exists to avoid 4 additional Rectangle objects from being created everytime this method is called.
+        /// Draws a RectangleF outline (unfilled RectangleF) using the given RectangleF object. <para></para>
+        /// "lines" parameter has to be exactly 4 RectangleF objects.
+        /// "lines" parameter exists to avoid 4 additional RectangleF objects from being created everytime this method is called.
         /// This is important since this method is called a lot (May prevent GarbageCollection hickups).
         /// </summary>
         /// <param name="spriteBatch"></param>
@@ -20,33 +20,33 @@ namespace TheEngine.Graphics.Primitive
         /// <param name="lines"></param>
         /// <param name="texture"></param>
         /// <param name="color"></param>
-        public static void DrawRectangleOutline(Rectangle rec, Rectangle[] lines, Texture2D texture, Color color, SpriteBatch spriteBatch)
+        public static void DrawRectangleOutline(RectangleF rec, Rectangle[] lines, Texture2D texture, Color color, SpriteBatch spriteBatch)
         {
             if (lines.Length != 4)
-                throw new ArgumentException("'lines' has to bee an array of exactly 4 Rectangle objects!");
+                throw new ArgumentException("'lines' has to bee an array of exactly 4 RectangleF objects!");
 
             // left
-            lines[0].X = rec.X;
-            lines[0].Y = rec.Y;
+            lines[0].X = (int)rec.X;
+            lines[0].Y = (int)rec.Y;
             lines[0].Width = 2;
-            lines[0].Height = rec.Height;
+            lines[0].Height = (int)rec.Height;
 
             // top
-            lines[1].X = rec.X;
-            lines[1].Y = rec.Y;
-            lines[1].Width = rec.Width;
+            lines[1].X = (int)rec.X;
+            lines[1].Y = (int)rec.Y;
+            lines[1].Width = (int)rec.Width;
             lines[1].Height = 2;
 
             // right
-            lines[2].X = rec.X + rec.Width;
-            lines[2].Y = rec.Y;
+            lines[2].X = (int)rec.X + (int)rec.Width;
+            lines[2].Y = (int)rec.Y;
             lines[2].Width = 2;
-            lines[2].Height = rec.Height;
+            lines[2].Height = (int)rec.Height;
 
             // bottom
-            lines[3].X = rec.X;
-            lines[3].Y = rec.Y + rec.Height;
-            lines[3].Width = rec.Width;
+            lines[3].X = (int)rec.X;
+            lines[3].Y = (int)rec.Y + (int)rec.Height;
+            lines[3].Width = (int)rec.Width;
             lines[3].Height = 2;
 
             spriteBatch.Draw(texture, lines[0], color);
@@ -56,16 +56,16 @@ namespace TheEngine.Graphics.Primitive
         }
 
         /// <summary>
-        /// Draws a filled Rectangle using the given Rectangle object.
+        /// Draws a filled RectangleF using the given RectangleF object.
         /// </summary>
         /// <param name="rec"></param>
         /// <param name="color"></param>
         /// <param name="spriteBatch"></param>
         /// <param name="opacity"></param>
-        public static void DrawRectangle(Rectangle rec, Texture2D recTex, Color color, SpriteBatch spriteBatch, 
+        public static void DrawRectangle(RectangleF rec, Texture2D recTex, Color color, SpriteBatch spriteBatch, 
             double opacity = 1.0)
         {
-            Color[] data = new Color[rec.Width * rec.Height];
+            Color[] data = new Color[(int)rec.Width * (int)rec.Height];
             Vector2 pos = new Vector2(rec.Location.X, rec.Location.Y);
 
             for (int i = 0; i < data.Length; i++)

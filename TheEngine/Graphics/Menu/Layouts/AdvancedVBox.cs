@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using TheEngine.Graphics.Menu.MenuElements;
+using TheEngine.Graphics.Primitive;
 
 namespace TheEngine.Graphics.Menu.Layouts
 {
@@ -29,17 +30,17 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <summary>
         /// Returns the AdvancedVBox's Width.
         /// </summary>
-        public override int Width => CalcWidth();
+        public override float Width => CalcWidth();
 
         /// <summary>
         /// Returns the AdvancedVBox's Height.
         /// </summary>
-        public override int Height => CalcHeight();
+        public override float Height => CalcHeight();
 
         /// <summary>
         /// Returns Bounding Rec of AdvancedVBox.
         /// </summary>
-        public override Rectangle Rectangle => _hBox.Rectangle;
+        public override RectangleF RectangleF => _hBox.RectangleF;
 
         /// <summary>
         /// Returns, sets spacing inside AdvancedVBox.
@@ -54,9 +55,11 @@ namespace TheEngine.Graphics.Menu.Layouts
 
         #region Methods
 
-        public AdvancedVBox(int x, int y, int horiSpacing, int vertSpacing, params MenuElement[] elements)
+        // TODO: Parameterübergabe an base ???
+        public AdvancedVBox(Vector2 position, int horiSpacing, int vertSpacing, params MenuElement[] elements)
+        : base(position)
         {
-            _hBox = new HBox(x, y, null, horiSpacing, new VBox(spacing: vertSpacing, elements: elements));
+            _hBox = new HBox(position, null, horiSpacing, new VBox(position, spacing: vertSpacing, elements: elements));
         }
 
         public override void Update(GameTime gameTime)
@@ -77,17 +80,17 @@ namespace TheEngine.Graphics.Menu.Layouts
             //}
         }                                             
 
-        private int CalcWidth()
+        private float CalcWidth()
         {
-            int width = 0;
+            float width = 0;
             foreach (MenuElement m in _hBox.Elements)
                 width += m.Width;
             return width;
         }
 
-        private int CalcHeight()
+        private float CalcHeight()
         {
-            int height = 0;
+            float height = 0;
             foreach (MenuElement m in _hBox.Elements)
                 height += m.Height;
             return height;

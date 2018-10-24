@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using TheEngine.Graphics.Primitive;
 using TheEngine.Input;
 
 namespace TheEngine.Graphics.Menu.MenuElements
@@ -15,27 +16,17 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Flag for deciding to draw all MenuElement's Rectangles.
         /// </summary>
-        public static bool _drawRecs = false;
+        public static bool _drawRecs = true;
 
         /// <summary>
-        /// X Position of this MenuElement.
+        /// Position of this MenuElement.
         /// </summary>
-        protected int _x;
+        protected Vector2 _position;
 
         /// <summary>
-        /// Y Position of this MenuElement.
+        /// Previous Position of this MenuElement. For checking Position change.
         /// </summary>
-        protected int _y;
-
-        /// <summary>
-        /// Previous X Position. For noticing a change in X Position.
-        /// </summary>
-        protected int _prevX;
-
-        /// <summary>
-        /// Previous Y Position. For noticing a change in Y Position.
-        /// </summary>
-        protected int _prevY;
+        protected Vector2 _prevPosition;
 
         /// <summary>
         /// Function of this MenuElement.
@@ -48,43 +39,34 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// </summary>
         protected bool _cursorOnIt = false;
 
+        /// <summary>
+        /// Stores 4 Rectangles used to draw the BoundingBox of this MenuElement.
+        /// </summary>
+        protected Rectangle[] _outlineLines = new Rectangle[]
+        {
+            new Rectangle(), new Rectangle(),
+            new Rectangle(), new Rectangle(),
+        };
+
         #endregion
         #region Properties
 
         /// <summary>
-        /// X Position of this MenuElement.
+        /// Position of this MenuElement.
         /// </summary>
-        public int X
+        public Vector2 Position
         {
-            get => _x;
-            set => _x = value;
+            get => _position;
+            set => _position = value;
         }
 
         /// <summary>
-        /// Y Position of this MenuElement.
+        /// Previous Position of this MenuElement. For checking Position change.
         /// </summary>
-        public int Y
+        public Vector2 PrevPosition
         {
-            get => _y;
-            set => _y = value;
-        }
-
-        /// <summary>
-        /// Previous X Position. For noticing a change in X Position.
-        /// </summary>
-        public int PrevX
-        {
-            get => _prevX;
-            set => _prevX = value;
-        }
-
-        /// <summary>
-        /// Previous Y Position. For noticing a change in Y Position.
-        /// </summary>
-        public int PrevY
-        {
-            get => _prevY;
-            set => _prevY = value;
+            get => _prevPosition;
+            set => _prevPosition = value;
         }
 
         /// <summary>
@@ -99,25 +81,25 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Width of this MenuElement.
         /// </summary>
-        public abstract int Width { get; }
+        public abstract float Width { get; }
 
         /// <summary>
         /// Height of this MenuElement.
         /// </summary>
-        public abstract int Height { get; }
+        public abstract float Height { get; }
 
         /// <summary>
-        /// Rectangle describing the Bounds of this MenuElement.
+        /// RectangleF describing the Bounds of this MenuElement.
         /// </summary>
-        public abstract Rectangle Rectangle { get; }
+        public abstract RectangleF RectangleF { get; }
 
         #endregion
         #region Methods
 
-        protected MenuElement(int x = 0, int y = 0, Action functionality = null)
+        protected MenuElement(Vector2 position, Action functionality = null)
         {
-            _x = x;
-            _y = y;
+            _position = position;
+            _prevPosition = _position;
             _functionality = functionality;
 
             if (_functionality == null)
@@ -131,8 +113,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             MouseHoverReaction();
             CursorReaction(gameTime);
-
-            Game1.gameConsole.Log("X: " + X + ", Y: " + Y);
         }
 
         /// <summary>
@@ -176,7 +156,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <returns></returns>
         public virtual bool IsMouseHover()
         {
-            return InputManager.IsMouseHoverRectangle(Rectangle);
+            return InputManager.IsMouseHoverRectangle(RectangleF);
         }
 
         /// <summary>

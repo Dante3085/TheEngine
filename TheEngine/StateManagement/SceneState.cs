@@ -49,7 +49,7 @@ namespace TheEngine.StateManagement
         /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_background, _backgroundRec, Color.White);
+            spriteBatch.Draw(_background, _backgroundRec.Location, Color.White);
             base.Draw(spriteBatch);
         }
 

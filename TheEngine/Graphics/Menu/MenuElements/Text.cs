@@ -47,8 +47,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         #region TextRectangle
 
-        private Rectangle _textRec;
-        private Rectangle[] _textRecLines = {new Rectangle(), new Rectangle(), new Rectangle(), new Rectangle()};
+        private RectangleF _textRec;
         public bool _drawTextRec;
 
         #endregion
@@ -60,9 +59,9 @@ namespace TheEngine.Graphics.Menu.MenuElements
         #endregion
         #region Properties
 
-        public override int Width => _textRec.Width;
-        public override int Height => _textRec.Height;
-        public override Rectangle Rectangle => _textRec;
+        public override float Width => _textRec.Width;
+        public override float Height => _textRec.Height;
+        public override RectangleF RectangleF => _textRec;
 
         /// <summary>
         /// Returns the string text of this Text.
@@ -79,40 +78,36 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Constructs a Text with given fonts, text, position and functionality.
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="position"></param>
         /// <param name="fontNoHover"></param>
         /// <param name="fontHover"></param>
         /// <param name="text"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
         /// <param name="functionality"></param>
-        public Text(SpriteFont fontNoHover, SpriteFont fontHover, int x = 0, int y = 0, string text = "", Action functionality = null) 
-            : base(x, y, functionality)
+        public Text(Vector2 position, SpriteFont fontNoHover, SpriteFont fontHover, string text = "", Action functionality = null) 
+            : base(position, functionality)
         {
             _text = text;
             _activeSpriteFont = Contents.Arial12;
 
             _textSize = _activeSpriteFont.MeasureString(_text);
-            _textRec = new Rectangle(_x, _y, (int)_textSize.X, (int)_textSize.Y);
+            _textRec = new RectangleF(position.X, position.Y, (int)_textSize.X, (int)_textSize.Y);
         }
 
         /// <summary>
         /// Constructs a text with given text, position and functionality.
-        /// Fonts will be automatically set depending on screen size.
-        /// </summary>
+        /// Fonts will be automatically set depending on screen size.</summary>
+        /// <param name="position"></param>
         /// <param name="text"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
         /// <param name="functionality"></param>
-        public Text(int x = 0, int y = 0, string text = "", Action functionality = null) 
-            : base(x, y, functionality)
+        public Text(Vector2 position, string text = "", Action functionality = null) 
+            : base(position, functionality)
         {
             _activeSpriteFont = Contents.Arial12;
 
             _text = text;
 
             _textSize = _activeSpriteFont.MeasureString(_text);
-            _textRec = new Rectangle(_x, _y, (int)_textSize.X, (int)_textSize.Y);
+            _textRec = new RectangleF(position.X, position.Y, (int)_textSize.X, (int)_textSize.Y);
         }
 
         public void SetColor(Color color)
@@ -136,16 +131,16 @@ namespace TheEngine.Graphics.Menu.MenuElements
             _textSize = _activeSpriteFont.MeasureString(_text);
 
             // Update Rec position.
-            _textRec.X = _x;
-            _textRec.Y = _y;
+            _textRec.X = _position.X;
+            _textRec.Y = _position.Y;
 
             // Update Rec size.
             _textRec.Width = (int)_textSize.X;
             _textRec.Height = (int)_textSize.Y;
 
             // Update Vector2 for DrawString.
-            _position.X = _x;
-            _position.Y = _y;
+            _position.X = base._position.X;
+            _position.Y = base._position.Y;
 
             if (OnLeftMouseClick())
                 ExecuteFunctionality();
@@ -205,7 +200,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
             spriteBatch.DrawString(_activeSpriteFont, _text, _position, CursorOnIt == true ? _colorHover : _color);
 
             if (MenuElement._drawRecs)
-                Primitives.DrawRectangleOutline(_textRec, _textRecLines, Contents.rectangleTex, Color.Red, spriteBatch);
+                Primitives.DrawRectangleOutline(_textRec, _outlineLines, Contents.rectangleTex, Color.Red, spriteBatch);
         }
 
         #endregion

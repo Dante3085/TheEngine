@@ -48,11 +48,9 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <param name="y"></param>
         /// <param name="functionality"></param>
         /// <param name="elements"></param>
-        protected Layout(int x = 0, int y = 0, Action functionality = null, params MenuElement[] elements) : 
-            base(x, y, functionality)
+        protected Layout(Vector2 position, Action functionality = null, params MenuElement[] elements) : 
+            base(position, functionality)
         {
-            _x = x;
-            _y = y;
             _elements.AddRange(elements);
         }
 

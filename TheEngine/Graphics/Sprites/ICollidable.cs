@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using TheEngine.Graphics.Primitive;
 
 namespace TheEngine.Graphics.Sprites
 {
@@ -20,7 +21,7 @@ namespace TheEngine.Graphics.Sprites
         /// <summary>
         /// BoundingBox that is necessary for detecting the collision.
         /// </summary>
-        Rectangle BoundingBox { get; }
+        RectangleF BoundingBox { get; }
 
         /// <summary>
         /// Contains logic for deciding if collision happened.

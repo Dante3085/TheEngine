@@ -119,7 +119,7 @@ namespace TheEngine.Input
         }
 
         /// <summary>
-        /// Gets whether Mouse has entered the given Rectangle
+        /// Gets whether Mouse has entered the given RectangleF
         /// (no holding / triggers once).
         /// </summary>
         /// <returns></returns>
@@ -130,8 +130,8 @@ namespace TheEngine.Input
         }
 
         /// <summary>
-        /// Gets whether Mouse hovers the given Rectangle
-        /// (triggers as long as Mouse hovers Rectangle).
+        /// Gets whether Mouse hovers the given RectangleF
+        /// (triggers as long as Mouse hovers RectangleF).
         /// </summary>
         /// <param name="rectangle"></param>
         /// <returns></returns>

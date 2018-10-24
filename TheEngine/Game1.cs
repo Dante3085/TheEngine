@@ -68,9 +68,8 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            textBtn = new TextButton(0, 0, 200, 100, "Button", () => gameConsole.Log("Button pressed!"));
-            textBtn.SetTextPosition(TextButton.TextPos.Center);
-            btnAnimation = new TranslateTransition(textBtn, new Point(0, 0), new Point(50, 0), 3000);
+            textBtn = new TextButton(Vector2.Zero, 150, 75, "", () => gameConsole.Log("Button pressed!"));
+            btnAnimation = new TranslateTransition(textBtn, new Vector2(0, 0), new Vector2(500, 0), 500);
         }
 
         /// <summary>

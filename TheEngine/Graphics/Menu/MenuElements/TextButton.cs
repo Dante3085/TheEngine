@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using TheEngine.DataManagement;
 using TheEngine.Graphics.Primitive;
 using TheEngine.Input;
+using TheEngine.Utils;
 
 namespace TheEngine.Graphics.Menu.MenuElements
 {
@@ -23,7 +24,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Describes the Bounds of this TextButton.
         /// </summary>
-        private Rectangle _rec;
+        private RectangleF _rec;
 
         /// <summary>
         /// Stores Texture of the TextButton.
@@ -50,37 +51,27 @@ namespace TheEngine.Graphics.Menu.MenuElements
         private Color _color = Color.AliceBlue;
 
         /// <summary>
-        /// Stores 4 Rectangles used to draw the BoundingBox of this TextButton.
-        /// </summary>
-        private Rectangle[] _outlineLines = new Rectangle[]
-        {
-            new Rectangle(), new Rectangle(),
-            new Rectangle(), new Rectangle(),  
-        };
-
-        /// <summary>
         /// Stores the current Position of the Text relative to this TextButton.
         /// </summary>
         private TextPos _currentPos;
 
         #endregion
-
         #region Properties
 
         /// <summary>
         /// Returns Width of this TextButton.
         /// </summary>
-        public override int Width => _rec.Width;
+        public override float Width => _rec.Width;
 
         /// <summary>
         /// Returns Height of this TextButton.
         /// </summary>
-        public override int Height => _rec.Height;
+        public override float Height => _rec.Height;
 
         /// <summary>
-        /// Returns the Rectangle describing the Bounds of this TextButton.
+        /// Returns the RectangleF describing the Bounds of this TextButton.
         /// </summary>
-        public override Rectangle Rectangle => _rec;
+        public override RectangleF RectangleF => _rec;
 
         /// <summary>
         /// Returns a Dictionary storing Opacity values for this TextButton.
@@ -106,7 +97,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
         }
 
         #endregion
-
         #region Enums
 
         public enum TextPos
@@ -117,12 +107,12 @@ namespace TheEngine.Graphics.Menu.MenuElements
         }
 
         #endregion
-
-        public TextButton(int x, int y, int width, int height, string text, Action functionality = null) 
-            : base(x, y, functionality)
+        #region Methods
+        public TextButton(Vector2 position, int width, int height, string text, Action functionality = null) 
+            : base(position, functionality)
         {
-            _text = new Text(x, y, text, () => Game1.gameConsole.Log(text + " gedrueckt."));
-            _rec = new Rectangle(x, y, width, height);
+            _text = new Text(position, text, () => Game1.gameConsole.Log(text + " gedrueckt."));
+            _rec = new RectangleF(position.X, position.Y, width, height);
             _texture = Contents.Texture(width, height);
 
             _activeOpacity = _opacities["noHover"];
@@ -132,15 +122,16 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             base.Update(gameTime);
 
-            _rec.X = _x;
-            _rec.Y = _y;
+            _rec.X = _position.X;
+            _rec.Y = _position.Y;
 
             // Position has changed.
-            if (_rec.X != _prevX || _rec.Y != _prevY)
+            if (Math.Abs(_rec.X - _prevPosition.X) > Constants.TOLERANCE ||
+                Math.Abs(_rec.Y - _prevPosition.Y) > Constants.TOLERANCE)
                 SetTextPosition(_currentPos);
 
-            _prevX = _rec.X;
-            _prevY = _rec.Y;
+            _prevPosition.X = _rec.X;
+            _prevPosition.Y = _rec.Y;
 
             _text.Update(gameTime);
         }
@@ -173,47 +164,58 @@ namespace TheEngine.Graphics.Menu.MenuElements
             {
                 case TextPos.TopLeft:
                 {
-                    _text.X = _rec.X;
-                    _text.Y = _rec.Y;
+                    _text.Position = new Vector2(_rec.X, _rec.Y);
                     break;
                 }
                 case TextPos.TopCenter:
                 {
-                    _text.X = _rec.X + (_rec.Width / 2) - _text.Rectangle.Center.X;
-                    _text.Y = _rec.Y;
+                    _text.Position = new Vector2(_rec.X + (_rec.Width / 2) - _text.RectangleF.Center.X, _rec.Y);
                     break;
                 }
                 case TextPos.TopRight:
                 {
-                    _text.X = (_rec.X + _rec.Width) - _text.Rectangle.Width;
-                    _text.Y = _rec.Y;
+                    _text.Position = new Vector2((_rec.X + _rec.Width) - _text.Width, _rec.Y);
                     break;
                 }
 
                 case TextPos.CenterLeft:
                 {
-                    _text.X = _rec.X;
-                    _text.Y = _rec.Y + (_rec.Height / 2) - _text.Rectangle.Center.Y;
+                    _text.Position = new Vector2(_rec.X, _rec.Y + (_rec.Height / 2) - _text.RectangleF.Center.Y);
                     break;
                 }
                 case TextPos.Center:
                 {
-                    _text.X = _rec.X + (_rec.Width / 2) - _text.Rectangle.Center.X;
-                    _text.Y = _rec.Y + (_rec.Height / 2) - _text.Rectangle.Center.Y;
+                    _text.Position = new Vector2(_rec.X + (_rec.Width / 2) - _text.RectangleF.Center.X,
+                                                 _rec.Y + (_rec.Height / 2) - _text.RectangleF.Center.Y);
                     break;
                 }
                 case TextPos.CenterRight:
                 {
-                    _text.X = _rec.X + _rec.Width;
-                    _text.Y = _rec.Y + (_rec.Height / 2);
+                    _text.Position = new Vector2(_rec.X + _rec.Width, _rec.Y + (_rec.Height / 2));
                     break;
                 }
 
                 case TextPos.BottomLeft:
                 {
+                    _text.Position = new Vector2(_rec.X, _rec.Y + _rec.Height - _text.Height);
+                    break;
+                }
+
+                case TextPos.BottomCenter:
+                {
+                    _text.Position = new Vector2(_rec.X + (_rec.Width / 2) - _text.RectangleF.Center.X,
+                                                 _rec.Y + _rec.Height - _text.Height);
+                    break;
+                }
+
+                case TextPos.BottomRight:
+                {
+                    _text.Position = new Vector2(_rec.X + _rec.Width - _text.Width, 
+                                                 _rec.Y + _rec.Height - _text.Height);
                     break;
                 }
             }
         }
+        #endregion
     }
 }

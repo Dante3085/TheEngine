@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using TheEngine.Graphics.Menu.MenuElements;
+using TheEngine.Utils;
 
 namespace TheEngine.Graphics.Menu
 {
@@ -14,30 +15,23 @@ namespace TheEngine.Graphics.Menu
     public class TranslateTransition
     {
         private MenuElement _menuElement;
-        private Point _start;
-        private Point _end;
+        private Vector2 _start;
+        private Vector2 _end;
+        private Vector2 _velocity;
         private int _durationInMs;
 
         private int _counter = 0;
-        private int _xInc;
-        private int _yInc;
 
         private bool _active = false;
 
-        public TranslateTransition(MenuElement menuElement, Point start, Point end, int durationInMs)
+        public TranslateTransition(MenuElement menuElement, Vector2 start, Vector2 end, int durationInMs)
         {
             _menuElement = menuElement;
             _start = start;
             _end = end;
             _durationInMs = durationInMs;
 
-            _xInc = (_end.X - _start.X) / _durationInMs;
-            _yInc = (_end.Y - _start.Y) / _durationInMs;
-
-            if (_xInc == 0 && _end.X != _start.X)
-                _xInc = 1;
-            if (_yInc == 0 && _end.Y != _start.Y)
-                _yInc = 1;
+            _velocity = new Vector2((_end.X - _start.X) / _durationInMs, (_end.Y - _start.Y) / _durationInMs);
         }
 
         /// <summary>
@@ -50,15 +44,14 @@ namespace TheEngine.Graphics.Menu
             {
                 _counter += gameTime.ElapsedGameTime.Milliseconds;
 
-                if (_menuElement.X == _end.X && _menuElement.Y == _end.Y)
+                if (Math.Abs(_menuElement.Position.X - _end.X) < Constants.TOLERANCE &&
+                    Math.Abs(_menuElement.Position.Y - _end.Y) < Constants.TOLERANCE)
+                {
                     _active = false;
+                    Start();
+                }
 
-                
-                Game1.gameConsole.Log("xInc: " + _xInc + ", yInc: " + _yInc);
-
-                _menuElement.X += _xInc;
-                _menuElement.Y += _yInc;
-                
+                _menuElement.Position += _velocity;
 
                 // Reset
                 _counter = 0;
@@ -70,8 +63,7 @@ namespace TheEngine.Graphics.Menu
         /// </summary>
         public void Start()
         {
-            _menuElement.X = _start.X;
-            _menuElement.Y = _start.Y;
+            _menuElement.Position = _start;
             _active = true;
         }
     }

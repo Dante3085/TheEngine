@@ -22,9 +22,9 @@ namespace TheEngine.Graphics.Sprites
         #region MemberVariables
 
         /// <summary>
-        /// Stores Rectangle Arrays that each represent an Animation (1 Rectangle = 1 frame in an Animation, 1 Rectangle Array = 1 Animation).
+        /// Stores RectangleF Arrays that each represent an Animation (1 RectangleF = 1 frame in an Animation, 1 RectangleF Array = 1 Animation).
         /// </summary>
-        private Dictionary<EAnimation, Rectangle[]> _animations = new Dictionary<EAnimation, Rectangle[]>();
+        private Dictionary<EAnimation, RectangleF[]> _animations = new Dictionary<EAnimation, RectangleF[]>();
 
         /// <summary>
         /// Stores Vector2s used for offsetting certain Animations that may differ in size.
@@ -60,7 +60,7 @@ namespace TheEngine.Graphics.Sprites
         private double _timeToUpdate;
 
         /// <summary>
-        /// Index of currentFrame in currentAnimation (i.e. in current Rectangle[])
+        /// Index of currentFrame in currentAnimation (i.e. in current RectangleF[])
         /// </summary>
         private int _currentFrameIndex;
 
@@ -89,8 +89,8 @@ namespace TheEngine.Graphics.Sprites
 
         public int Fps { get => (int)_timeToUpdate; set => _timeToUpdate = 1f / value; }
         public bool PlayingAnimation { get => _playingAnimation; set => _playingAnimation = value; }
-        public int Width => _animations[_currentAnimation][_currentFrameIndex].Width;
-        public int Height => _animations[_currentAnimation][_currentFrameIndex].Height;
+        public float Width => _animations[_currentAnimation][_currentFrameIndex].Width;
+        public float Height => _animations[_currentAnimation][_currentFrameIndex].Height;
 
         #endregion
 
@@ -312,7 +312,10 @@ namespace TheEngine.Graphics.Sprites
         // TODO: Collide-Logic shouldn't be in here!
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Spritesheet, _position + _offsets[_currentAnimation], _animations[_currentAnimation][_currentFrameIndex], Color.White);
+            //spriteBatch.Draw(Spritesheet, _position + _offsets[_currentAnimation], 
+            //    _animations[_currentAnimation][_currentFrameIndex], Color.White);
+
+            spriteBatch.Draw(Spritesheet, _position + _offsets[_currentAnimation], Color.White);
 
             if (_drawInteractionPrompt)
                 DrawInteractionPrompt(spriteBatch, Side.Top);
@@ -410,11 +413,11 @@ namespace TheEngine.Graphics.Sprites
                 onAnimationEnd = () => Console.WriteLine();
 
             // Creates an array of rectangles (i.e. a new Animation).
-            Rectangle[] animation = new Rectangle[numFrames];
+            RectangleF[] animation = new RectangleF[numFrames];
 
             // Fills up the array of rectangles
             for (int i = 0; i < numFrames; i++)
-                animation[i] = new Rectangle((i + indexFirstFrame) * frameWidth, yRow, frameWidth, frameHeight);
+                animation[i] = new RectangleF((i + indexFirstFrame) * frameWidth, yRow, frameWidth, frameHeight);
 
             // Store frames and offset in two different dictionaries. But both with same key (animation.)
             _animations.Add(name, animation);

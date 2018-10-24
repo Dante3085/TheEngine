@@ -89,6 +89,7 @@
     <Compile Include="StateManagement\IInteractable.cs" />
     <Compile Include="StateManagement\SceneState.cs" />
     <Compile Include="StateManagement\State.cs" />
+    <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\GameConsole\Command.cs" />
     <Compile Include="Utils\GameConsole\CommandEventArgs.cs" />
     <Compile Include="Utils\GameConsole\GameConsole.cs" />

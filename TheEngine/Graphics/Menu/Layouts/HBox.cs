@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using TheEngine.Graphics.Menu.MenuElements;
+using TheEngine.Graphics.Primitive;
 
 namespace TheEngine.Graphics.Menu.Layouts
 {
@@ -22,9 +23,9 @@ namespace TheEngine.Graphics.Menu.Layouts
         private int _spacing;
 
         /// <summary>
-        /// Rectangle describing the Bounds of the HBox.
+        /// RectangleF describing the Bounds of the HBox.
         /// </summary>
-        private Rectangle _rec;
+        private RectangleF _rec;
 
         #endregion
         #region Properties
@@ -32,12 +33,12 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <summary>
         /// Returns the Width of the HBox.
         /// </summary>
-        public override int Width => CalcWidth();
+        public override float Width => CalcWidth();
 
         /// <summary>
         /// Returns the Height of the HBox.
         /// </summary>
-        public override int Height => HeightTallestElement();
+        public override float Height => HeightTallestElement();
 
         /// <summary>
         /// Returns, sets spacing inside HBox.
@@ -51,7 +52,7 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <summary>
         /// Returns Bounding Rec of HBox.
         /// </summary>
-        public override Rectangle Rectangle { get; }
+        public override RectangleF RectangleF { get; }
 
         #endregion
 
@@ -63,24 +64,24 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <param name="functionality"></param>
         /// <param name="spacing"></param>
         /// <param name="elements"></param>
-        public HBox(int x = 0, int y = 0, Action functionality = null, int spacing = 0, params MenuElement[] elements)
-        : base(x, y, functionality, elements)
+        public HBox(Vector2 position, Action functionality = null, int spacing = 0, params MenuElement[] elements)
+        : base(position, functionality, elements)
         {
             _spacing = spacing;
             OrderElements();
-            _rec = new Rectangle(x, y, Width, Height);
+            _rec = new RectangleF(position.X, position.Y, Width, Height);
         }
 
         /// <summary>
         /// Returns height of the tallest element in the HBox.
         /// </summary>
         /// <returns></returns>
-        private int HeightTallestElement()
+        private float HeightTallestElement()
         {
             if (_elements.Count == 0)
                 return -1;
 
-            int height = _elements[0].Height;
+            float height = _elements[0].Height;
 
             foreach (MenuElement m in _elements)
                 if (m.Height > height)
@@ -92,13 +93,13 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// Returns width of the HBox. (See: OneNote "HBox Width Berechnung")
         /// </summary>
         /// <returns></returns>
-        private int CalcWidth()
+        private float CalcWidth()
         {
             // HBox with no elements has a width of 0.
             if (_elements.Count == 0)
                 return 0;
 
-            int width = 0;
+            float width = 0;
 
             // Sum of all elements' width values.
             foreach (MenuElement m in _elements)
@@ -116,28 +117,35 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// </summary>
         public override void OrderElements()
         {
+            // No elements => do nothing.
             if (_elements.Count == 0)
                 return;
 
-            // Position first element at upper left corner of HBox.
-            _elements[0].X = this._x;
-            _elements[0].Y = this._y;
+            // Position first element at origin of HBox.
+            _elements[0].Position = this._position;
 
+            // No other elements => All is done.
             if (_elements.Count == 1)
                 return;
+
+            //// Position every element (except first) at HBox.Y and HBox.X + previousElement.X + spacing.
+            //// Makes it so that elements aren't stacked on top of each other and variable spacing is possible.
+            //for (int i = 1; i < _elements.Count; i++)
+            //{
+            //    _elements[i].Y = this._y;
+            //    _elements[i].X = _elements[i - 1].X + _elements[i - 1].Width + _spacing;
+            //}
 
             // Position every element (except first) at HBox.Y and HBox.X + previousElement.X + spacing.
             // Makes it so that elements aren't stacked on top of each other and variable spacing is possible.
             for (int i = 1; i < _elements.Count; i++)
-            {
-                _elements[i].Y = this._y;
-                _elements[i].X = _elements[i - 1].X + _elements[i - 1].Width + _spacing;
-            }
+                _elements[i].Position = new Vector2(_elements[i - 1].Position.X + _elements[i - 1].Width + _spacing,
+                                                    this.Position.Y);
         }
 
 
         /// <summary>
-        /// Updates Layout(base.Update()) and the HBox's Rectangle position and size.
+        /// Updates Layout(base.Update()) and the HBox's RectangleF position and size.
         /// </summary>
         /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
@@ -145,8 +153,8 @@ namespace TheEngine.Graphics.Menu.Layouts
             base.Update(gameTime);
 
             // Update rec.
-            _rec.X = _x;
-            _rec.Y = _y;
+            _rec.X = _position.X;
+            _rec.Y = _position.Y;
             _rec.Width = Width;
             _rec.Height = Height;
         }
