@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using TheEngine.Graphics.Primitive;
 
 namespace TheEngine.StateManagement
 {
@@ -21,7 +22,7 @@ namespace TheEngine.StateManagement
         /// <summary>
         /// BackgroundRectangle for defining the bounds of the BackgroundTexture.
         /// </summary>
-        private Rectangle _backgroundRec;
+        private RectangleF _backgroundRec;
 
         #endregion
         #region Methods
@@ -30,7 +31,7 @@ namespace TheEngine.StateManagement
             : base(entities, next, keyboardHandler, gamePadHandler)
         {
             _background = background;
-            _backgroundRec = new Rectangle(0, 0, screenWidth, screenHeight);
+            _backgroundRec = new RectangleF(0, 0, screenWidth, screenHeight);
         }
 
         /// <summary>

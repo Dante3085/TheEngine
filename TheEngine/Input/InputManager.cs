@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using TheEngine.Graphics.Primitive;
 
 namespace TheEngine.Input
 {
@@ -122,7 +123,7 @@ namespace TheEngine.Input
         /// (no holding / triggers once).
         /// </summary>
         /// <returns></returns>
-        public static bool OnMouseHoverRectangle(Rectangle rectangle)
+        public static bool OnMouseHoverRectangle(RectangleF rectangle)
         {
             return rectangle.Contains(_previousMouseState.Position) == false &&
                    rectangle.Contains(_currentMouseState.Position);
@@ -134,7 +135,7 @@ namespace TheEngine.Input
         /// </summary>
         /// <param name="rectangle"></param>
         /// <returns></returns>
-        public static bool IsMouseHoverRectangle(Rectangle rectangle)
+        public static bool IsMouseHoverRectangle(RectangleF rectangle)
         {
             return rectangle.Contains(_currentMouseState.Position);
         }

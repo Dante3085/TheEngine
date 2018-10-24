@@ -11,6 +11,9 @@ namespace TheEngine.Graphics.Primitive
     {
         private static RectangleF emptyRectangleF = new RectangleF();
 
+        /// <summary>
+        /// Tolerance for comparing floats.
+        /// </summary>
         private const double TOLERANCE = 0.001;
 
         /// <summary>
@@ -368,7 +371,7 @@ namespace TheEngine.Graphics.Primitive
         }
 
         /// <summary>
-        /// Changes the <see cref="P:Microsoft.Xna.Framework.Rectangle.Location" /> of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
+        /// Changes the <see cref="TheEngine.Graphics.Primitive.RectangleF.Location" /> of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
         /// </summary>
         /// <param name="offsetX">The x coordinate to add to this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.</param>
         /// <param name="offsetY">The y coordinate to add to this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.</param>
@@ -379,7 +382,7 @@ namespace TheEngine.Graphics.Primitive
         }
 
         /// <summary>
-        /// Changes the <see cref="P:Microsoft.Xna.Framework.Rectangle.Location" /> of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
+        /// Changes the <see cref="TheEngine.Graphics.Primitive.RectangleF.Location" /> of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
         /// </summary>
         /// <param name="offsetX">The x coordinate to add to this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.</param>
         /// <param name="offsetY">The y coordinate to add to this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.</param>
@@ -390,7 +393,7 @@ namespace TheEngine.Graphics.Primitive
         }
 
         /// <summary>
-        /// Changes the <see cref="P:Microsoft.Xna.Framework.Rectangle.Location" /> of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
+        /// Changes the <see cref="TheEngine.Graphics.Primitive.RectangleF.Location" /> of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
         /// </summary>
         /// <param name="amount">The x and y components to add to this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.</param>
         public void Offset(Point amount)
@@ -400,7 +403,7 @@ namespace TheEngine.Graphics.Primitive
         }
 
         /// <summary>
-        /// Changes the <see cref="P:Microsoft.Xna.Framework.Rectangle.Location" /> of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
+        /// Changes the <see cref="TheEngine.Graphics.Primitive.RectangleF.Location" /> of this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.
         /// </summary>
         /// <param name="amount">The x and y components to add to this <see cref="TheEngine.Graphics.Primitive.RectangleF" />.</param>
         public void Offset(Vector2 amount)
