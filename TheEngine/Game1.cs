@@ -24,7 +24,8 @@ namespace TheEngine
 
         #region Test
 
-        private TextButton textBtn;
+        private TextButton[] textBtns;
+        private VBox btns;
         private TranslateTransition btnAnimation;
 
         #endregion
@@ -53,6 +54,7 @@ namespace TheEngine
             gameConsole = new GameConsole(this, "german", Content);
 
             base.Initialize();
+            InputManager.Init();
         }
 
         /// <summary>
@@ -68,8 +70,14 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            textBtn = new TextButton(Vector2.Zero, 150, 75, "", () => gameConsole.Log("Button pressed!"));
-            btnAnimation = new TranslateTransition(textBtn, new Vector2(0, 0), new Vector2(500, 0), 500);
+            textBtns = new TextButton[]
+            {
+                new TextButton(Vector2.Zero, 150, 75, "", () => gameConsole.Log("Button pressed!")),
+                new TextButton(new Vector2(0, 150), 150, 75, "", () => gameConsole.Log("Button pressed!")),
+                new TextButton(new Vector2(0, 300), 150, 75, "", () => gameConsole.Log("Button pressed!")),
+            };
+            btns = new VBox(new Vector2(-200, 0), 0, null, textBtns);
+            btnAnimation = new TranslateTransition(btns.Position, new Vector2(500, 0), 2000, btns);
         }
 
         /// <summary>
@@ -100,11 +108,14 @@ namespace TheEngine
 
             if (InputManager.OnKeyDown(Keys.Enter))
             {
-                btnAnimation.Start();
-                gameConsole.Log("Animation gestartet!");
+                if (InputManager.OnKeyToggle(Keys.Space))
+                    btnAnimation.Backward();
+                else
+                    btnAnimation.Forward();
             }
 
-            textBtn.Update(gameTime);
+            btns.Update(gameTime);
+
             btnAnimation.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
@@ -123,7 +134,7 @@ namespace TheEngine
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            textBtn.Draw(spriteBatch);
+            btns.Draw(spriteBatch);
 
             spriteBatch.End();
 

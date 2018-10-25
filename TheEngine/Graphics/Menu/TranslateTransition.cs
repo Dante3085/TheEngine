@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,24 +15,116 @@ namespace TheEngine.Graphics.Menu
     /// </summary>
     public class TranslateTransition
     {
+        #region MemberVariables
+
+        /// <summary>
+        /// <see cref="TheEngine.Graphics.Menu.MenuElements.MenuElement"/> that this <see cref="TheEngine.Graphics.Menu.TranslateTransition"/> is being applied on.
+        /// </summary>
         private MenuElement _menuElement;
+
+        /// <summary>
+        /// Start-Position of this <see cref="TheEngine.Graphics.Menu.TranslateTransition"/>.
+        /// </summary>
         private Vector2 _start;
+
+        /// <summary>
+        /// End-Position of this <see cref="TheEngine.Graphics.Menu.TranslateTransition"/>.
+        /// </summary>
         private Vector2 _end;
-        private Vector2 _velocity;
-        private int _durationInMs;
 
-        private int _counter = 0;
+        /// <summary>
+        /// How many pixels the MenuElement moves per second.
+        /// </summary>
+        private float _speed;
 
-        private bool _active = false;
+        /// <summary>
+        /// Rate at which the MenuElement's position is updated.
+        /// </summary>
+        private float _elapsed = 0.01f;
 
-        public TranslateTransition(MenuElement menuElement, Vector2 start, Vector2 end, int durationInMs)
+        /// <summary>
+        /// Switch for turning the forward movement update process on and off.
+        /// </summary>
+        private bool _forwardMoving = false;
+
+        /// <summary>
+        /// Switch for turning backward movement update process on and off.
+        /// </summary>
+        private bool _backwardMoving = false;
+
+        /// <summary>
+        /// Distance between _start and _end.
+        /// </summary>
+        private float _distance;
+
+        /// <summary>
+        /// Direction from _start to _end.
+        /// </summary>
+        private Vector2 _direction;
+
+        /// <summary>
+        /// For checking how much time the TranslateTransition took/takes.
+        /// </summary>
+        private float _elapsedTime;
+
+        #endregion
+        #region Properties
+
+        /// <summary>
+        /// <see cref="TheEngine.Graphics.Menu.MenuElements.MenuElement"/> that this <see cref="TheEngine.Graphics.Menu.TranslateTransition"/> is being applied on.
+        /// </summary>
+        public MenuElement MenuElement { get => _menuElement; set => _menuElement = value; }
+
+        /// <summary>
+        /// Start-Position of this <see cref="TheEngine.Graphics.Menu.TranslateTransition"/>.
+        /// While setting, recalculates internal Distance and Direction Vector2s.
+        /// </summary>
+        public Vector2 Start
         {
-            _menuElement = menuElement;
+            get => _start;
+            set
+            {
+                _start = value;
+                _distance = Vector2.Distance(_start, _end);
+                _direction = Vector2.Normalize(_end - _start);
+            }
+        }
+
+        /// <summary>
+        /// End-Position of this <see cref="TheEngine.Graphics.Menu.TranslateTransition"/>.
+        /// While setting, recalculates internal Distance and Direction Vector2s.
+        /// </summary>
+        public Vector2 End
+        {
+            get => _end;
+            set
+            {
+                _end = value;
+                _distance = Vector2.Distance(_start, _end);
+                _direction = Vector2.Normalize(_end - _start);
+            }
+        }
+        public float Speed { get => _speed; set => _speed = value; }
+
+        #endregion
+        #region Methods
+
+        /// <summary>
+        /// Constructs a TranslateTransition that moves the given MenuElement from start to end with given speed(pixels per second).
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="speed"></param>
+        /// <param name="menuElement"></param>
+        public TranslateTransition(Vector2 start, Vector2 end, float speed, MenuElement menuElement)
+        {
             _start = start;
             _end = end;
-            _durationInMs = durationInMs;
+            _speed = speed;
+            _menuElement = menuElement;
 
-            _velocity = new Vector2((_end.X - _start.X) / _durationInMs, (_end.Y - _start.Y) / _durationInMs);
+            _distance = Vector2.Distance(_start, _end);
+            _direction = Vector2.Normalize(_end - _start);
         }
 
         /// <summary>
@@ -40,31 +133,54 @@ namespace TheEngine.Graphics.Menu
         /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
-            if (_active)
+            if (_forwardMoving)
             {
-                _counter += gameTime.ElapsedGameTime.Milliseconds;
+                _elapsedTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                Game1.gameConsole.Log("ElapsedTime: " + _elapsedTime);
 
-                if (Math.Abs(_menuElement.Position.X - _end.X) < Constants.TOLERANCE &&
-                    Math.Abs(_menuElement.Position.Y - _end.Y) < Constants.TOLERANCE)
+                _menuElement.Position += _direction * _speed * _elapsed;
+
+                if (Vector2.Distance(_start, _menuElement.Position) >= _distance)
                 {
-                    _active = false;
-                    Start();
+                    _menuElement.Position = _end;
+                    _forwardMoving = false;
                 }
+            }
 
-                _menuElement.Position += _velocity;
+            else if (_backwardMoving)
+            {
+                _elapsedTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                Game1.gameConsole.Log("ElapsedTime: " + _elapsedTime);
 
-                // Reset
-                _counter = 0;
+                _menuElement.Position -= _direction * _speed * _elapsed;
+
+                if (Vector2.Distance(_start, _menuElement.Position) >= _distance)
+                {
+                    _menuElement.Position = _start;
+                    _backwardMoving = false;
+                }
             }
         }
 
         /// <summary>
-        /// Sets MenuElement to start and activates necessary code in Update method.
+        /// Reconfigures the TranslateTransition to it's original state(i.e. restart).
         /// </summary>
-        public void Start()
+        public void Forward()
         {
+            _elapsedTime = 0;
             _menuElement.Position = _start;
-            _active = true;
+            _backwardMoving = false;
+            _forwardMoving = true;
         }
+
+        public void Backward()
+        {
+            _elapsedTime = 0;
+            _menuElement.Position = _end;
+            _forwardMoving = false;
+            _backwardMoving = true;
+        }
+
+        #endregion
     }
 }

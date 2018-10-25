@@ -14,6 +14,7 @@ namespace TheEngine.Input
     /// Provides utility for checking Input.
     /// Note: GamePad is currently restricted to PlayerIndex.One.
     /// </summary>
+    /// TODO: Documentation
     public static class InputManager
     {
         #region MemberVariables
@@ -27,10 +28,23 @@ namespace TheEngine.Input
         private static MouseState _previousMouseState;
         private static MouseState _currentMouseState;
 
+        // TODO: DoubleClick does not work.
         private const double doubleClickDelay = 500;
         private static double doubleClickTimer;
 
+        private static Dictionary<Keys, bool> _keyToggleBools = new Dictionary<Keys, bool>();
+
         #endregion
+
+        /// <summary>
+        /// Initializes necessary components of InputManager. Call before doing anything with it!
+        /// </summary>
+        public static void Init()
+        {
+            foreach (Keys k in Enum.GetValues(typeof(Keys)))
+                _keyToggleBools.Add(k, false);
+        }
+
         #region UpdateStatesMethods
 
         /// <summary>
@@ -193,6 +207,30 @@ namespace TheEngine.Input
         public static bool OnKeyUp(Keys key)
         {
             return _previousKeyboardState.IsKeyDown(key) && _currentKeyboardState.IsKeyUp(key);
+        }
+
+        /// <summary>
+        /// Gets whether given key is toggled.
+        /// Not toggled => Set to toggled, return false.
+        /// Toggled => Set to not toggled, return true.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool OnKeyToggle(Keys key)
+        {
+            // Not toggled => Set to toggled, return false.
+            if (!_keyToggleBools[key])
+            {
+                _keyToggleBools[key] = true;
+                return false;
+            }
+
+            // Toggled => Set to not toggled, return true.
+            else
+            {
+                _keyToggleBools[key] = false;
+                return true;
+            }
         }
 
         #endregion
