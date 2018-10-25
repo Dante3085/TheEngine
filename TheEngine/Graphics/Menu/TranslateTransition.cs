@@ -154,7 +154,7 @@ namespace TheEngine.Graphics.Menu
 
                 _menuElement.Position -= _direction * _speed * _elapsed;
 
-                if (Vector2.Distance(_start, _menuElement.Position) >= _distance)
+                if (Vector2.Distance(_end, _menuElement.Position) >= _distance)
                 {
                     _menuElement.Position = _start;
                     _backwardMoving = false;

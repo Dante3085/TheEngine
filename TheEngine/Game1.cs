@@ -76,7 +76,7 @@ namespace TheEngine
                 new TextButton(new Vector2(0, 150), 150, 75, "", () => gameConsole.Log("Button pressed!")),
                 new TextButton(new Vector2(0, 300), 150, 75, "", () => gameConsole.Log("Button pressed!")),
             };
-            btns = new VBox(new Vector2(-200, 0), 0, null, textBtns);
+            btns = new VBox(Vector2.Zero, 0, null, textBtns);
             btnAnimation = new TranslateTransition(btns.Position, new Vector2(500, 0), 2000, btns);
         }
 
