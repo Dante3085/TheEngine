@@ -55,11 +55,10 @@ namespace TheEngine.Graphics.Menu.Layouts
 
         #region Methods
 
-        // TODO: Parameterübergabe an base ???
-        public AdvancedVBox(Vector2 position, int horiSpacing, int vertSpacing, params MenuElement[] elements)
-        : base(position)
+        public AdvancedVBox(RectangleF bounds, int horiSpacing, int vertSpacing, params MenuElement[] elements)
+        : base(bounds)
         {
-            _hBox = new HBox(position, null, horiSpacing, new VBox(position, spacing: vertSpacing, elements: elements));
+            _hBox = new HBox(bounds, null, horiSpacing, new VBox(bounds, spacing: vertSpacing, elements: elements));
         }
 
         public override void Update(GameTime gameTime)

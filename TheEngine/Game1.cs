@@ -8,6 +8,7 @@ using TheEngine.Graphics.EngineUIs;
 using TheEngine.Graphics.Menu;
 using TheEngine.Graphics.Menu.Layouts;
 using TheEngine.Graphics.Menu.MenuElements;
+using TheEngine.Graphics.Primitive;
 using TheEngine.Graphics.Sprites;
 using TheEngine.Input;
 using VosSoft.Xna.GameConsole;
@@ -26,11 +27,7 @@ namespace TheEngine
 
         #region Test
 
-        private TextButton[] textBtns;
-        private VBox btns;
-        private TranslateTransition btnAnimation;
-
-        private AnimatedSprite sprite;
+        private VBox vbox;
 
         #endregion
 
@@ -75,8 +72,18 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            sprite = new AnimatedSprite("sprite", Contents.adventurer, Vector2.Zero, gamePadInput: GamePadInput.Default(), fps: 5);
-            sprite.AddAnimation(EAnimation.Idle, 4, 50, 37, 0, 0, Vector2.Zero, 5);
+            vbox = new VBox(new RectangleF(0, 0, 0, 0), 5, elements: new MenuElement[]
+            {
+                new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der aeussersten VBox"),
+                new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der aeussersten VBox"),
+                new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der aeussersten VBox"),
+                new HBox(new RectangleF(), spacing: 5, elements: new MenuElement[]
+                {
+                    new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der inneren HBox"),
+                    new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der inneren HBox"),
+                    new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der inneren HBox"),
+                }), 
+            });
         }
 
         /// <summary>
@@ -105,8 +112,8 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
+            vbox.Update(gameTime);
             EngineUI.Update(gameTime);
-            sprite.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
 
@@ -125,7 +132,6 @@ namespace TheEngine
             spriteBatch.Begin();
 
             EngineUI.Draw(spriteBatch);
-            sprite.Draw(spriteBatch);
 
             spriteBatch.End();
 

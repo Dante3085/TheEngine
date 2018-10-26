@@ -16,12 +16,12 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Flag for deciding to draw all MenuElement's Rectangles.
         /// </summary>
-        public static bool _drawRecs = false;
+        public static bool _drawRecs = true;
 
         /// <summary>
-        /// Position of this MenuElement.
+        /// Bounds of this MenuElement (= Position, Size).
         /// </summary>
-        protected Vector2 _position;
+        protected RectangleF _bounds;
 
         /// <summary>
         /// Previous Position of this MenuElement. For checking Position change.
@@ -52,12 +52,12 @@ namespace TheEngine.Graphics.Menu.MenuElements
         #region Properties
 
         /// <summary>
-        /// Position of this MenuElement.
+        /// Bounds of this MenuElement (= Position, Size).
         /// </summary>
-        public Vector2 Position
+        public RectangleF Bounds
         {
-            get => _position;
-            set => _position = value;
+            get => _bounds;
+            set => _bounds = value;
         }
 
         /// <summary>
@@ -96,10 +96,10 @@ namespace TheEngine.Graphics.Menu.MenuElements
         #endregion
         #region Methods
 
-        protected MenuElement(Vector2 position, Action functionality = null)
+        protected MenuElement(RectangleF bounds, Action functionality = null)
         {
-            _position = position;
-            _prevPosition = _position;
+            _bounds = bounds;
+            _prevPosition = _bounds.Location;
             _functionality = functionality;
 
             if (_functionality == null)

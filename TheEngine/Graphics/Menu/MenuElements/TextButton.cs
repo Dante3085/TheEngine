@@ -22,11 +22,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
         private Text _text;
 
         /// <summary>
-        /// Describes the Bounds of this TextButton.
-        /// </summary>
-        private RectangleF _rec;
-
-        /// <summary>
         /// Stores Texture of the TextButton.
         /// </summary>
         private Texture2D _texture;
@@ -34,7 +29,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Stores opacity values for this TextButton.
         /// </summary>
-        private Dictionary<string , double> _opacities = new Dictionary<string, double>()
+        private Dictionary<string, double> _opacities = new Dictionary<string, double>()
         {
             { "noHover", 0.5 },
             { "hover", 0.75 },
@@ -62,17 +57,17 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Returns Width of this TextButton.
         /// </summary>
-        public override float Width => _rec.Width;
+        public override float Width => _bounds.Width;
 
         /// <summary>
         /// Returns Height of this TextButton.
         /// </summary>
-        public override float Height => _rec.Height;
+        public override float Height => _bounds.Height;
 
         /// <summary>
         /// Returns the RectangleF describing the Bounds of this TextButton.
         /// </summary>
-        public override RectangleF RectangleF => _rec;
+        public override RectangleF RectangleF => _bounds;
 
         /// <summary>
         /// Returns a Dictionary storing Opacity values for this TextButton.
@@ -109,14 +104,12 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         #endregion
         #region Methods
-        public TextButton(Vector2 position, Vector2 size, string text, Color color, Action functionality = null) 
-            : base(position, functionality)
+        public TextButton(RectangleF bounds, string text, Color color, Action functionality = null)
+            : base(bounds, functionality)
         {
-            _text = new Text(position, text, () => Game1.gameConsole.Log(text + " gedrueckt."));
-            _rec = new RectangleF(position.X, position.Y, size.X, size.Y);
-            _texture = Contents.Texture((int)size.X, (int)size.Y);
+            _text = new Text(new RectangleF(bounds.Location, new Vector2()), text, () => Game1.gameConsole.Log(text + " gedrueckt."));
+            _texture = Contents.Texture((int)bounds.Size.X, (int)bounds.Size.Y);
             _color = color;
-
 
             _activeOpacity = _opacities["noHover"];
         }
@@ -131,33 +124,30 @@ namespace TheEngine.Graphics.Menu.MenuElements
             if (OnLeftMouseClick())
                 _functionality();
 
-            _rec.X = _position.X;
-            _rec.Y = _position.Y;
-
             // Position has changed.
-            if (Math.Abs(_rec.X - _prevPosition.X) > Constants.TOLERANCE ||
-                Math.Abs(_rec.Y - _prevPosition.Y) > Constants.TOLERANCE)
+            if (Math.Abs(_bounds.X - _prevPosition.X) > Constants.TOLERANCE ||
+                Math.Abs(_bounds.Y - _prevPosition.Y) > Constants.TOLERANCE)
                 SetTextPosition(_currentPos);
 
-            _prevPosition.X = _rec.X;
-            _prevPosition.Y = _rec.Y;
+            _prevPosition.X = _bounds.X;
+            _prevPosition.Y = _bounds.Y;
 
             _text.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Primitives.DrawRectangle(_rec, _texture, _color, spriteBatch, _activeOpacity);
+            Primitives.DrawRectangle(_bounds, _texture, _color, spriteBatch, _activeOpacity);
             _text.Draw(spriteBatch);
 
             if (MenuElement._drawRecs)
-                Primitives.DrawRectangleOutline(_rec, _outlineLines, Contents.rectangleTex, 
+                Primitives.DrawRectangleOutline(_bounds, _outlineLines, Contents.rectangleTex,
                     Color.Red, spriteBatch);
         }
 
         public override void MouseHoverReaction()
         {
-            _activeOpacity = InputManager.IsMouseHoverRectangle(_rec) ? 
+            _activeOpacity = InputManager.IsMouseHoverRectangle(_bounds) ?
                 _opacities["hover"] : _opacities["noHover"];
         }
 
@@ -169,61 +159,63 @@ namespace TheEngine.Graphics.Menu.MenuElements
         public void SetTextPosition(TextPos pos)
         {
             _currentPos = pos;
+            RectangleF textBounds = _text.Bounds;
             switch (pos)
             {
                 case TextPos.TopLeft:
-                {
-                    _text.Position = new Vector2(_rec.X, _rec.Y);
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2(_bounds.X, _bounds.Y);
+                        break;
+                    }
                 case TextPos.TopCenter:
-                {
-                    _text.Position = new Vector2(_rec.X + (_rec.Width / 2) - _text.RectangleF.Center.X, _rec.Y);
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.RectangleF.Center.X, _bounds.Y);
+                        break;
+                    }
                 case TextPos.TopRight:
-                {
-                    _text.Position = new Vector2((_rec.X + _rec.Width) - _text.Width, _rec.Y);
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2((_bounds.X + _bounds.Width) - _text.Width, _bounds.Y);
+                        break;
+                    }
 
                 case TextPos.CenterLeft:
-                {
-                    _text.Position = new Vector2(_rec.X, _rec.Y + (_rec.Height / 2) - _text.RectangleF.Center.Y);
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2(_bounds.X, _bounds.Y + (_bounds.Height / 2) - _text.RectangleF.Center.Y);
+                        break;
+                    }
                 case TextPos.Center:
-                {
-                    _text.Position = new Vector2(_rec.X + (_rec.Width / 2) - _text.RectangleF.Center.X,
-                                                 _rec.Y + (_rec.Height / 2) - _text.RectangleF.Center.Y);
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.RectangleF.Center.X,
+                            _bounds.Y + (_bounds.Height / 2) - _text.RectangleF.Center.Y);
+                        break;
+                    }
                 case TextPos.CenterRight:
-                {
-                    _text.Position = new Vector2(_rec.X + _rec.Width, _rec.Y + (_rec.Height / 2));
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2(_bounds.X + _bounds.Width, _bounds.Y + (_bounds.Height / 2));
+                        break;
+                    }
 
                 case TextPos.BottomLeft:
-                {
-                    _text.Position = new Vector2(_rec.X, _rec.Y + _rec.Height - _text.Height);
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2(_bounds.X, _bounds.Y + _bounds.Height - _text.Height);
+                        break;
+                    }
 
                 case TextPos.BottomCenter:
-                {
-                    _text.Position = new Vector2(_rec.X + (_rec.Width / 2) - _text.RectangleF.Center.X,
-                                                 _rec.Y + _rec.Height - _text.Height);
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.RectangleF.Center.X,
+                            _bounds.Y + _bounds.Height - _text.Height);
+                        break;
+                    }
 
                 case TextPos.BottomRight:
-                {
-                    _text.Position = new Vector2(_rec.X + _rec.Width - _text.Width, 
-                                                 _rec.Y + _rec.Height - _text.Height);
-                    break;
-                }
+                    {
+                        textBounds.Location = new Vector2(_bounds.X + _bounds.Width - _text.Width,
+                            _bounds.Y + _bounds.Height - _text.Height);
+                        break;
+                    }
             }
+            _text.Bounds = textBounds;
         }
         #endregion
     }

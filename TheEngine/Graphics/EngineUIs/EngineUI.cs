@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TheEngine.Graphics.Menu;
 using TheEngine.Graphics.Menu.MenuElements;
+using TheEngine.Graphics.Primitive;
 using TheEngine.Input;
 
 namespace TheEngine.Graphics.EngineUIs
@@ -22,11 +23,14 @@ namespace TheEngine.Graphics.EngineUIs
 
         public static void Init()
         {
-            infoScreen = new TextButton(Vector2.Zero, new Vector2(200,
-                (float) ScreenManager.ScreenHeight), "", Color.Aquamarine);
-            infoScreen.Position -= new Vector2(infoScreen.Width, 0);
+            infoScreen = new TextButton(new RectangleF(Vector2.Zero, new Vector2(200, (float)ScreenManager.ScreenHeight)), 
+                "text", Color.Gray);
 
-            infoScreenTransition = new TranslateTransition(infoScreen.Position, Vector2.Zero, 1000, infoScreen);
+            RectangleF pointer = infoScreen.Bounds;
+            pointer.Location -= new Vector2(infoScreen.Width, 0);
+            infoScreen.Bounds = pointer;
+
+            infoScreenTransition = new TranslateTransition(infoScreen.Bounds.Location, Vector2.Zero, 1000, infoScreen);
         }
 
         public static void Update(GameTime gameTime)

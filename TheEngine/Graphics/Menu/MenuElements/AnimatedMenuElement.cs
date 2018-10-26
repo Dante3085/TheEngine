@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using TheEngine.Graphics.Primitive;
 using TheEngine.Graphics.Sprites;
 
 namespace TheEngine.Graphics.Menu.MenuElements
@@ -21,8 +22,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         #endregion
 
-        protected AnimatedMenuElement(Vector2 position, string name, AnimatedSprite animSprite, Action functionality = null) 
-            : base(position, functionality)
+        protected AnimatedMenuElement(RectangleF bounds, string name, AnimatedSprite animSprite, Action functionality = null) 
+            : base(bounds, functionality)
         {
             _animSprite = animSprite;
         }
@@ -38,8 +39,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
             base.Update(gameTime);
             _animSprite.Update(gameTime);
 
-            _animSprite._position.X = _position.X;
-            _animSprite._position.Y = _position.Y;
+            _animSprite._position.X = _bounds.X;
+            _animSprite._position.Y = _bounds.Y;
         }
         #endregion
     }

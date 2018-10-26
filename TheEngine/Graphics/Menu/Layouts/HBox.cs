@@ -22,11 +22,6 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// </summary>
         private int _spacing;
 
-        /// <summary>
-        /// RectangleF describing the Bounds of the HBox.
-        /// </summary>
-        private RectangleF _rec;
-
         #endregion
         #region Properties
 
@@ -64,12 +59,13 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <param name="functionality"></param>
         /// <param name="spacing"></param>
         /// <param name="elements"></param>
-        public HBox(Vector2 position, Action functionality = null, int spacing = 0, params MenuElement[] elements)
-        : base(position, functionality, elements)
+        public HBox(RectangleF bounds, Action functionality = null, int spacing = 0, params MenuElement[] elements)
+        : base(bounds, functionality, elements)
         {
             _spacing = spacing;
             OrderElements();
-            _rec = new RectangleF(position.X, position.Y, Width, Height);
+            _bounds.Width = Width;
+            _bounds.Height = Height;
         }
 
         /// <summary>
@@ -121,26 +117,26 @@ namespace TheEngine.Graphics.Menu.Layouts
             if (_elements.Count == 0)
                 return;
 
+            RectangleF boundsPointer;
+
             // Position first element at origin of HBox.
-            _elements[0].Position = this._position;
+            boundsPointer = _elements[0].Bounds;
+            boundsPointer.Location = this._bounds.Location;
+            _elements[0].Bounds = boundsPointer;
 
             // No other elements => All is done.
             if (_elements.Count == 1)
                 return;
 
-            //// Position every element (except first) at HBox.Y and HBox.X + previousElement.X + spacing.
-            //// Makes it so that elements aren't stacked on top of each other and variable spacing is possible.
-            //for (int i = 1; i < _elements.Count; i++)
-            //{
-            //    _elements[i].Y = this._y;
-            //    _elements[i].X = _elements[i - 1].X + _elements[i - 1].Width + _spacing;
-            //}
-
             // Position every element (except first) at HBox.Y and HBox.X + previousElement.X + spacing.
             // Makes it so that elements aren't stacked on top of each other and variable spacing is possible.
             for (int i = 1; i < _elements.Count; i++)
-                _elements[i].Position = new Vector2(_elements[i - 1].Position.X + _elements[i - 1].Width + _spacing,
-                                                    this.Position.Y);
+            {
+                boundsPointer = _elements[i].Bounds;
+                boundsPointer.Location = new Vector2(_elements[i - 1].Bounds.Location.X + _elements[i - 1].Bounds.Width + _spacing,
+                    this._bounds.Location.Y);
+                _elements[i].Bounds = boundsPointer;
+            }
         }
 
 
@@ -152,11 +148,9 @@ namespace TheEngine.Graphics.Menu.Layouts
         {
             base.Update(gameTime);
 
-            // Update rec.
-            _rec.X = _position.X;
-            _rec.Y = _position.Y;
-            _rec.Width = Width;
-            _rec.Height = Height;
+            // Update Bounds.
+            _bounds.Width = Width;
+            _bounds.Height = Height;
         }
 
         /// <summary>

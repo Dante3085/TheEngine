@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using TheEngine.Graphics.Menu.MenuElements;
+using TheEngine.Graphics.Primitive;
 using TheEngine.Utils;
 
 namespace TheEngine.Graphics.Menu
@@ -133,16 +134,18 @@ namespace TheEngine.Graphics.Menu
         /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
+            RectangleF boundsPointer = _menuElement.Bounds;
+
             if (_forwardMoving)
             {
                 _elapsedTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 Game1.gameConsole.Log("ElapsedTime: " + _elapsedTime);
 
-                _menuElement.Position += _direction * _speed * _elapsed;
+                boundsPointer.Location += _direction * _speed * _elapsed;
 
-                if (Vector2.Distance(_start, _menuElement.Position) >= _distance)
+                if (Vector2.Distance(_start, boundsPointer.Location) >= _distance)
                 {
-                    _menuElement.Position = _end;
+                    boundsPointer.Location = _end;
                     _forwardMoving = false;
                 }
             }
@@ -152,14 +155,16 @@ namespace TheEngine.Graphics.Menu
                 _elapsedTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 Game1.gameConsole.Log("ElapsedTime: " + _elapsedTime);
 
-                _menuElement.Position -= _direction * _speed * _elapsed;
+                boundsPointer.Location -= _direction * _speed * _elapsed;
 
-                if (Vector2.Distance(_end, _menuElement.Position) >= _distance)
+                if (Vector2.Distance(_end, boundsPointer.Location) >= _distance)
                 {
-                    _menuElement.Position = _start;
+                    boundsPointer.Location = _start;
                     _backwardMoving = false;
                 }
             }
+
+            _menuElement.Bounds = boundsPointer;
         }
 
         /// <summary>

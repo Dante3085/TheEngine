@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using TheEngine.Graphics.Menu.MenuElements;
+using TheEngine.Graphics.Primitive;
 
 namespace TheEngine.Graphics.Menu.Layouts
 {
@@ -48,8 +49,8 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <param name="y"></param>
         /// <param name="functionality"></param>
         /// <param name="elements"></param>
-        protected Layout(Vector2 position, Action functionality = null, params MenuElement[] elements) : 
-            base(position, functionality)
+        protected Layout(RectangleF bounds, Action functionality = null, params MenuElement[] elements) : 
+            base(bounds, functionality)
         {
             _elements.AddRange(elements);
         }

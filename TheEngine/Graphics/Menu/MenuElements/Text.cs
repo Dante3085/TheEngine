@@ -36,18 +36,18 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Stores size of this Text.
         /// </summary>
-        private Vector2 _textSize;
+        // private Vector2 _textSize;
 
         /// <summary>
         /// Only used for DrawString.
         /// </summary>
-        private Vector2 _position = new Vector2();
+        // private Vector2 _position = new Vector2();
         private Color _color = Color.DarkSlateGray;
         private Color _colorHover = Color.DeepSkyBlue;
 
         #region TextRectangle
 
-        private RectangleF _textRec;
+        // private RectangleF _textRec;
         public bool _drawTextRec;
 
         #endregion
@@ -59,9 +59,9 @@ namespace TheEngine.Graphics.Menu.MenuElements
         #endregion
         #region Properties
 
-        public override float Width => _textRec.Width;
-        public override float Height => _textRec.Height;
-        public override RectangleF RectangleF => _textRec;
+        public override float Width => _bounds.Width;
+        public override float Height => _bounds.Height;
+        public override RectangleF RectangleF => _bounds;
 
         /// <summary>
         /// Returns the string text of this Text.
@@ -83,14 +83,13 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <param name="fontHover"></param>
         /// <param name="text"></param>
         /// <param name="functionality"></param>
-        public Text(Vector2 position, SpriteFont fontNoHover, SpriteFont fontHover, string text = "", Action functionality = null) 
-            : base(position, functionality)
+        public Text(RectangleF bounds, SpriteFont fontNoHover, SpriteFont fontHover, string text = "", Action functionality = null) 
+            : base(bounds, functionality)
         {
             _text = text;
-            _activeSpriteFont = Contents.Arial12;
+            _activeSpriteFont = fontNoHover;
 
-            _textSize = _activeSpriteFont.MeasureString(_text);
-            _textRec = new RectangleF(position.X, position.Y, (int)_textSize.X, (int)_textSize.Y);
+            _bounds.Size = _activeSpriteFont.MeasureString(_text);
         }
 
         /// <summary>
@@ -99,15 +98,13 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <param name="position"></param>
         /// <param name="text"></param>
         /// <param name="functionality"></param>
-        public Text(Vector2 position, string text = "", Action functionality = null) 
-            : base(position, functionality)
+        public Text(RectangleF bounds, string text = "", Action functionality = null) 
+            : base(bounds, functionality)
         {
+            _text = text;
             _activeSpriteFont = Contents.Arial12;
 
-            _text = text;
-
-            _textSize = _activeSpriteFont.MeasureString(_text);
-            _textRec = new RectangleF(position.X, position.Y, (int)_textSize.X, (int)_textSize.Y);
+            _bounds.Size = _activeSpriteFont.MeasureString(_text);
         }
 
         public void SetColor(Color color)
@@ -128,19 +125,19 @@ namespace TheEngine.Graphics.Menu.MenuElements
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            _textSize = _activeSpriteFont.MeasureString(_text);
+            _bounds.Size = _activeSpriteFont.MeasureString(_text);
 
-            // Update Rec position.
-            _textRec.X = _position.X;
-            _textRec.Y = _position.Y;
+            //// Update Rec position.
+            //_textRec.X = _position.X;
+            //_textRec.Y = _position.Y;
 
-            // Update Rec size.
-            _textRec.Width = (int)_textSize.X;
-            _textRec.Height = (int)_textSize.Y;
+            //// Update Rec size.
+            //_textRec.Width = (int)_textSize.X;
+            //_textRec.Height = (int)_textSize.Y;
 
-            // Update Vector2 for DrawString.
-            _position.X = base._position.X;
-            _position.Y = base._position.Y;
+            //// Update Vector2 for DrawString.
+            //_position.X = base._position.X;
+            //_position.Y = base._position.Y;
 
             if (OnLeftMouseClick())
                 ExecuteFunctionality();
@@ -197,10 +194,11 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(_activeSpriteFont, _text, _position, CursorOnIt == true ? _colorHover : _color);
+            spriteBatch.DrawString(_activeSpriteFont, _text, _bounds.Location, 
+                CursorOnIt == true ? _colorHover : _color);
 
             if (MenuElement._drawRecs)
-                Primitives.DrawRectangleOutline(_textRec, _outlineLines, Contents.rectangleTex, Color.Red, spriteBatch);
+                Primitives.DrawRectangleOutline(_bounds, _outlineLines, Contents.rectangleTex, Color.Red, spriteBatch);
         }
 
         #endregion
