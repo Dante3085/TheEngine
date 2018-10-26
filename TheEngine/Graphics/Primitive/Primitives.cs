@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using TheEngine.DataManagement;
 
 namespace TheEngine.Graphics.Primitive
 {
@@ -66,7 +67,7 @@ namespace TheEngine.Graphics.Primitive
             double opacity = 1.0)
         {
             Color[] data = new Color[(int)rec.Width * (int)rec.Height];
-            Vector2 pos = new Vector2(rec.Location.X, rec.Location.Y);
+            Vector2 pos = rec.Location;
 
             for (int i = 0; i < data.Length; i++)
                 data[i] = color;

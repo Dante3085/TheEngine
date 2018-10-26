@@ -24,7 +24,7 @@ namespace TheEngine.Graphics.Sprites
         /// <summary>
         /// Stores RectangleF Arrays that each represent an Animation (1 RectangleF = 1 frame in an Animation, 1 RectangleF Array = 1 Animation).
         /// </summary>
-        private Dictionary<EAnimation, RectangleF[]> _animations = new Dictionary<EAnimation, RectangleF[]>();
+        private Dictionary<EAnimation, Rectangle[]> _animations = new Dictionary<EAnimation, Rectangle[]>();
 
         /// <summary>
         /// Stores Vector2s used for offsetting certain Animations that may differ in size.
@@ -312,10 +312,8 @@ namespace TheEngine.Graphics.Sprites
         // TODO: Collide-Logic shouldn't be in here!
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(Spritesheet, _position + _offsets[_currentAnimation], 
-            //    _animations[_currentAnimation][_currentFrameIndex], Color.White);
-
-            spriteBatch.Draw(Spritesheet, _position + _offsets[_currentAnimation], Color.White);
+            spriteBatch.Draw(Spritesheet, _position + _offsets[_currentAnimation],
+                _animations[_currentAnimation][_currentFrameIndex], Color.White);
 
             if (_drawInteractionPrompt)
                 DrawInteractionPrompt(spriteBatch, Side.Top);
@@ -413,11 +411,11 @@ namespace TheEngine.Graphics.Sprites
                 onAnimationEnd = () => Console.WriteLine();
 
             // Creates an array of rectangles (i.e. a new Animation).
-            RectangleF[] animation = new RectangleF[numFrames];
+            Rectangle[] animation = new Rectangle[numFrames];
 
             // Fills up the array of rectangles
             for (int i = 0; i < numFrames; i++)
-                animation[i] = new RectangleF((i + indexFirstFrame) * frameWidth, yRow, frameWidth, frameHeight);
+                animation[i] = new Rectangle((i + indexFirstFrame) * frameWidth, yRow, frameWidth, frameHeight);
 
             // Store frames and offset in two different dictionaries. But both with same key (animation.)
             _animations.Add(name, animation);

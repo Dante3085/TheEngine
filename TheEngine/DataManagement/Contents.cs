@@ -83,6 +83,8 @@ namespace TheEngine.DataManagement
             Arial64 = c.Load<SpriteFont>("SpriteFonts/Arial64");
             Arial72 = c.Load<SpriteFont>("SpriteFonts/Arial72");
 
+            adventurer = c.Load<Texture2D>("Adventurer/adventurer-Sheet");
+
             rectangleTex = new Texture2D(g, 1, 1, false, SurfaceFormat.Color);
             rectangleTex.SetData(new[] { Color.White });
 

@@ -32,7 +32,15 @@ namespace TheEngine.Input
         private const double doubleClickDelay = 500;
         private static double doubleClickTimer;
 
+        /// <summary>
+        /// Stores toggle state of all Keys.
+        /// </summary>
         private static Dictionary<Keys, bool> _keyToggleBools = new Dictionary<Keys, bool>();
+
+        /// <summary>
+        /// Stores toggle state of all Buttons.
+        /// </summary>
+        private static Dictionary<Buttons, bool> _buttonToggleBools = new Dictionary<Buttons, bool>();
 
         #endregion
 
@@ -41,8 +49,13 @@ namespace TheEngine.Input
         /// </summary>
         public static void Init()
         {
+            // Initialize every Keys toggle state with false.
             foreach (Keys k in Enum.GetValues(typeof(Keys)))
                 _keyToggleBools.Add(k, false);
+
+            // Initialize every Buttons toggle state with false.
+            foreach (Buttons b in Enum.GetValues(typeof(Buttons)))
+                _buttonToggleBools.Add(b, false);
         }
 
         #region UpdateStatesMethods
@@ -151,7 +164,7 @@ namespace TheEngine.Input
         /// <returns></returns>
         public static bool IsMouseHoverRectangle(RectangleF rectangle)
         {
-            return rectangle.Contains(_currentMouseState.Position);
+            return rectangle.Contains(_currentMouseState.Position.ToVector2());
         }
 
         /// <summary>
@@ -285,6 +298,30 @@ namespace TheEngine.Input
         public static bool OnButtonUp(Buttons button)
         {
             return _previousGamePadState.IsButtonDown(button) && _currentGamePadState.IsButtonUp(button);
+        }
+
+        /// <summary>
+        /// Gets whether given button is toggled.
+        /// Not toggled => Set to toggled, return false.
+        /// Toggled => Set to not toggled, return true.
+        /// </summary>
+        /// <param name="button"></param>
+        /// <returns></returns>
+        public static bool OnButtonToggle(Buttons button)
+        {
+            // Not toggled => Set to toggled, return false.
+            if (!_buttonToggleBools[button])
+            {
+                _buttonToggleBools[button] = true;
+                return false;
+            }
+
+            // Toggled => Set to not toggled, return true.
+            else
+            {
+                _buttonToggleBools[button] = false;
+                return true;
+            }
         }
 
         #endregion

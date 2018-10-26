@@ -168,7 +168,6 @@ namespace TheEngine.Graphics.Menu
         public void Forward()
         {
             _elapsedTime = 0;
-            _menuElement.Position = _start;
             _backwardMoving = false;
             _forwardMoving = true;
         }
@@ -176,7 +175,6 @@ namespace TheEngine.Graphics.Menu
         public void Backward()
         {
             _elapsedTime = 0;
-            _menuElement.Position = _end;
             _forwardMoving = false;
             _backwardMoving = true;
         }

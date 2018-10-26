@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Graphics\EngineUIs\EngineUI.cs" />
     <Compile Include="Graphics\Menu\Layouts\AdvancedHBox.cs" />
     <Compile Include="Graphics\Menu\Layouts\AdvancedVBox.cs" />
     <Compile Include="Graphics\Menu\TranslateTransition.cs" />

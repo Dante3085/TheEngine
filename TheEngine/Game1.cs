@@ -4,9 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TheEngine.DataManagement;
 using TheEngine.Graphics;
+using TheEngine.Graphics.EngineUIs;
 using TheEngine.Graphics.Menu;
 using TheEngine.Graphics.Menu.Layouts;
 using TheEngine.Graphics.Menu.MenuElements;
+using TheEngine.Graphics.Sprites;
 using TheEngine.Input;
 using VosSoft.Xna.GameConsole;
 
@@ -27,6 +29,8 @@ namespace TheEngine
         private TextButton[] textBtns;
         private VBox btns;
         private TranslateTransition btnAnimation;
+
+        private AnimatedSprite sprite;
 
         #endregion
 
@@ -55,6 +59,7 @@ namespace TheEngine
 
             base.Initialize();
             InputManager.Init();
+            EngineUI.Init();
         }
 
         /// <summary>
@@ -70,14 +75,8 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            textBtns = new TextButton[]
-            {
-                new TextButton(Vector2.Zero, 150, 75, "", () => gameConsole.Log("Button pressed!")),
-                new TextButton(new Vector2(0, 150), 150, 75, "", () => gameConsole.Log("Button pressed!")),
-                new TextButton(new Vector2(0, 300), 150, 75, "", () => gameConsole.Log("Button pressed!")),
-            };
-            btns = new VBox(Vector2.Zero, 0, null, textBtns);
-            btnAnimation = new TranslateTransition(btns.Position, new Vector2(500, 0), 2000, btns);
+            sprite = new AnimatedSprite("sprite", Contents.adventurer, Vector2.Zero, gamePadInput: GamePadInput.Default(), fps: 5);
+            sprite.AddAnimation(EAnimation.Idle, 4, 50, 37, 0, 0, Vector2.Zero, 5);
         }
 
         /// <summary>
@@ -106,17 +105,8 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
-            if (InputManager.OnKeyDown(Keys.Enter))
-            {
-                if (InputManager.OnKeyToggle(Keys.Space))
-                    btnAnimation.Backward();
-                else
-                    btnAnimation.Forward();
-            }
-
-            btns.Update(gameTime);
-
-            btnAnimation.Update(gameTime);
+            EngineUI.Update(gameTime);
+            sprite.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
 
@@ -134,7 +124,8 @@ namespace TheEngine
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            btns.Draw(spriteBatch);
+            EngineUI.Draw(spriteBatch);
+            sprite.Draw(spriteBatch);
 
             spriteBatch.End();
 

@@ -37,7 +37,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
         private Dictionary<string , double> _opacities = new Dictionary<string, double>()
         {
             { "noHover", 0.5 },
-            { "hover", 1.0 },
+            { "hover", 0.75 },
+            { "click", 1.0 },
         };
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Stores the Color of this TextButton.
         /// </summary>
-        private Color _color = Color.AliceBlue;
+        private Color _color;
 
         /// <summary>
         /// Stores the current Position of the Text relative to this TextButton.
@@ -108,12 +109,14 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         #endregion
         #region Methods
-        public TextButton(Vector2 position, int width, int height, string text, Action functionality = null) 
+        public TextButton(Vector2 position, Vector2 size, string text, Color color, Action functionality = null) 
             : base(position, functionality)
         {
             _text = new Text(position, text, () => Game1.gameConsole.Log(text + " gedrueckt."));
-            _rec = new RectangleF(position.X, position.Y, width, height);
-            _texture = Contents.Texture(width, height);
+            _rec = new RectangleF(position.X, position.Y, size.X, size.Y);
+            _texture = Contents.Texture((int)size.X, (int)size.Y);
+            _color = color;
+
 
             _activeOpacity = _opacities["noHover"];
         }
@@ -121,6 +124,12 @@ namespace TheEngine.Graphics.Menu.MenuElements
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            if (IsLeftMouseClick())
+                _activeOpacity = _opacities["click"];
+
+            if (OnLeftMouseClick())
+                _functionality();
 
             _rec.X = _position.X;
             _rec.Y = _position.Y;

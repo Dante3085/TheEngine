@@ -16,7 +16,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// Flag for deciding to draw all MenuElement's Rectangles.
         /// </summary>
-        public static bool _drawRecs = true;
+        public static bool _drawRecs = false;
 
         /// <summary>
         /// Position of this MenuElement.
@@ -160,12 +160,21 @@ namespace TheEngine.Graphics.Menu.MenuElements
         }
 
         /// <summary>
-        /// Gets whether Mouse is hovering over MenuElement and at the same time LeftMouseButton has been clicked.
+        /// Gets whether Mouse is hovering over MenuElement and at the same time LeftMouseButton has been clicked(no holding).
         /// </summary>
         /// <returns></returns>
         public virtual bool OnLeftMouseClick()
         {
             return IsMouseHover() && InputManager.OnLeftMouseClick();
+        }
+
+        /// <summary>
+        /// Gets whether Mouse is hovering over MenuElement and at the same time LeftMouseButton is clicked(holding).
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsLeftMouseClick()
+        {
+            return IsMouseHover() && InputManager.IsLeftMouseClick();
         }
 
         #endregion
