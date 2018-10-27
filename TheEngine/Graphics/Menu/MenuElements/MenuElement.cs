@@ -6,6 +6,8 @@ using TheEngine.Input;
 
 namespace TheEngine.Graphics.Menu.MenuElements
 {
+    // TODO: Properties "Width", "Height" could be reduced to only giving access to RectangleF bounds.
+
     /// <summary>
     /// MenuElements can be added to a Menu.
     /// </summary>

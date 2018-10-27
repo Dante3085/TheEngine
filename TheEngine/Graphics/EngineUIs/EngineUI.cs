@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TheEngine.DataManagement;
 using TheEngine.Graphics.Menu;
 using TheEngine.Graphics.Menu.MenuElements;
 using TheEngine.Graphics.Primitive;
@@ -18,13 +19,13 @@ namespace TheEngine.Graphics.EngineUIs
     /// </summary>
     public static class EngineUI
     {
-        private static TextButton infoScreen;
+        private static TextBox infoScreen;
         private static TranslateTransition infoScreenTransition;
 
         public static void Init()
         {
-            infoScreen = new TextButton(new RectangleF(Vector2.Zero, new Vector2(200, (float)ScreenManager.ScreenHeight)), 
-                "text", Color.Gray);
+            infoScreen = new TextBox(new RectangleF(Vector2.Zero, new Vector2(200, (float)ScreenManager.ScreenHeight)), 
+                "Das ist der Infoscreentext. Test des Word-Wrappings", Contents.Arial15, Color.DimGray, .5f);
 
             RectangleF pointer = infoScreen.Bounds;
             pointer.Location -= new Vector2(infoScreen.Width, 0);

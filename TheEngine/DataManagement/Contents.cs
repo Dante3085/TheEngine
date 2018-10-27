@@ -43,6 +43,7 @@ namespace TheEngine.DataManagement
         #region Other
 
         public static Texture2D rectangleTex;
+        public static Texture2D debugTexture;
 
         #endregion
 
@@ -88,6 +89,8 @@ namespace TheEngine.DataManagement
             rectangleTex = new Texture2D(g, 1, 1, false, SurfaceFormat.Color);
             rectangleTex.SetData(new[] { Color.White });
 
+            debugTexture = c.Load<Texture2D>("debugTexture");
+
         }
 
         /// <summary>
@@ -99,6 +102,26 @@ namespace TheEngine.DataManagement
         public static Texture2D Texture(int width, int height)
         {
             return new Texture2D(graphicsDevice, width, height);
+        }
+
+        /// <summary>
+        /// Returns a Texture2D with given size.
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static Texture2D Texture(Point size)
+        {
+            return new Texture2D(graphicsDevice, size.X, size.Y);
+        }
+
+        /// <summary>
+        /// Returns a Texture2D with given size.
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static Texture2D Texture(Vector2 size)
+        {
+            return new Texture2D(graphicsDevice, (int)size.X, (int)size.Y);
         }
 
         #endregion

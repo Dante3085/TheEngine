@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using TheEngine.DataManagement;
@@ -10,6 +11,7 @@ namespace TheEngine.Graphics.Primitive
     /// </summary>
     public static class Primitives
     {
+
         /// <summary>
         /// Draws a RectangleF outline (unfilled RectangleF) using the given RectangleF object. <para></para>
         /// "lines" parameter has to be exactly 4 RectangleF objects.
@@ -58,22 +60,29 @@ namespace TheEngine.Graphics.Primitive
 
         /// <summary>
         /// Draws a filled RectangleF using the given RectangleF object.
+        /// data is the size of the rectangle.
         /// </summary>
         /// <param name="rec"></param>
+        /// <param name="recTex"></param>
+        /// <param name="data"></param>
         /// <param name="color"></param>
         /// <param name="spriteBatch"></param>
         /// <param name="opacity"></param>
-        public static void DrawRectangle(RectangleF rec, Texture2D recTex, Color color, SpriteBatch spriteBatch, 
+        public static void DrawRectangle(RectangleF rec, Texture2D recTex, Color[] data, Color color, SpriteBatch spriteBatch, 
             double opacity = 1.0)
         {
-            Color[] data = new Color[(int)rec.Width * (int)rec.Height];
-            Vector2 pos = rec.Location;
+            // Color[] data = new Color[(int)rec.Width * (int)rec.Height];
 
             for (int i = 0; i < data.Length; i++)
                 data[i] = color;
             recTex.SetData(data);
 
-            spriteBatch.Draw(recTex, pos, Color.White * (float)opacity);
+            spriteBatch.Draw(recTex, rec.Location, white * (float)opacity);
+        }
+
+        private void DrawRectangleHelper()
+        {
+
         }
 
         /// <summary>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/Adventurer/Individual Sprites/adventurer-idle-2-00.png</SourceFile>
-  <SourceTime>2018-09-11T10:41:56.4409223+02:00</SourceTime>
-  <DestFile>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/bin/Windows/Adventurer/Individual Sprites/adventurer-idle-2-00.xnb</DestFile>
-  <DestTime>2018-10-27T15:41:43.8440438+02:00</DestTime>
+  <SourceFile>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/debugTexture.png</SourceFile>
+  <SourceTime>2018-10-27T15:35:10.850524+02:00</SourceTime>
+  <DestFile>Y:/2_IT_Informatik/2_Programmierung/3_MS VS 2017 CE/2_Projekte/TheEngine/TheEngine/Content/bin/Windows/debugTexture.xnb</DestFile>
+  <DestTime>2018-10-27T15:41:43.9387797+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

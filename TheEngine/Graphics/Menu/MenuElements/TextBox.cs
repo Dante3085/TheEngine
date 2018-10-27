@@ -9,6 +9,11 @@ using TheEngine.DataManagement;
 using TheEngine.Graphics.Menu.MenuElements;
 using TheEngine.Graphics.Primitive;
 
+/**
+ * Web-References:
+ *      1. https://danieltian.wordpress.com/2008/12/24/xna-tutorial-typewriter-text-box-with-proper-word-wrapping-part-1/
+ */
+
 namespace TheEngine.Graphics.Menu.MenuElements
 {
     /// <summary>
@@ -16,85 +21,62 @@ namespace TheEngine.Graphics.Menu.MenuElements
     /// </summary>
     public class TextBox : MenuElement
     {
-        #region MemberVariables
 
-        // TODO: size Vector, position Vector and RectangleF. Smth is wrong ?!
+        private string _text;
+        private SpriteFont _font;
+        private Color _color;
+        private float _opacity;
+        private Color[] _colorData;
 
-        private Vector2 _size;
-        private List<Line> _lines;
-        private Texture2D _texture;
-
-        private int _leftPadding;
-        private int _topPadding;
-        private int _rightPadding;
-        private int _bottomPadding;
-
-        #endregion
-        #region Properties
-
+        // TODO: Width and Height unnecessary. See also: MenuElement Width and Height.
         public override float Width => _bounds.Width;
         public override float Height => _bounds.Height;
         public override RectangleF RectangleF => _bounds;
 
-        #endregion
-        #region Methods
-
-        #region PrivateClasses
-
-        private class Line
+        public TextBox(RectangleF bounds, string text, SpriteFont font, Color color, float opacity = 1f) 
+        : base (bounds)
         {
-            #region MemberVariables
-
-            private RectangleF _bounds;
-            private string _text;
-
-            #endregion
-            #region Properties
-
-            public RectangleF Bounds => _bounds;
-            public string Text => _text;
-
-            #endregion
-            #region Methods
-
-            public Line(RectangleF bounds, string text)
-            {
-                _bounds = bounds;
-                _text = text;
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        public TextBox(RectangleF bounds, string text, int leftPadding = 0, int topPadding = 0,
-            int rightPadding = 0, int bottomPadding = 0) : base(bounds)
-        {
-            _leftPadding = leftPadding;
-            _topPadding = topPadding;
-            _rightPadding = rightPadding;
-            _bottomPadding = bottomPadding;
-
-            _texture = Contents.Texture((int)bounds.X, (int)bounds.Y);
-
-            _lines = new List<Line>()
-            {
-                new Line(new RectangleF(bounds.X + leftPadding, bounds.Y + topPadding, 
-                    bounds.Width - (leftPadding + rightPadding), Contents.Arial12.MeasureString(text).Y), text),
-            };
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
+            _text = text;
+            _font = font;
+            _color = color;
+            _opacity = opacity;
+            _colorData = new Color[(int)bounds.Width * (int)bounds.Height];
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Primitives.DrawRectangle(_bounds, _texture, Color.Gray, spriteBatch, 0.5);
-            foreach (Line l in _lines)
-                spriteBatch.DrawString(Contents.Arial12, l.Text, l.Bounds.Location, Color.White);
+            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
+            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
+            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
+            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
+            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
+            spriteBatch.DrawString(_font, ParseText(_text), _bounds.Location, Color.White);
+        }
+
+        /// <summary>
+        /// Word-Wrapping...
+        /// Inserts a newline once the length of the current line plus the length of the current word is longer than the
+        /// width of the text box, and it repeats until there are no more words to process.
+        /// </summary>
+        /// <returns></returns>
+        private string ParseText(string text)
+        {
+            string line = string.Empty;
+            string returnString = string.Empty;
+            string[] wordArray = _text.Split(' ');
+
+            foreach (string word in wordArray)
+            {
+                if (_font.MeasureString(line + word).Length() > _bounds.Width)
+                {
+                    returnString = returnString + line + '\n';
+                    line = string.Empty;
+                }
+
+                line = line + word + ' ';
+            }
+
+            return returnString + line;
         }
 
         public override void MouseHoverReaction()
@@ -106,7 +88,5 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             // throw new NotImplementedException();
         }
-
-        #endregion
     }
 }

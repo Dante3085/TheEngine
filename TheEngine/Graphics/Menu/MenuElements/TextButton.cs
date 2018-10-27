@@ -74,6 +74,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// </summary>
         public Dictionary<string, double> Opacities => _opacities;
 
+        private Color[] _colorData;
+
         /// <summary>
         /// Returns the Color of this TextButton.
         /// </summary>
@@ -112,6 +114,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
             _color = color;
 
             _activeOpacity = _opacities["noHover"];
+
+            _colorData = new Color[(int)bounds.Width * (int)bounds.Height];
         }
 
         public override void Update(GameTime gameTime)
@@ -137,7 +141,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Primitives.DrawRectangle(_bounds, _texture, _color, spriteBatch, _activeOpacity);
+            Primitives.DrawRectangle(_bounds, _texture, _colorData, _color, spriteBatch, _activeOpacity);
             _text.Draw(spriteBatch);
 
             if (MenuElement._drawRecs)

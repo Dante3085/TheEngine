@@ -27,7 +27,10 @@ namespace TheEngine
 
         #region Test
 
-        private VBox vbox;
+        private Texture2D sourceTexture;
+        private Rectangle sourceRectangle;
+        private Rectangle destinationRectangle;
+        private Color     color;
 
         #endregion
 
@@ -72,18 +75,10 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            vbox = new VBox(new RectangleF(0, 0, 0, 0), 5, elements: new MenuElement[]
-            {
-                new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der aeussersten VBox"),
-                new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der aeussersten VBox"),
-                new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der aeussersten VBox"),
-                new HBox(new RectangleF(), spacing: 5, elements: new MenuElement[]
-                {
-                    new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der inneren HBox"),
-                    new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der inneren HBox"),
-                    new Text(new RectangleF(), Contents.Arial12, Contents.Arial21, "Das ist Text in der inneren HBox"),
-                }), 
-            });
+            sourceRectangle = new Rectangle(10, 10, 200, 200);
+            // destinationRectangle;
+            color = new Color(255, 200, 255, 255);
+            sourceTexture = Contents.Texture(sourceRectangle.Size);
         }
 
         /// <summary>
@@ -112,7 +107,6 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
-            vbox.Update(gameTime);
             EngineUI.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
@@ -131,7 +125,8 @@ namespace TheEngine
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            EngineUI.Draw(spriteBatch);
+            //EngineUI.Draw(spriteBatch);
+            spriteBatch.Draw(sourceTexture, sourceRectangle, sourceRectangle, color);
 
             spriteBatch.End();
 
