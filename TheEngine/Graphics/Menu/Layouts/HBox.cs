@@ -26,16 +26,6 @@ namespace TheEngine.Graphics.Menu.Layouts
         #region Properties
 
         /// <summary>
-        /// Returns the Width of the HBox.
-        /// </summary>
-        public override float Width => CalcWidth();
-
-        /// <summary>
-        /// Returns the Height of the HBox.
-        /// </summary>
-        public override float Height => HeightTallestElement();
-
-        /// <summary>
         /// Returns, sets spacing inside HBox.
         /// </summary>
         public override int Spacing
@@ -43,11 +33,6 @@ namespace TheEngine.Graphics.Menu.Layouts
             get => _spacing;
             set => _spacing = value;
         }
-
-        /// <summary>
-        /// Returns Bounding Rec of HBox.
-        /// </summary>
-        public override RectangleF RectangleF { get; }
 
         #endregion
 
@@ -59,13 +44,11 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <param name="functionality"></param>
         /// <param name="spacing"></param>
         /// <param name="elements"></param>
-        public HBox(RectangleF bounds, Action functionality = null, int spacing = 0, params MenuElement[] elements)
+        public HBox(RectangleF bounds, int spacing = 0, Action functionality = null, params MenuElement[] elements)
         : base(bounds, functionality, elements)
         {
             _spacing = spacing;
             OrderElements();
-            _bounds.Width = Width;
-            _bounds.Height = Height;
         }
 
         /// <summary>
@@ -77,11 +60,11 @@ namespace TheEngine.Graphics.Menu.Layouts
             if (_elements.Count == 0)
                 return -1;
 
-            float height = _elements[0].Height;
+            float height = _elements[0].Bounds.Height;
 
             foreach (MenuElement m in _elements)
-                if (m.Height > height)
-                    height = m.Height;
+                if (m.Bounds.Height > height)
+                    height = m.Bounds.Height;
             return height;
         }
 
@@ -99,7 +82,7 @@ namespace TheEngine.Graphics.Menu.Layouts
 
             // Sum of all elements' width values.
             foreach (MenuElement m in _elements)
-                width += m.Width;
+                width += m.Bounds.Width;
 
             // Plus (number of elements - 1) times horizontal offset.
             width += (_elements.Count - 1) * _spacing;
@@ -149,8 +132,8 @@ namespace TheEngine.Graphics.Menu.Layouts
             base.Update(gameTime);
 
             // Update Bounds.
-            _bounds.Width = Width;
-            _bounds.Height = Height;
+            _bounds.Width = CalcWidth();
+            _bounds.Height = HeightTallestElement();
         }
 
         /// <summary>
@@ -165,12 +148,12 @@ namespace TheEngine.Graphics.Menu.Layouts
 
         public override void MouseHoverReaction()
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
 
         public override void CursorReaction(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
     }
 }

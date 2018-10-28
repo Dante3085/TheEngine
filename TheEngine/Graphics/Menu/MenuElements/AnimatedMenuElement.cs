@@ -15,20 +15,16 @@ namespace TheEngine.Graphics.Menu.MenuElements
         #endregion
         #region Properties
 
-        public override float Width => _animSprite.Width;
-        public override float Height => _animSprite.Height;
-
         public AnimatedSprite AnimatedSprite => _animSprite;
 
         #endregion
-
+        #region Methods
         protected AnimatedMenuElement(RectangleF bounds, string name, AnimatedSprite animSprite, Action functionality = null) 
             : base(bounds, functionality)
         {
             _animSprite = animSprite;
         }
 
-        #region Methods
         public override void Draw(SpriteBatch spriteBatch)
         {
             _animSprite.Draw(spriteBatch);

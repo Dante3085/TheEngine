@@ -24,11 +24,11 @@ namespace TheEngine.Graphics.EngineUIs
 
         public static void Init()
         {
-            infoScreen = new TextBox(new RectangleF(Vector2.Zero, new Vector2(200, (float)ScreenManager.ScreenHeight)), 
-                "Das ist der Infoscreentext. Test des Word-Wrappings", Contents.Arial15, Color.DimGray, .5f);
+            infoScreen = new TextBox(new RectangleF(Vector2.Zero, new Vector2(150, (float)ScreenManager.ScreenHeight)), 
+                "Das ist Informationstext mit Single-Word-Wrapping und Multi-Word-Wrapping", Contents.Arial15, Color.DimGray, .5f);
 
             RectangleF pointer = infoScreen.Bounds;
-            pointer.Location -= new Vector2(infoScreen.Width, 0);
+            pointer.Location -= new Vector2(infoScreen.Bounds.Width, 0);
             infoScreen.Bounds = pointer;
 
             infoScreenTransition = new TranslateTransition(infoScreen.Bounds.Location, Vector2.Zero, 1000, infoScreen);
@@ -41,9 +41,9 @@ namespace TheEngine.Graphics.EngineUIs
 
             if (InputManager.GamePadConnected())
             {
-                if (InputManager.OnButtonDown(Buttons.Start))
+                if (InputManager.OnButtonDown(Buttons.A))
                 {
-                    if (InputManager.OnButtonToggle(Buttons.Start))
+                    if (InputManager.OnButtonToggle(Buttons.A))
                         infoScreenTransition.Backward();
                     else
                         infoScreenTransition.Forward();

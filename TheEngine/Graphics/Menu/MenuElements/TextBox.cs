@@ -23,15 +23,33 @@ namespace TheEngine.Graphics.Menu.MenuElements
     {
 
         private string _text;
+        private string _parsedText;
         private SpriteFont _font;
         private Color _color;
         private float _opacity;
-        private Color[] _colorData;
 
-        // TODO: Width and Height unnecessary. See also: MenuElement Width and Height.
-        public override float Width => _bounds.Width;
-        public override float Height => _bounds.Height;
-        public override RectangleF RectangleF => _bounds;
+        /// <summary>
+        /// Stores Color data for drawing the TextBox bounds.
+        /// </summary>
+        private Color[] _data;
+
+        /// <summary>
+        /// Stores Texture2D for drawing the TextBox bounds.
+        /// </summary>
+        private Texture2D _texture;
+
+        /// <summary>
+        /// string Text of this TextBox. 
+        /// </summary>
+        public string Text
+        {
+            get => _text;
+            set
+            {
+                _text = value;
+                _parsedText = ParseText(_text);
+            }
+        }
 
         public TextBox(RectangleF bounds, string text, SpriteFont font, Color color, float opacity = 1f) 
         : base (bounds)
@@ -40,21 +58,30 @@ namespace TheEngine.Graphics.Menu.MenuElements
             _font = font;
             _color = color;
             _opacity = opacity;
-            _colorData = new Color[(int)bounds.Width * (int)bounds.Height];
+            _parsedText = ParseText(text);
+            _texture = Contents.Texture(_bounds.Size);
+
+            // Create Color data the size of bounds
+            _data = new Color[(int)bounds.Width * (int)bounds.Height];
+
+            // Set Color data's color.
+            for (int i = 0; i < _data.Length; i++)
+                _data[i] = color;
+
+            // Set Color data to Texture2D.
+            _texture.SetData(_data);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
-            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
-            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
-            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
-            Primitives.DrawRectangle(_bounds, Contents.Texture(_bounds.Size), _colorData, _color, spriteBatch, _opacity);
+            Primitives.DrawRectangle(_bounds, _texture, spriteBatch, _opacity);
             spriteBatch.DrawString(_font, ParseText(_text), _bounds.Location, Color.White);
         }
 
+        // TODO: Single Word Word-Wrapping
         /// <summary>
-        /// Word-Wrapping...
+        /// Multi-Word-Wrapping
+        /// Single-Word-Wrapping
         /// Inserts a newline once the length of the current line plus the length of the current word is longer than the
         /// width of the text box, and it repeats until there are no more words to process.
         /// </summary>
@@ -63,17 +90,51 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             string line = string.Empty;
             string returnString = string.Empty;
-            string[] wordArray = _text.Split(' ');
+            string[] wordArray = text.Split(' ');
 
             foreach (string word in wordArray)
             {
-                if (_font.MeasureString(line + word).Length() > _bounds.Width)
+                // Single-Word-Wrapping
+                if (_font.MeasureString(word).Length() > _bounds.Width)
                 {
-                    returnString = returnString + line + '\n';
-                    line = string.Empty;
+                    char[] wordChars = word.ToCharArray();
+                    string firstHalf = string.Empty;
+                    string secondHalf = string.Empty;
+
+                    // Build string char by char.
+                    for (int i = 0; i < wordChars.Length; i++)
+                    {
+                        firstHalf += wordChars[i];
+
+                        // String is wider than bounds => Put firstHalf on currentLine, secondHalf on nextLine.
+                        if (_font.MeasureString(firstHalf).Length() > _bounds.Width)
+                        {
+                            firstHalf = firstHalf.Remove(firstHalf.Length - 2, 2);
+                            firstHalf = firstHalf.Insert(firstHalf.Length, "-");
+
+                            returnString += firstHalf + '\n';
+
+                            for (int y = i; y < wordChars.Length; y++)
+                                secondHalf += wordChars[y];
+
+                            returnString += secondHalf;
+
+                            break;
+                        }
+                    }
                 }
 
-                line = line + word + ' ';
+                // Multi-Word-Wrapping
+                else
+                {
+                    if (_font.MeasureString(line + word).Length() > _bounds.Width)
+                    {
+                        returnString += line + '\n';
+                        line = string.Empty;
+                    }
+
+                    line += word + ' ';
+                }
             }
 
             return returnString + line;
@@ -81,7 +142,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         public override void MouseHoverReaction()
         {
-            // throw new NotImplementedException();
+            // if (IsMouseHover())
         }
 
         public override void CursorReaction(GameTime gameTime)

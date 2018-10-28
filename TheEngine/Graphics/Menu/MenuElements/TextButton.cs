@@ -27,6 +27,11 @@ namespace TheEngine.Graphics.Menu.MenuElements
         private Texture2D _texture;
 
         /// <summary>
+        /// Stores Color data for drawing the TextButton.
+        /// </summary>
+        private Color[] _data;
+
+        /// <summary>
         /// Stores opacity values for this TextButton.
         /// </summary>
         private Dictionary<string, double> _opacities = new Dictionary<string, double>()
@@ -55,26 +60,9 @@ namespace TheEngine.Graphics.Menu.MenuElements
         #region Properties
 
         /// <summary>
-        /// Returns Width of this TextButton.
-        /// </summary>
-        public override float Width => _bounds.Width;
-
-        /// <summary>
-        /// Returns Height of this TextButton.
-        /// </summary>
-        public override float Height => _bounds.Height;
-
-        /// <summary>
-        /// Returns the RectangleF describing the Bounds of this TextButton.
-        /// </summary>
-        public override RectangleF RectangleF => _bounds;
-
-        /// <summary>
         /// Returns a Dictionary storing Opacity values for this TextButton.
         /// </summary>
         public Dictionary<string, double> Opacities => _opacities;
-
-        private Color[] _colorData;
 
         /// <summary>
         /// Returns the Color of this TextButton.
@@ -110,12 +98,20 @@ namespace TheEngine.Graphics.Menu.MenuElements
             : base(bounds, functionality)
         {
             _text = new Text(new RectangleF(bounds.Location, new Vector2()), text, () => Game1.gameConsole.Log(text + " gedrueckt."));
-            _texture = Contents.Texture((int)bounds.Size.X, (int)bounds.Size.Y);
             _color = color;
-
             _activeOpacity = _opacities["noHover"];
 
-            _colorData = new Color[(int)bounds.Width * (int)bounds.Height];
+            _texture = Contents.Texture(bounds.Size);
+
+            // Create Color data the size of bounds
+            _data = new Color[(int)bounds.Width * (int)bounds.Height];
+
+            // Set Color data's color.
+            for (int i = 0; i < _data.Length; i++)
+                _data[i] = color;
+
+            // Set Color data to Texture2D.
+            _texture.SetData(_data);
         }
 
         public override void Update(GameTime gameTime)
@@ -141,7 +137,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Primitives.DrawRectangle(_bounds, _texture, _colorData, _color, spriteBatch, _activeOpacity);
+            Primitives.DrawRectangle(_bounds, _texture, spriteBatch, _activeOpacity);
             _text.Draw(spriteBatch);
 
             if (MenuElement._drawRecs)
@@ -173,24 +169,24 @@ namespace TheEngine.Graphics.Menu.MenuElements
                     }
                 case TextPos.TopCenter:
                     {
-                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.RectangleF.Center.X, _bounds.Y);
+                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.Bounds.Center.X, _bounds.Y);
                         break;
                     }
                 case TextPos.TopRight:
                     {
-                        textBounds.Location = new Vector2((_bounds.X + _bounds.Width) - _text.Width, _bounds.Y);
+                        textBounds.Location = new Vector2((_bounds.X + _bounds.Width) - _text.Bounds.Width, _bounds.Y);
                         break;
                     }
 
                 case TextPos.CenterLeft:
                     {
-                        textBounds.Location = new Vector2(_bounds.X, _bounds.Y + (_bounds.Height / 2) - _text.RectangleF.Center.Y);
+                        textBounds.Location = new Vector2(_bounds.X, _bounds.Y + (_bounds.Height / 2) - _text.Bounds.Center.Y);
                         break;
                     }
                 case TextPos.Center:
                     {
-                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.RectangleF.Center.X,
-                            _bounds.Y + (_bounds.Height / 2) - _text.RectangleF.Center.Y);
+                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.Bounds.Center.X,
+                            _bounds.Y + (_bounds.Height / 2) - _text.Bounds.Center.Y);
                         break;
                     }
                 case TextPos.CenterRight:
@@ -201,21 +197,21 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
                 case TextPos.BottomLeft:
                     {
-                        textBounds.Location = new Vector2(_bounds.X, _bounds.Y + _bounds.Height - _text.Height);
+                        textBounds.Location = new Vector2(_bounds.X, _bounds.Y + _bounds.Height - _text.Bounds.Height);
                         break;
                     }
 
                 case TextPos.BottomCenter:
                     {
-                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.RectangleF.Center.X,
-                            _bounds.Y + _bounds.Height - _text.Height);
+                        textBounds.Location = new Vector2(_bounds.X + (_bounds.Width / 2) - _text.Bounds.Center.X,
+                            _bounds.Y + _bounds.Height - _text.Bounds.Height);
                         break;
                     }
 
                 case TextPos.BottomRight:
                     {
-                        textBounds.Location = new Vector2(_bounds.X + _bounds.Width - _text.Width,
-                            _bounds.Y + _bounds.Height - _text.Height);
+                        textBounds.Location = new Vector2(_bounds.X + _bounds.Width - _text.Bounds.Width,
+                            _bounds.Y + _bounds.Height - _text.Bounds.Height);
                         break;
                     }
             }

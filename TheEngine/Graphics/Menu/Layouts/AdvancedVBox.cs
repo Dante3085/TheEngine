@@ -10,106 +10,91 @@ using TheEngine.Graphics.Primitive;
 
 namespace TheEngine.Graphics.Menu.Layouts
 {
-    /// <summary>
-    /// VBox that handles being taller than the ScreenHeight.
-    /// Uses HBox to horizontally place VBoxes in case of being taller than the ScreenHeight.
-    /// </summary>
-    public class AdvancedVBox : Layout
-    {
-        #region MemberVariables
+    ///// <summary>
+    ///// VBox that handles being taller than the ScreenHeight.
+    ///// Uses HBox to horizontally place VBoxes in case of being taller than the ScreenHeight.
+    ///// </summary>
+    //public class AdvancedVBox : Layout
+    //{
+    //    #region MemberVariables
 
-        /// <summary>
-        /// HBox that stores several VBoxes.
-        /// </summary>
-        private HBox _hBox;
+    //    /// <summary>
+    //    /// HBox that stores several VBoxes.
+    //    /// </summary>
+    //    private HBox _hBox;
 
-        #endregion
+    //    #endregion
 
-        #region Properties
+    //    #region Properties
 
-        /// <summary>
-        /// Returns the AdvancedVBox's Width.
-        /// </summary>
-        public override float Width => CalcWidth();
+    //    /// <summary>
+    //    /// Returns, sets spacing inside AdvancedVBox.
+    //    /// </summary>
+    //    public override int Spacing
+    //    {
+    //        get => _hBox.Spacing;
+    //        set => _hBox.Spacing = value;
+    //    }
 
-        /// <summary>
-        /// Returns the AdvancedVBox's Height.
-        /// </summary>
-        public override float Height => CalcHeight();
+    //    #endregion
 
-        /// <summary>
-        /// Returns Bounding Rec of AdvancedVBox.
-        /// </summary>
-        public override RectangleF RectangleF => _hBox.RectangleF;
+    //    #region Methods
 
-        /// <summary>
-        /// Returns, sets spacing inside AdvancedVBox.
-        /// </summary>
-        public override int Spacing
-        {
-            get => _hBox.Spacing;
-            set => _hBox.Spacing = value;
-        }
+    //    public AdvancedVBox(RectangleF bounds, int horiSpacing, int vertSpacing, params MenuElement[] elements)
+    //    : base(bounds)
+    //    {
+    //        _hBox = new HBox(bounds, null, horiSpacing, new VBox(bounds, spacing: vertSpacing, elements: elements));
+    //    }
 
-        #endregion
+    //    public override void Update(GameTime gameTime)
+    //    {
+    //        base.Update(gameTime);
 
-        #region Methods
+    //        foreach(MenuElement m in _hBox.Elements)
+    //            m.Update(gameTime);
+    //    }
 
-        public AdvancedVBox(RectangleF bounds, int horiSpacing, int vertSpacing, params MenuElement[] elements)
-        : base(bounds)
-        {
-            _hBox = new HBox(bounds, null, horiSpacing, new VBox(bounds, spacing: vertSpacing, elements: elements));
-        }
+    //    public override void OrderElements()
+    //    {
+    //        //var lastBox = _hBox.Elements[_hBox.Elements.Count - 1];
+    //        //if (lastBox.Height > ScreenManager.ScreenHeight)
+    //        //{
+    //        //    var lastEl = lastBox[lastBox.]
+    //        //    _hBox.Elements.Add(new VBox(elements: new MenuElement[]));
+    //        //}
+    //    }                                             
 
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
+    //    private float CalcWidth()
+    //    {
+    //        float width = 0;
+    //        foreach (MenuElement m in _hBox.Elements)
+    //            width += m.Bounds.Width;
+    //        return width;
+    //    }
 
-            foreach(MenuElement m in _hBox.Elements)
-                m.Update(gameTime);
-        }
+    //    private float CalcHeight()
+    //    {
+    //        float height = 0;
+    //        foreach (MenuElement m in _hBox.Elements)
+    //            height += m.Bounds.Height;
+    //        return height;
+    //    }
 
-        public override void OrderElements()
-        {
-            //var lastBox = _hBox.Elements[_hBox.Elements.Count - 1];
-            //if (lastBox.Height > ScreenManager.ScreenHeight)
-            //{
-            //    var lastEl = lastBox[lastBox.]
-            //    _hBox.Elements.Add(new VBox(elements: new MenuElement[]));
-            //}
-        }                                             
+    //    public override void Draw(SpriteBatch spriteBatch)
+    //    {
+    //        _hBox.Draw(spriteBatch);
+    //    }
 
-        private float CalcWidth()
-        {
-            float width = 0;
-            foreach (MenuElement m in _hBox.Elements)
-                width += m.Width;
-            return width;
-        }
+    //    public override void MouseHoverReaction()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        private float CalcHeight()
-        {
-            float height = 0;
-            foreach (MenuElement m in _hBox.Elements)
-                height += m.Height;
-            return height;
-        }
+    //    public override void CursorReaction(GameTime gameTime)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            _hBox.Draw(spriteBatch);
-        }
-
-        public override void MouseHoverReaction()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void CursorReaction(GameTime gameTime)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
-    }
+    //    #endregion
+    //}
 }

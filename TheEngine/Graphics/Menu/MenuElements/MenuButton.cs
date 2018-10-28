@@ -15,16 +15,10 @@ namespace TheEngine.Graphics.Menu.MenuElements
         private Texture2D _activeButtonTexture;
 
         #endregion
-
         #region Properties
 
-        public override float Width => _bounds.Width;
-        public override float Height => _bounds.Height;
-
-        public override RectangleF RectangleF => _bounds;
-
         #endregion
-
+        #region Methods
         public MenuButton(RectangleF bounds, Texture2D buttonTextureNoHover, Texture2D buttonTextureHover, Action functionality = null) : 
             base(bounds, functionality)
         {
@@ -53,12 +47,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
             if (OnLeftMouseClick())
                 ExecuteFunctionality();
 
-            // TODO: Weiß nicht, ob alle Zuweisungen hier nötig sind. Einige aber schon. Sonst kann der Button im Layout nicht korrekt angebracht werden.
-            //_buttonRec.X = _position.X;
-            //_buttonRec.Y = _position.Y;
-            //_buttonRec.Width = _activeButtonTexture.Width;
-            //_buttonRec.Height = _activeButtonTexture.Height;
-
             _bounds.Width = _activeButtonTexture.Width;
             _bounds.Height = _activeButtonTexture.Height;
         }
@@ -76,5 +64,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
             if (_cursorOnIt)
                 _activeButtonTexture = _buttonTextureHover;
         }
+        #endregion
     }
 }

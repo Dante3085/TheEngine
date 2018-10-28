@@ -80,21 +80,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
             set => _cursorOnIt = value;
         }
 
-        /// <summary>
-        /// Width of this MenuElement.
-        /// </summary>
-        public abstract float Width { get; }
-
-        /// <summary>
-        /// Height of this MenuElement.
-        /// </summary>
-        public abstract float Height { get; }
-
-        /// <summary>
-        /// RectangleF describing the Bounds of this MenuElement.
-        /// </summary>
-        public abstract RectangleF RectangleF { get; }
-
         #endregion
         #region Methods
 
@@ -153,12 +138,21 @@ namespace TheEngine.Graphics.Menu.MenuElements
         }
 
         /// <summary>
-        /// Gets whether or not Mouse is hovering over this MenuElement-
+        /// Gets whether or not Mouse has entered this MenuElement(no holding/triggers once).
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool OnMouseHover()
+        {
+            return InputManager.OnMouseHoverRectangle(_bounds);
+        }
+
+        /// <summary>
+        /// Gets whether or not Mouse is hovering over this MenuElement(holding/triggers more than once).
         /// </summary>
         /// <returns></returns>
         public virtual bool IsMouseHover()
         {
-            return InputManager.IsMouseHoverRectangle(RectangleF);
+            return InputManager.IsMouseHoverRectangle(_bounds);
         }
 
         /// <summary>

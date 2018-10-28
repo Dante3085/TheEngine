@@ -59,10 +59,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
         #endregion
         #region Properties
 
-        public override float Width => _bounds.Width;
-        public override float Height => _bounds.Height;
-        public override RectangleF RectangleF => _bounds;
-
         /// <summary>
         /// Returns the string text of this Text.
         /// </summary>

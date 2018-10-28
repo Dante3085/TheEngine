@@ -22,24 +22,9 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// </summary>
         private int _spacing;
 
-        /// <summary>
-        /// RectangleF describing the Bounds of the VBox.
-        /// </summary>
-        private RectangleF _rec;
-
         #endregion
 
         #region Properties
-
-        /// <summary>
-        /// Returns Width of VBox.
-        /// </summary>
-        public override float Width => WidthWidestElement();
-
-        /// <summary>
-        /// Returns Height of VBox.
-        /// </summary>
-        public override float Height => CalcHeight();
 
         /// <summary>
         /// Returns, sets spacing inside VBox.
@@ -49,11 +34,6 @@ namespace TheEngine.Graphics.Menu.Layouts
             get => _spacing;
             set => _spacing = value;
         }
-
-        /// <summary>
-        /// Returns Bounding Rec of VBox.
-        /// </summary>
-        public override RectangleF RectangleF => _rec;
 
         #endregion
 
@@ -70,8 +50,6 @@ namespace TheEngine.Graphics.Menu.Layouts
         {
             _spacing = spacing;
             OrderElements();
-            _bounds.Width = Width;
-            _bounds.Height = Height;
         }
 
         /// <summary>
@@ -82,9 +60,9 @@ namespace TheEngine.Graphics.Menu.Layouts
         {
             base.Update(gameTime);
 
-            // Update rec.
-            _rec.Width = Width;
-            _rec.Height = Height;
+            // Update Bounds.
+            _bounds.Width = WidthWidestElement();
+            _bounds.Height = CalcHeight();
         }
 
         /// <summary>
@@ -101,7 +79,7 @@ namespace TheEngine.Graphics.Menu.Layouts
 
             // Sum of all elements' height values.
             foreach (MenuElement m in _elements)
-                height += m.Height;
+                height += m.Bounds.Height;
 
             // Plus (number of elements - 1) times vertical offset.
             height += (_elements.Count - 1) * _spacing;
@@ -118,11 +96,11 @@ namespace TheEngine.Graphics.Menu.Layouts
             if (_elements.Count == 0)
                 return -1;
 
-            float width = _elements[0].Width;
+            float width = _elements[0].Bounds.Width;
 
             foreach (MenuElement m in _elements)
-                if (m.Width > width)
-                    width = m.Width;
+                if (m.Bounds.Width > width)
+                    width = m.Bounds.Width;
             return width;
         }
 
@@ -151,7 +129,7 @@ namespace TheEngine.Graphics.Menu.Layouts
             {
                 boundsPointer = _elements[i].Bounds;
                 boundsPointer.Location = new Vector2(this._bounds.Location.X,
-                    _elements[i - 1].Bounds.Location.Y + _elements[i - 1].Height + _spacing);
+                    _elements[i - 1].Bounds.Location.Y + _elements[i - 1].Bounds.Height + _spacing);
                 _elements[i].Bounds = boundsPointer;
             }
         }

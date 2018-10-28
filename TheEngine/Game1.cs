@@ -27,10 +27,7 @@ namespace TheEngine
 
         #region Test
 
-        private Texture2D sourceTexture;
-        private Rectangle sourceRectangle;
-        private Rectangle destinationRectangle;
-        private Color     color;
+        private VBox vbox;
 
         #endregion
 
@@ -75,10 +72,26 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            sourceRectangle = new Rectangle(10, 10, 200, 200);
-            // destinationRectangle;
-            color = new Color(255, 200, 255, 255);
-            sourceTexture = Contents.Texture(sourceRectangle.Size);
+            vbox = new VBox(new RectangleF(10, 10, 1, 1), 10, elements: new MenuElement[]
+            {
+                new TextButton(new RectangleF(0, 0, 200, 50), "TextButton", Color.DarkRed),
+                new Text(new RectangleF(), "Das ist ein TExt in der VBox"),
+                new HBox(new RectangleF(), 10, elements: new MenuElement[]
+                {
+                    new Text(new RectangleF(), "Das ist ein TExt in der HBox"),
+                    new Text(new RectangleF(), "Das ist ein TExt in der HBox"),
+                    new Text(new RectangleF(), "Das ist ein TExt in der HBox"),
+                    new Text(new RectangleF(), "Das ist ein TExt in der HBox"),
+                    new VBox(new RectangleF(), 20, elements: new MenuElement[]
+                    {
+                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
+                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
+                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
+                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
+                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
+                    }), 
+                }), 
+            });
         }
 
         /// <summary>
@@ -108,6 +121,7 @@ namespace TheEngine
                 gameConsole.Open(Keys.Tab);
 
             EngineUI.Update(gameTime);
+            vbox.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
 
@@ -125,8 +139,8 @@ namespace TheEngine
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            //EngineUI.Draw(spriteBatch);
-            spriteBatch.Draw(sourceTexture, sourceRectangle, sourceRectangle, color);
+            EngineUI.Draw(spriteBatch);
+            //vbox.Draw(spriteBatch);
 
             spriteBatch.End();
 
