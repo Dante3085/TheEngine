@@ -24,7 +24,6 @@ Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngi
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.exe
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.pdb
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\ConsoleFont.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\ConsoleFont.xnb
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\TheEngine.exe
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\TheEngine.pdb
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\MonoGame.Framework.dll
@@ -50,18 +49,6 @@ C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\T
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.csproj.CopyComplete
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.exe
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\obj\x86\Debug\TheEngine.pdb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial12.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial15.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial18.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial21.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial24.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial30.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial36.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial42.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial48.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial56.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial64.xnb
-C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial72.xnb
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial12.xnb
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial15.xnb
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial18.xnb
@@ -148,3 +135,11 @@ Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngi
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\Adventurer\Individual Sprites\adventurer-stand-02.xnb
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\Adventurer\adventurer-Sheet.xnb
 Y:\2_IT_Informatik\2_Programmierung\3_MS VS 2017 CE\2_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\debugTexture.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\debugTexture.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\check.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\checkBox_hover.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\checkBox_noHover.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\ConsoleFont.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial12.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial15.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial18.xnb

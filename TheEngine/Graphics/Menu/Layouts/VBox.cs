@@ -50,6 +50,8 @@ namespace TheEngine.Graphics.Menu.Layouts
         {
             _spacing = spacing;
             OrderElements();
+            _bounds.Width = WidthWidestElement();
+            _bounds.Height = CalcHeight();
         }
 
         /// <summary>

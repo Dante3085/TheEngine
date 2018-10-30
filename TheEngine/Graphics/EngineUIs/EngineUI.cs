@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TheEngine.DataManagement;
 using TheEngine.Graphics.Menu;
+using TheEngine.Graphics.Menu.Layouts;
 using TheEngine.Graphics.Menu.MenuElements;
 using TheEngine.Graphics.Primitive;
 using TheEngine.Input;
@@ -19,24 +20,47 @@ namespace TheEngine.Graphics.EngineUIs
     /// </summary>
     public static class EngineUI
     {
-        private static TextBox infoScreen;
+        private static HBox _hBox;
+        private static TextBox _textBox;
         private static TranslateTransition infoScreenTransition;
+        private static NewKeyboardInput _keyboardInput;
 
-        public static void Init()
+        public static void Init(NewKeyboardInput keyboardInput)
         {
-            infoScreen = new TextBox(new RectangleF(Vector2.Zero, new Vector2(150, (float)ScreenManager.ScreenHeight)), 
-                "Das ist Informationstext mit Single-Word-Wrapping und Multi-Word-Wrapping", Contents.Arial15, Color.DimGray, .5f);
+            _keyboardInput = keyboardInput;
 
-            RectangleF pointer = infoScreen.Bounds;
-            pointer.Location -= new Vector2(infoScreen.Bounds.Width, 0);
-            infoScreen.Bounds = pointer;
+            _textBox = new TextBox(new RectangleF(Vector2.Zero, new Vector2(250, ScreenManager.ScreenHeight)), 
+                "Das ist Informationstext mit Single-Word-Wrapping und Multi-Word-Wrapping", Contents.Arial15, Color.DimGray, .2f);
 
-            infoScreenTransition = new TranslateTransition(infoScreen.Bounds.Location, Vector2.Zero, 1000, infoScreen);
+            _hBox = new HBox(new RectangleF(Vector2.Zero, Vector2.Zero), 2, elements: new MenuElement[]
+            {
+                _textBox,
+                new VBox(new RectangleF(Vector2.Zero, Vector2.Zero), 2, elements: new MenuElement[]
+                {
+                    new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.Aqua),
+                    new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.IndianRed),
+                    new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                    new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                    new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                    new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                    new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                }), 
+            });
+
+            Game1.gameConsole.Log("" + _hBox.Bounds.Location.X);
+            RectangleF pointer = _hBox.Bounds;
+            pointer.Location -= new Vector2(_hBox.Bounds.Width, 0);
+            _hBox.Bounds = pointer;
+
+            Game1.gameConsole.Log("" + _hBox.Bounds.Width);
+            Game1.gameConsole.Log("" + _hBox.Bounds.Location.X);
+
+            infoScreenTransition = new TranslateTransition(_hBox.Bounds.Location, Vector2.Zero, 1000, _hBox);
         }
 
         public static void Update(GameTime gameTime)
         {
-            infoScreen.Update(gameTime);
+            _hBox.Update(gameTime);
             infoScreenTransition.Update(gameTime);
 
             if (InputManager.GamePadConnected())
@@ -51,9 +75,9 @@ namespace TheEngine.Graphics.EngineUIs
             }
             else
             {
-                if (InputManager.OnKeyDown(Keys.Tab))
+                if (InputManager.OnKeyDown(_keyboardInput.Inputs[EInput.InfoScreen]))
                 {
-                    if (InputManager.OnKeyToggle(Keys.Tab))
+                    if (InputManager.OnKeyToggle(_keyboardInput.Inputs[EInput.InfoScreen]))
                         infoScreenTransition.Backward();
                     else
                         infoScreenTransition.Forward();
@@ -63,7 +87,7 @@ namespace TheEngine.Graphics.EngineUIs
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            infoScreen.Draw(spriteBatch);
+            _hBox.Draw(spriteBatch);
         }
     }
 }

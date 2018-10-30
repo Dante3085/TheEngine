@@ -31,6 +31,10 @@ namespace TheEngine.DataManagement
         public static Texture2D heart;
         public static Texture2D xboxButtons_A;
 
+        public static Texture2D checkBoxNoHover;
+        public static Texture2D checkBoxHover;
+        public static Texture2D check;
+
         #endregion
         #region Characters
 
@@ -71,26 +75,29 @@ namespace TheEngine.DataManagement
         /// <param name="c"></param>
         public static void LoadAll(ContentManager c, GraphicsDevice g)
         {
-            Arial12 = c.Load<SpriteFont>("SpriteFonts/Arial12");
-            Arial15 = c.Load<SpriteFont>("SpriteFonts/Arial15");
-            Arial18 = c.Load<SpriteFont>("SpriteFonts/Arial18");
-            Arial21 = c.Load<SpriteFont>("SpriteFonts/Arial21");
-            Arial24 = c.Load<SpriteFont>("SpriteFonts/Arial24");
-            Arial30 = c.Load<SpriteFont>("SpriteFonts/Arial30");
-            Arial36 = c.Load<SpriteFont>("SpriteFonts/Arial36");
-            Arial42 = c.Load<SpriteFont>("SpriteFonts/Arial42");
-            Arial48 = c.Load<SpriteFont>("SpriteFonts/Arial48");
-            Arial56 = c.Load<SpriteFont>("SpriteFonts/Arial56");
-            Arial64 = c.Load<SpriteFont>("SpriteFonts/Arial64");
-            Arial72 = c.Load<SpriteFont>("SpriteFonts/Arial72");
+             Arial12 = c.Load<SpriteFont>("spriteFonts/Arial12");
+             Arial15 = c.Load<SpriteFont>("spriteFonts/Arial15");
+             Arial18 = c.Load<SpriteFont>("spriteFonts/Arial18");
+            // Arial21 = c.Load<SpriteFont>("spriteFonts/Arial21");
+            // Arial24 = c.Load<SpriteFont>("spriteFonts/Arial24");
+            // Arial30 = c.Load<SpriteFont>("spriteFonts/Arial30");
+            // Arial36 = c.Load<SpriteFont>("spriteFonts/Arial36");
+            // Arial42 = c.Load<SpriteFont>("spriteFonts/Arial42");
+            // Arial48 = c.Load<SpriteFont>("spriteFonts/Arial48");
+            // Arial56 = c.Load<SpriteFont>("spriteFonts/Arial56");
+            // Arial64 = c.Load<SpriteFont>("spriteFonts/Arial64");
+            // Arial72 = c.Load<SpriteFont>("spriteFonts/Arial72");
 
-            adventurer = c.Load<Texture2D>("Adventurer/adventurer-Sheet");
+            // adventurer = c.Load<Texture2D>("adventurer/adventurer-Sheet");
 
             rectangleTex = new Texture2D(g, 1, 1, false, SurfaceFormat.Color);
             rectangleTex.SetData(new[] { Color.White });
 
-            debugTexture = c.Load<Texture2D>("debugTexture");
+            // debugTexture = c.Load<Texture2D>("debugTexture");
 
+            checkBoxNoHover = c.Load<Texture2D>("menuComponents/checkbox_noHover");
+            checkBoxHover = c.Load<Texture2D>("menuComponents/checkbox_hover");
+            check = c.Load<Texture2D>("menuComponents/check");
         }
 
         /// <summary>

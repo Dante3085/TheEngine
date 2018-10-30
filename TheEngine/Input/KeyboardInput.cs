@@ -7,8 +7,17 @@ using System.Threading.Tasks;
 
 namespace TheEngine.Input
 {
+    // TODO: Überdenken. Vielleicht ein Dictionary, sodass der User seine Inputs selber setzen kann, anstatt Inputs anderer
+    /// <summary>
+    /// 
+    /// </summary>
     public class KeyboardInput
     {
+        #region EngineUI
+
+        public Keys InfoScreen { get; set; }
+
+        #endregion
         #region WorldMovement
 
         public Keys Left { get; set; }

@@ -28,6 +28,7 @@ namespace TheEngine
         #region Test
 
         private VBox vbox;
+        private CheckBox checkBox;
 
         #endregion
 
@@ -56,7 +57,7 @@ namespace TheEngine
 
             base.Initialize();
             InputManager.Init();
-            EngineUI.Init();
+            EngineUI.Init(NewKeyboardInput.Default());
         }
 
         /// <summary>
@@ -92,6 +93,8 @@ namespace TheEngine
                     }), 
                 }), 
             });
+
+            checkBox = new CheckBox(new RectangleF(1000, 100, 100, 100), false);
         }
 
         /// <summary>
@@ -121,7 +124,8 @@ namespace TheEngine
                 gameConsole.Open(Keys.Tab);
 
             EngineUI.Update(gameTime);
-            vbox.Update(gameTime);
+            // vbox.Update(gameTime);
+            checkBox.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
 
@@ -141,6 +145,7 @@ namespace TheEngine
 
             EngineUI.Draw(spriteBatch);
             //vbox.Draw(spriteBatch);
+            checkBox.Draw(spriteBatch);
 
             spriteBatch.End();
 

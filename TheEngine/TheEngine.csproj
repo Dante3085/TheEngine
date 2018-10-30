@@ -45,11 +45,14 @@
     <Compile Include="Graphics\EngineUIs\EngineUI.cs" />
     <Compile Include="Graphics\Menu\Layouts\AdvancedHBox.cs" />
     <Compile Include="Graphics\Menu\Layouts\AdvancedVBox.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\CheckBox.cs" />
     <Compile Include="Graphics\Menu\MenuElements\TextBox.cs" />
     <Compile Include="Graphics\Menu\TranslateTransition.cs" />
     <Compile Include="Graphics\Primitive\Primitives.cs" />
     <Compile Include="Graphics\Primitive\RectangleF.cs" />
     <Compile Include="Graphics\ScreenManager.cs" />
+    <Compile Include="Input\EInput.cs" />
+    <Compile Include="Input\NewKeyboardInput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataManagement\Contents.cs" />

@@ -94,47 +94,45 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
             foreach (string word in wordArray)
             {
-                // Single-Word-Wrapping
-                if (_font.MeasureString(word).Length() > _bounds.Width)
-                {
-                    char[] wordChars = word.ToCharArray();
-                    string firstHalf = string.Empty;
-                    string secondHalf = string.Empty;
+                //// Single-Word-Wrapping
+                //if (_font.MeasureString(word).Length() > _bounds.Width)
+                //{
+                //    char[] wordChars = word.ToCharArray();
+                //    string firstHalf = string.Empty;
+                //    string secondHalf = string.Empty;
 
-                    // Build string char by char.
-                    for (int i = 0; i < wordChars.Length; i++)
-                    {
-                        firstHalf += wordChars[i];
+                //    // Build string char by char.
+                //    for (int i = 0; i < wordChars.Length; i++)
+                //    {
+                //        firstHalf += wordChars[i];
 
-                        // String is wider than bounds => Put firstHalf on currentLine, secondHalf on nextLine.
-                        if (_font.MeasureString(firstHalf).Length() > _bounds.Width)
-                        {
-                            firstHalf = firstHalf.Remove(firstHalf.Length - 2, 2);
-                            firstHalf = firstHalf.Insert(firstHalf.Length, "-");
+                //        // String is wider than bounds => Put firstHalf on currentLine, secondHalf on nextLine.
+                //        if (_font.MeasureString(firstHalf).Length() > _bounds.Width)
+                //        {
+                //            firstHalf = firstHalf.Remove(firstHalf.Length - 2, 2);
+                //            firstHalf = firstHalf.Insert(firstHalf.Length, "-");
 
-                            returnString += firstHalf + '\n';
+                //            returnString += firstHalf + '\n';
 
-                            for (int y = i; y < wordChars.Length; y++)
-                                secondHalf += wordChars[y];
+                //            for (int y = i; y < wordChars.Length; y++)
+                //                secondHalf += wordChars[y];
 
-                            returnString += secondHalf;
+                //            returnString += secondHalf;
 
-                            break;
-                        }
-                    }
-                }
+                //            break;
+                //        }
+                //    }
+                //}
 
                 // Multi-Word-Wrapping
-                else
-                {
-                    if (_font.MeasureString(line + word).Length() > _bounds.Width)
-                    {
-                        returnString += line + '\n';
-                        line = string.Empty;
-                    }
 
-                    line += word + ' ';
+                if (_font.MeasureString(line + word).Length() > _bounds.Width)
+                {
+                    returnString += line + '\n';
+                    line = string.Empty;
                 }
+
+                line += word + ' ';
             }
 
             return returnString + line;

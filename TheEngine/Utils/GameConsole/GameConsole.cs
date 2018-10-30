@@ -997,7 +997,7 @@ namespace VosSoft.Xna.GameConsole
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            defaultFont = content.Load<SpriteFont>("SpriteFonts/ConsoleFont");
+            defaultFont = content.Load<SpriteFont>("spriteFonts/ConsoleFont");
             blank = new Texture2D(GraphicsDevice, 1, 1);
             blank.SetData<Color>(new Color[] { Color.White });
 

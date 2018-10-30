@@ -49,6 +49,8 @@ namespace TheEngine.Graphics.Menu.Layouts
         {
             _spacing = spacing;
             OrderElements();
+            _bounds.Width = CalcWidth();
+            _bounds.Height = HeightTallestElement();
         }
 
         /// <summary>
@@ -100,10 +102,8 @@ namespace TheEngine.Graphics.Menu.Layouts
             if (_elements.Count == 0)
                 return;
 
-            RectangleF boundsPointer;
-
             // Position first element at origin of HBox.
-            boundsPointer = _elements[0].Bounds;
+            RectangleF boundsPointer = boundsPointer = _elements[0].Bounds;
             boundsPointer.Location = this._bounds.Location;
             _elements[0].Bounds = boundsPointer;
 
