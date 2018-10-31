@@ -17,15 +17,30 @@ namespace TheEngine.Graphics.Menu.MenuElements
     /// </summary>
     public class CheckBox : MenuElement
     {
+        #region MemberVariables
+
         private Texture2D _checkBoxNoHover = Contents.checkBoxNoHover;
         private Texture2D _checkBoxHover = Contents.checkBoxHover;
         private Texture2D _check = Contents.check;
+        private bool _value;
 
-        private bool _checked;
+        #endregion
+        #region Properties
+
+        /// <summary>
+        /// This CheckBox's value.
+        /// </summary>
+        public bool Value
+        {
+            get => _value;
+            set => _value = value;
+        }
+
+        #endregion
 
         public CheckBox(RectangleF bounds, bool check) : base (bounds)
         {
-            _checked = check;
+            _value = check;
             _bounds.Size = new Vector2(_checkBoxNoHover.Bounds.Width, _checkBoxNoHover.Bounds.Height);
         }
 
@@ -33,14 +48,16 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             base.Update(gameTime);
             if (OnLeftMouseClick())
-                _checked = _checked ? false : true;
+                _value = _value ? false : true;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            base.Draw(spriteBatch);
+
             if (IsMouseHover())
             {
-                if (_checked)
+                if (_value)
                 {
                     spriteBatch.Draw(_checkBoxHover, _bounds.Location, Color.White);
                     spriteBatch.Draw(_check, Bounds.Location, null, 
@@ -53,7 +70,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
             }
             else
             {
-                if (_checked)
+                if (_value)
                 {
                     spriteBatch.Draw(_checkBoxNoHover, _bounds.Location, Color.White);
                     spriteBatch.Draw(_check, Bounds.Location, null,

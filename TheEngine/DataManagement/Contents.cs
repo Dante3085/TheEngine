@@ -98,6 +98,9 @@ namespace TheEngine.DataManagement
             checkBoxNoHover = c.Load<Texture2D>("menuComponents/checkbox_noHover");
             checkBoxHover = c.Load<Texture2D>("menuComponents/checkbox_hover");
             check = c.Load<Texture2D>("menuComponents/check");
+
+            redButtonHover = c.Load<Texture2D>("menuComponents/RedButtonHover");
+            redButtonNoHover = c.Load<Texture2D>("menuComponents/RedButtonNoHover");
         }
 
         /// <summary>

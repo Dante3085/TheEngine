@@ -27,7 +27,11 @@ namespace TheEngine.Graphics.Menu.Layouts
         /// <summary>
         /// Returns a List with all MenuElements of this Layout.
         /// </summary>
-        public List<MenuElement> Elements => _elements;
+        public List<MenuElement> Elements
+        {
+            get => _elements;
+            set => _elements = value;
+        }
 
         /// <summary>
         /// Space between each MenuElement of the Layout.

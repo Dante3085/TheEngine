@@ -33,11 +33,9 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_activeButtonTexture, _bounds.Location, Color.White);
+            base.Draw(spriteBatch);
 
-            if (MenuElement._drawRecs)
-                Primitives.DrawRectangleOutline(_bounds, _outlineLines, 
-                    Contents.rectangleTex, Color.Blue, spriteBatch);
+            spriteBatch.Draw(_activeButtonTexture, _bounds.Location, Color.White);
         }
 
         public override void Update(GameTime gameTime)
@@ -45,7 +43,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
             base.Update(gameTime);
 
             if (OnLeftMouseClick())
-                ExecuteFunctionality();
+                _functionality();
 
             _bounds.Width = _activeButtonTexture.Width;
             _bounds.Height = _activeButtonTexture.Height;

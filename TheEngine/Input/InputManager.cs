@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Configuration;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -143,6 +144,26 @@ namespace TheEngine.Input
         {
             return _previousMouseState.RightButton == ButtonState.Pressed &&
                 _currentMouseState.RightButton == ButtonState.Pressed;
+        }
+
+        /// <summary>
+        /// Gets whether MiddleMouseButton has been clicked (no holding).
+        /// </summary>
+        /// <returns></returns>
+        public static bool OnMiddleMouseClick()
+        {
+            return _previousMouseState.MiddleButton == ButtonState.Released &&
+                   _currentMouseState.MiddleButton == ButtonState.Pressed;
+        }
+
+        /// <summary>
+        /// Gets whether MiddleMouseButton has been clicked and is still down (holding).
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsMiddleMouseClick()
+        {
+            return _previousMouseState.MiddleButton == ButtonState.Pressed &&
+                   _currentMouseState.MiddleButton == ButtonState.Pressed;
         }
 
         /// <summary>

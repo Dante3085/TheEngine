@@ -143,3 +143,5 @@ C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\T
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial12.xnb
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial15.xnb
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial18.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\RedButtonHover.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\RedButtonNoHover.xnb

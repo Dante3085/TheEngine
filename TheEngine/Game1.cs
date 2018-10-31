@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -29,6 +30,7 @@ namespace TheEngine
 
         private VBox vbox;
         private CheckBox checkBox;
+        private DropBox dropBox;
 
         #endregion
 
@@ -90,11 +92,21 @@ namespace TheEngine
                         new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
                         new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
                         new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
+                        new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                        new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                        new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                        new CheckBox(new RectangleF(1000, 100, 100, 100), false),
                     }), 
                 }), 
             });
 
-            checkBox = new CheckBox(new RectangleF(1000, 100, 100, 100), false);
+            dropBox = new DropBox(new RectangleF(), new List<TextButton>()
+            {
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "DropboxHead", Color.IndianRed),
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.IndianRed),
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.IndianRed),
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.IndianRed),
+            });
         }
 
         /// <summary>
@@ -123,9 +135,9 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
+            dropBox.Update(gameTime);
+
             EngineUI.Update(gameTime);
-            // vbox.Update(gameTime);
-            checkBox.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
 
@@ -143,9 +155,8 @@ namespace TheEngine
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            EngineUI.Draw(spriteBatch);
-            //vbox.Draw(spriteBatch);
-            checkBox.Draw(spriteBatch);
+            // EngineUI.Draw(spriteBatch);
+            dropBox.Draw(spriteBatch);
 
             spriteBatch.End();
 

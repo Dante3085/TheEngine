@@ -24,7 +24,7 @@ namespace TheEngine.Graphics.Primitive
         /// <param name="lines"></param>
         /// <param name="texture"></param>
         /// <param name="color"></param>
-        public static void DrawRectangleOutline(RectangleF rec, Rectangle[] lines, Texture2D texture, Color color, SpriteBatch spriteBatch)
+        public static void DrawBounds(RectangleF rec, Rectangle[] lines, Texture2D texture, Color color, SpriteBatch spriteBatch)
         {
             if (lines.Length != 4)
                 throw new ArgumentException("'lines' has to bee an array of exactly 4 RectangleF objects!");

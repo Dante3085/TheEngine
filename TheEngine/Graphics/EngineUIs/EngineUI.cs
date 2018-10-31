@@ -35,15 +35,44 @@ namespace TheEngine.Graphics.EngineUIs
             _hBox = new HBox(new RectangleF(Vector2.Zero, Vector2.Zero), 2, elements: new MenuElement[]
             {
                 _textBox,
-                new VBox(new RectangleF(Vector2.Zero, Vector2.Zero), 2, elements: new MenuElement[]
+                new VBox(new RectangleF(), 0, elements: new MenuElement[]
                 {
                     new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.Aqua),
                     new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.IndianRed),
                     new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
                     new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
                     new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                    new MenuButton(new RectangleF(Vector2.Zero, new Vector2(100, 100)), Contents.redButtonNoHover,
+                        Contents.redButtonHover),
                     new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
                     new Text(new RectangleF(Vector2.Zero, Vector2.Zero), "Das ist Text"),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new MenuButton(new RectangleF(Vector2.Zero, new Vector2(100, 100)), Contents.redButtonNoHover,
+                        Contents.redButtonHover), 
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new MenuButton(new RectangleF(Vector2.Zero, new Vector2(100, 100)), Contents.redButtonNoHover,
+                        Contents.redButtonHover),
+                }),
+                new VBox(new RectangleF(), 10, elements: new MenuElement[]
+                {
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new CheckBox(new RectangleF(1000, 100, 100, 100), false),
+                    new TextBox(new RectangleF(Vector2.Zero, new Vector2(200, 500)), "Das ist von mir geschriebener Text, der hoffentlich umgebrochen wird.",
+                        Contents.Arial18, Color.Beige, 0.2f),
+                    new DropBox(new RectangleF(), new List<TextButton>()
+                    {
+                        new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 200)), "DropboxHead", Color.IndianRed),
+                        new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 200)), "Text", Color.IndianRed),
+                        new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 200)), "Text", Color.IndianRed),
+                        new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 200)), "Text", Color.IndianRed),
+                    }), 
                 }), 
             });
 

@@ -74,6 +74,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            base.Draw(spriteBatch);
+
             Primitives.DrawRectangle(_bounds, _texture, spriteBatch, _opacity);
             spriteBatch.DrawString(_font, ParseText(_text), _bounds.Location, Color.White);
         }

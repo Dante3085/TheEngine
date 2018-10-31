@@ -79,12 +79,12 @@ namespace TheEngine.Graphics.Sprites
         #region BoundingBox
 
         /// <summary>
-        /// RectangleF specifying a Box that can be drawn around the Sprite using Util.DrawRectangleOutline()
+        /// RectangleF specifying a Box that can be drawn around the Sprite using Util.DrawBounds()
         /// </summary>
         protected RectangleF _boundingBox;
 
         /// <summary>
-        /// RectangleF array with 4 RectangleF objects, to be used for drawing the BoundingBox with Util.DrawRectangleOutline()
+        /// RectangleF array with 4 RectangleF objects, to be used for drawing the BoundingBox with Util.DrawBounds()
         /// </summary>
         protected Rectangle[] _boundingBoxLines = { new Rectangle(), new Rectangle(),
             new Rectangle(), new Rectangle() };
@@ -105,7 +105,7 @@ namespace TheEngine.Graphics.Sprites
         public string Name => _name;
 
         /// <summary>
-        /// RectangleF specifying a Box that can be drawn around the Sprite using Util.DrawRectangleOutline()
+        /// RectangleF specifying a Box that can be drawn around the Sprite using Util.DrawBounds()
         /// </summary>
         public RectangleF BoundingBox => _boundingBox;
 
@@ -293,9 +293,9 @@ namespace TheEngine.Graphics.Sprites
             if (drawBoundingBox)
             {
                 if (_collisionDetected)
-                    Primitives.DrawRectangleOutline(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Red, spriteBatch);
+                    Primitives.DrawBounds(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Red, spriteBatch);
                 else
-                    Primitives.DrawRectangleOutline(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Blue, spriteBatch);
+                    Primitives.DrawBounds(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Blue, spriteBatch);
             }
 
             // Reset flag for collision detection.

@@ -123,20 +123,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
             base.Update(gameTime);
             _bounds.Size = _activeSpriteFont.MeasureString(_text);
 
-            //// Update Rec position.
-            //_textRec.X = _position.X;
-            //_textRec.Y = _position.Y;
-
-            //// Update Rec size.
-            //_textRec.Width = (int)_textSize.X;
-            //_textRec.Height = (int)_textSize.Y;
-
-            //// Update Vector2 for DrawString.
-            //_position.X = base._position.X;
-            //_position.Y = base._position.Y;
-
             if (OnLeftMouseClick())
-                ExecuteFunctionality();
+                _functionality();
         }
 
         //public void Animate(GameTime gameTime, int speed)
@@ -165,12 +153,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
         //    _activeSpriteFont = fonts[currentAnim];
         //}
 
-        public override void ExecuteFunctionality()
-        {
-            if (_functionality != null)
-                _functionality();
-        }
-
         /// <summary>
         /// Handles Reactions that MenuButton will have on MouseHover.
         /// </summary>
@@ -190,11 +172,10 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            base.Draw(spriteBatch);
+
             spriteBatch.DrawString(_activeSpriteFont, _text, _bounds.Location, 
                 CursorOnIt == true ? _colorHover : _color);
-
-            if (MenuElement._drawRecs)
-                Primitives.DrawRectangleOutline(_bounds, _outlineLines, Contents.rectangleTex, Color.Red, spriteBatch);
         }
 
         #endregion

@@ -41,11 +41,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Demonstration\Demo.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Graphics\EngineUIs\EngineUI.cs" />
     <Compile Include="Graphics\Menu\Layouts\AdvancedHBox.cs" />
     <Compile Include="Graphics\Menu\Layouts\AdvancedVBox.cs" />
     <Compile Include="Graphics\Menu\MenuElements\CheckBox.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\DropBox.cs" />
     <Compile Include="Graphics\Menu\MenuElements\TextBox.cs" />
     <Compile Include="Graphics\Menu\TranslateTransition.cs" />
     <Compile Include="Graphics\Primitive\Primitives.cs" />

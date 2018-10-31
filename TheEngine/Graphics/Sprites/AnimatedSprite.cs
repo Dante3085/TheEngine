@@ -321,9 +321,9 @@ namespace TheEngine.Graphics.Sprites
             if (drawBoundingBox)
             {
                 if (_collisionDetected)
-                    Primitives.DrawRectangleOutline(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Red, spriteBatch);
+                    Primitives.DrawBounds(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Red, spriteBatch);
                 else
-                    Primitives.DrawRectangleOutline(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Blue, spriteBatch);
+                    Primitives.DrawBounds(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Blue, spriteBatch);
             }
 
             // Reset flag for collision detection.

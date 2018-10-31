@@ -77,7 +77,7 @@ namespace TheEngine.Graphics.Menu
 
             // Execute Functionality of cursored element.
             else if (InputManager.OnKeyDown(Keys.Enter))
-                elements[_cursoredElement].ExecuteFunctionality();
+                elements[_cursoredElement].Functionality();
         }
 
         public void HandleGamePadInput(GameTime gameTime)
@@ -107,7 +107,7 @@ namespace TheEngine.Graphics.Menu
             }
 
             else if (InputManager.OnButtonDown(Buttons.A))
-                elements[_cursoredElement].ExecuteFunctionality();
+                elements[_cursoredElement].Functionality();
         }
 
         #endregion

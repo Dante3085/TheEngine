@@ -137,12 +137,10 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            base.Draw(spriteBatch);
+
             Primitives.DrawRectangle(_bounds, _texture, spriteBatch, _activeOpacity);
             _text.Draw(spriteBatch);
-
-            if (MenuElement._drawRecs)
-                Primitives.DrawRectangleOutline(_bounds, _outlineLines, Contents.rectangleTex,
-                    Color.Red, spriteBatch);
         }
 
         public override void MouseHoverReaction()
