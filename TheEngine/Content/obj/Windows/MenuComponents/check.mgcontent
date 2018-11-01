@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/menuComponents/check.png</SourceFile>
-  <SourceTime>2018-10-30T19:40:08.0698724+01:00</SourceTime>
+  <SourceTime>2018-11-01T09:34:55.7838916+01:00</SourceTime>
   <DestFile>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/bin/Windows/menuComponents/check.xnb</DestFile>
-  <DestTime>2018-10-31T01:07:45.3849457+01:00</DestTime>
+  <DestTime>2018-11-01T09:42:21.4775839+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

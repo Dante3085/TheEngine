@@ -135,8 +135,6 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
-            dropBox.Update(gameTime);
-
             EngineUI.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
@@ -155,8 +153,7 @@ namespace TheEngine
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            // EngineUI.Draw(spriteBatch);
-            dropBox.Draw(spriteBatch);
+            EngineUI.Draw(spriteBatch);
 
             spriteBatch.End();
 

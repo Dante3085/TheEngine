@@ -78,15 +78,15 @@ namespace TheEngine.DataManagement
              Arial12 = c.Load<SpriteFont>("spriteFonts/Arial12");
              Arial15 = c.Load<SpriteFont>("spriteFonts/Arial15");
              Arial18 = c.Load<SpriteFont>("spriteFonts/Arial18");
-            // Arial21 = c.Load<SpriteFont>("spriteFonts/Arial21");
-            // Arial24 = c.Load<SpriteFont>("spriteFonts/Arial24");
-            // Arial30 = c.Load<SpriteFont>("spriteFonts/Arial30");
-            // Arial36 = c.Load<SpriteFont>("spriteFonts/Arial36");
-            // Arial42 = c.Load<SpriteFont>("spriteFonts/Arial42");
-            // Arial48 = c.Load<SpriteFont>("spriteFonts/Arial48");
-            // Arial56 = c.Load<SpriteFont>("spriteFonts/Arial56");
-            // Arial64 = c.Load<SpriteFont>("spriteFonts/Arial64");
-            // Arial72 = c.Load<SpriteFont>("spriteFonts/Arial72");
+             Arial21 = c.Load<SpriteFont>("spriteFonts/Arial21");
+             Arial24 = c.Load<SpriteFont>("spriteFonts/Arial24");
+             Arial30 = c.Load<SpriteFont>("spriteFonts/Arial30");
+             Arial36 = c.Load<SpriteFont>("spriteFonts/Arial36");
+             Arial42 = c.Load<SpriteFont>("spriteFonts/Arial42");
+             Arial48 = c.Load<SpriteFont>("spriteFonts/Arial48");
+             Arial56 = c.Load<SpriteFont>("spriteFonts/Arial56");
+             Arial64 = c.Load<SpriteFont>("spriteFonts/Arial64");
+             Arial72 = c.Load<SpriteFont>("spriteFonts/Arial72");
 
             // adventurer = c.Load<Texture2D>("adventurer/adventurer-Sheet");
 

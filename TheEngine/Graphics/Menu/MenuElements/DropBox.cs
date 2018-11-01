@@ -31,10 +31,8 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             base.Update(gameTime);
 
-            _bounds = _vBox.Bounds;
-            //_vBox.Bounds = _bounds;
-
-            _vBox.Update(gameTime);
+            Game1.gameConsole.Log(_vBox.Bounds.ToString());
+            _vBox.Bounds = _bounds;
 
             if (OnLeftMouseClick())
             {
@@ -51,6 +49,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
                     _expanded = false;
                 }
             }
+            _vBox.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

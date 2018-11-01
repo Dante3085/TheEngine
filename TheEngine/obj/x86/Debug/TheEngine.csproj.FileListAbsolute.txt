@@ -145,3 +145,12 @@ C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\T
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial18.xnb
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\RedButtonHover.xnb
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\RedButtonNoHover.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial21.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial24.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial30.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial36.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial42.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial48.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial56.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial64.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial72.xnb
