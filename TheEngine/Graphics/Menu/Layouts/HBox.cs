@@ -103,7 +103,7 @@ namespace TheEngine.Graphics.Menu.Layouts
                 return;
 
             // Position first element at origin of HBox.
-            RectangleF boundsPointer = boundsPointer = _elements[0].Bounds;
+            RectangleF boundsPointer = _elements[0].Bounds;
             boundsPointer.Location = this._bounds.Location;
             _elements[0].Bounds = boundsPointer;
 

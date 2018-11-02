@@ -66,23 +66,23 @@ namespace TheEngine.Graphics.EngineUIs
                     new CheckBox(new RectangleF(1000, 100, 100, 100), false),
                     new TextBox(new RectangleF(Vector2.Zero, new Vector2(200, 500)), "Das ist von mir geschriebener Text, der hoffentlich umgebrochen wird.",
                         Contents.Arial18, Color.Beige, 0.2f),
-                    new DropBox(new RectangleF(), new List<TextButton>()
+                    new DropBox(new RectangleF(0, 0, 100, 100), Color.Bisque, new Dictionary<string, Action>()
                     {
-                        new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 200)), "DropboxHead", Color.IndianRed),
-                        new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 200)), "Text", Color.IndianRed),
-                        new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 200)), "Text", Color.IndianRed),
-                        new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 200)), "Text", Color.IndianRed),
-                    }), 
-                }), 
+                        { "Head", () => {Game1.gameConsole.Log("HeadPressed");} },
+                        { "Second", () => {Game1.gameConsole.Log("SecondPressed");} },
+                        { "Third", () => {Game1.gameConsole.Log("ThirdPressed");} },
+                    })
+                }),
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.Aqua),
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.Aqua),
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.Aqua),
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.Aqua),
+                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.Aqua),
             });
 
-            Game1.gameConsole.Log("" + _hBox.Bounds.Location.X);
             RectangleF pointer = _hBox.Bounds;
             pointer.Location -= new Vector2(_hBox.Bounds.Width, 0);
             _hBox.Bounds = pointer;
-
-            Game1.gameConsole.Log("" + _hBox.Bounds.Width);
-            Game1.gameConsole.Log("" + _hBox.Bounds.Location.X);
 
             infoScreenTransition = new TranslateTransition(_hBox.Bounds.Location, Vector2.Zero, 1000, _hBox);
         }

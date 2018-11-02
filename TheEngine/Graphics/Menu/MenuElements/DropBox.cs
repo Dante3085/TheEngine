@@ -15,15 +15,22 @@ namespace TheEngine.Graphics.Menu.MenuElements
     {
         private VBox _vBox;
         private TextButton _head;
-        private List<TextButton> _selection;
+        private Dictionary<string, Action> _selection;
+        private List<TextButton> _textButtons = new List<TextButton>();
         private bool _expanded = false;
 
-        public DropBox(RectangleF bounds, List<TextButton> selection)
+        public DropBox(RectangleF bounds, Color color, Dictionary<string, Action> selection
+            /*List<TextButton> textButtons*/)
         : base(bounds)
         {
-            _head = selection[0];
             _selection = selection;
-            _selection.Remove(_head);
+
+            foreach (string s in selection.Keys)
+                _textButtons.Add(new TextButton(new RectangleF(0, 0, bounds.Width, bounds.Height), 
+                    s, color, selection[s]));
+
+            _head = _textButtons[0];
+            _textButtons.Remove(_head);
             _vBox = new VBox(bounds, 0, elements: _head);
         }
 
@@ -31,20 +38,20 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             base.Update(gameTime);
 
-            Game1.gameConsole.Log(_vBox.Bounds.ToString());
             _vBox.Bounds = _bounds;
 
+            Game1.gameConsole.Log("DropBoxBounds(HoverCheck): " + _vBox.Bounds.ToString());
             if (OnLeftMouseClick())
             {
                 if (!_expanded)
                 {
-                    _vBox.Elements.AddRange(_selection);
+                    _vBox.Elements.AddRange(_textButtons);
                     _expanded = true;
                 }
                 else
                 {
                     List<MenuElement> elements = _vBox.Elements;
-                    foreach (TextButton t in _selection)
+                    foreach (TextButton t in _textButtons)
                         elements.Remove(t);
                     _expanded = false;
                 }
@@ -55,6 +62,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+            Game1.gameConsole.Log("DropBoxBounds(Draw): " + _bounds.ToString());
             _vBox.Draw(spriteBatch);
         }
 

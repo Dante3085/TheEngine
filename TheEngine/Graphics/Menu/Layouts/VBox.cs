@@ -23,7 +23,6 @@ namespace TheEngine.Graphics.Menu.Layouts
         private int _spacing;
 
         #endregion
-
         #region Properties
 
         /// <summary>
@@ -116,10 +115,8 @@ namespace TheEngine.Graphics.Menu.Layouts
             if (_elements.Count == 0)
                 return;
 
-            RectangleF boundsPointer;
-
             // Position first element at upper left corner of VBox.
-            boundsPointer = _elements[0].Bounds;
+            RectangleF boundsPointer = _elements[0].Bounds;
             boundsPointer.Location = this._bounds.Location;
             _elements[0].Bounds = boundsPointer;
 

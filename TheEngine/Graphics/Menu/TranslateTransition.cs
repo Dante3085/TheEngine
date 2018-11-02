@@ -139,7 +139,6 @@ namespace TheEngine.Graphics.Menu
             if (_forwardMoving)
             {
                 _elapsedTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                Game1.gameConsole.Log("ElapsedTime: " + _elapsedTime);
 
                 boundsPointer.Location += _direction * _speed * _elapsed;
 
@@ -153,7 +152,6 @@ namespace TheEngine.Graphics.Menu
             else if (_backwardMoving)
             {
                 _elapsedTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                Game1.gameConsole.Log("ElapsedTime: " + _elapsedTime);
 
                 boundsPointer.Location -= _direction * _speed * _elapsed;
 

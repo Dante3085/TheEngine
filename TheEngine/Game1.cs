@@ -28,9 +28,7 @@ namespace TheEngine
 
         #region Test
 
-        private VBox vbox;
-        private CheckBox checkBox;
-        private DropBox dropBox;
+        private VBox vBox;
 
         #endregion
 
@@ -60,6 +58,8 @@ namespace TheEngine
             base.Initialize();
             InputManager.Init();
             EngineUI.Init(NewKeyboardInput.Default());
+
+            gameConsole.IsFullscreen = true;
         }
 
         /// <summary>
@@ -75,37 +75,31 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            vbox = new VBox(new RectangleF(10, 10, 1, 1), 10, elements: new MenuElement[]
+            vBox = new VBox(new RectangleF(400, 0, 0, 0), 0, elements: new MenuElement[]
             {
-                new TextButton(new RectangleF(0, 0, 200, 50), "TextButton", Color.DarkRed),
-                new Text(new RectangleF(), "Das ist ein TExt in der VBox"),
-                new HBox(new RectangleF(), 10, elements: new MenuElement[]
-                {
-                    new Text(new RectangleF(), "Das ist ein TExt in der HBox"),
-                    new Text(new RectangleF(), "Das ist ein TExt in der HBox"),
-                    new Text(new RectangleF(), "Das ist ein TExt in der HBox"),
-                    new Text(new RectangleF(), "Das ist ein TExt in der HBox"),
-                    new VBox(new RectangleF(), 20, elements: new MenuElement[]
-                    {
-                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
-                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
-                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
-                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
-                        new Text(new RectangleF(), "Das ist ein TExt in der inneren Vbox"),
-                        new CheckBox(new RectangleF(1000, 100, 100, 100), false),
-                        new CheckBox(new RectangleF(1000, 100, 100, 100), false),
-                        new CheckBox(new RectangleF(1000, 100, 100, 100), false),
-                        new CheckBox(new RectangleF(1000, 100, 100, 100), false),
-                    }), 
-                }), 
-            });
-
-            dropBox = new DropBox(new RectangleF(), new List<TextButton>()
-            {
-                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "DropboxHead", Color.IndianRed),
-                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.IndianRed),
-                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.IndianRed),
-                new TextButton(new RectangleF(Vector2.Zero, new Vector2(100, 50)), "Text", Color.IndianRed),
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 1
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 2
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 3
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 4
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 5
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 6
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 7
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 8
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 9
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 10
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 11
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 12
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 13
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 14
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 15
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 16
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 17
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 18
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 19
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 20
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 21
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 22
+                // new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 23
             });
         }
 
@@ -136,6 +130,9 @@ namespace TheEngine
                 gameConsole.Open(Keys.Tab);
 
             EngineUI.Update(gameTime);
+            vBox.Update(gameTime);
+
+            gameConsole.Log("MousePosition: " + InputManager.CurrentMousePosition().ToString());
 
             InputManager.UpdatePreviousStates();
 
@@ -154,6 +151,7 @@ namespace TheEngine
             spriteBatch.Begin();
 
             EngineUI.Draw(spriteBatch);
+            vBox.Draw(spriteBatch);
 
             spriteBatch.End();
 
