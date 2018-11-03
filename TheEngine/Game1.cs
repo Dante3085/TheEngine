@@ -37,11 +37,14 @@ namespace TheEngine
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            Window.AllowUserResizing = true;
 
-            ScreenManager.Update();
+            ScreenManager.Update(graphics);
 
-            graphics.PreferredBackBufferWidth = ScreenManager.ScreenWidth;
-            graphics.PreferredBackBufferHeight = ScreenManager.ScreenHeight;
+            graphics.PreferredBackBufferWidth = 3000;
+            graphics.PreferredBackBufferHeight = 2000;
+
+            // graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -54,12 +57,18 @@ namespace TheEngine
         {
             // TODO: Add your initialization logic here
             gameConsole = new GameConsole(this, "german", Content);
+            gameConsole.IsFullscreen = true;
+            gameConsole.BackgroundAlpha = 0.0f;
+
+            gameConsole.SetLogLevelColor(1, Color.White);
+            gameConsole.SetLogLevelColor(2, Color.Blue);
+            gameConsole.SetLogLevelColor(3, Color.Red);
+            gameConsole.SetLogLevelColor(4, Color.Violet);
+            gameConsole.SetLogLevelColor(5, Color.DarkMagenta);
 
             base.Initialize();
             InputManager.Init();
             EngineUI.Init(NewKeyboardInput.Default());
-
-            gameConsole.IsFullscreen = true;
         }
 
         /// <summary>
@@ -75,15 +84,15 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            vBox = new VBox(new RectangleF(400, 0, 0, 0), 0, elements: new MenuElement[]
+            vBox = new VBox(new RectangleF(1200, 0, 0, 0), 10, elements: new MenuElement[]
             {
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 1
+                new TextButton(new RectangleF(0, 0, 100, 100), "FirstButton", Color.BlueViolet), // 1
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 2
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 3
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 4
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 5
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 6
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 7
+                new TextButton(new RectangleF(0, 0, 100, 100), "LastButton", Color.BlueViolet), // 7
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 8
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 9
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 10
@@ -99,7 +108,7 @@ namespace TheEngine
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 20
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 21
                 new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 22
-                // new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 23
+                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 23
             });
         }
 
@@ -129,10 +138,21 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
+            Game1.gameConsole.Log("MousePosition: " + InputManager.CurrentMousePosition().ToString());
+
             EngineUI.Update(gameTime);
             vBox.Update(gameTime);
 
-            gameConsole.Log("MousePosition: " + InputManager.CurrentMousePosition().ToString());
+            var _elements = vBox.Elements;
+            for (int i = 0; i < _elements.Count; i++)
+            {
+                if (i == 0)
+                    Game1.gameConsole.Log("First: " + _elements[i].Bounds.ToString(), 5);
+                else if (i == _elements.Count - 1)
+                    Game1.gameConsole.Log("Last: " + _elements[i].Bounds.ToString(), 3);
+                else
+                    Game1.gameConsole.Log(_elements[i].Bounds.ToString());
+            }
 
             InputManager.UpdatePreviousStates();
 
@@ -152,6 +172,7 @@ namespace TheEngine
 
             EngineUI.Draw(spriteBatch);
             vBox.Draw(spriteBatch);
+            // textButton.Draw(spriteBatch);
 
             spriteBatch.End();
 

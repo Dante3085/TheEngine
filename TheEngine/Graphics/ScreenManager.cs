@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace TheEngine.Graphics
 {
     /// <summary>
-    /// Provides utility for dealing with ScreenSize, etc.
+    /// Deals with Resolution etc.
     /// </summary>
     public static class ScreenManager
     {

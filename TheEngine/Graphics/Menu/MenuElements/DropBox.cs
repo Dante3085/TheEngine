@@ -40,7 +40,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
 
             _vBox.Bounds = _bounds;
 
-            Game1.gameConsole.Log("DropBoxBounds(HoverCheck): " + _vBox.Bounds.ToString());
             if (OnLeftMouseClick())
             {
                 if (!_expanded)
@@ -62,7 +61,6 @@ namespace TheEngine.Graphics.Menu.MenuElements
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            Game1.gameConsole.Log("DropBoxBounds(Draw): " + _bounds.ToString());
             _vBox.Draw(spriteBatch);
         }
 
