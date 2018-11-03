@@ -48,6 +48,7 @@
     <Compile Include="Graphics\Menu\Layouts\AdvancedVBox.cs" />
     <Compile Include="Graphics\Menu\MenuElements\CheckBox.cs" />
     <Compile Include="Graphics\Menu\MenuElements\DropBox.cs" />
+    <Compile Include="Graphics\Menu\MenuElements\Slider.cs" />
     <Compile Include="Graphics\Menu\MenuElements\TextBox.cs" />
     <Compile Include="Graphics\Menu\TranslateTransition.cs" />
     <Compile Include="Graphics\Primitive\Primitives.cs" />

@@ -156,3 +156,5 @@ C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\T
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\SpriteFonts\Arial72.xnb
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\characters\Swordsman.xnb
 C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\characters\Adventurer.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\SliderBar.xnb
+C:\2_IT_Informatik\2_Programmierung\1_MSVS2017Entwicklung\1_Projekte\TheEngine\TheEngine\bin\Windows\x86\Debug\Content\MenuComponents\SliderDot.xnb

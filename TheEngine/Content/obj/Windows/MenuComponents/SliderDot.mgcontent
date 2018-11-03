@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/characters/Swordsman.png</SourceFile>
-  <SourceTime>2018-08-21T10:19:16.8904773+02:00</SourceTime>
-  <DestFile>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/bin/Windows/characters/Swordsman.xnb</DestFile>
-  <DestTime>2018-11-03T22:47:30.0943635+01:00</DestTime>
+  <SourceFile>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/menuComponents/SliderDot.png</SourceFile>
+  <SourceTime>2018-11-03T22:46:20.5088216+01:00</SourceTime>
+  <DestFile>C:/2_IT_Informatik/2_Programmierung/1_MSVS2017Entwicklung/1_Projekte/TheEngine/TheEngine/Content/bin/Windows/menuComponents/SliderDot.xnb</DestFile>
+  <DestTime>2018-11-03T22:47:30.144159+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -35,6 +35,9 @@ namespace TheEngine.DataManagement
         public static Texture2D checkBoxHover;
         public static Texture2D check;
 
+        public static Texture2D sliderBar;
+        public static Texture2D sliderDot;
+
         #endregion
         #region Characters
 
@@ -100,6 +103,9 @@ namespace TheEngine.DataManagement
 
             redButtonHover = c.Load<Texture2D>("menuComponents/RedButtonHover");
             redButtonNoHover = c.Load<Texture2D>("menuComponents/RedButtonNoHover");
+
+            sliderBar = c.Load<Texture2D>("menuComponents/SliderBar");
+            sliderDot = c.Load<Texture2D>("menuComponents/SliderDot");
         }
 
         /// <summary>

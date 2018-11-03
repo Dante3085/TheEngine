@@ -30,11 +30,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         /// <summary>
         /// This CheckBox's value.
         /// </summary>
-        public bool Value
-        {
-            get => _value;
-            set => _value = value;
-        }
+        public bool Value => _value;
 
         #endregion
 

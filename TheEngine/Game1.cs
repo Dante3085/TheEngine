@@ -29,6 +29,7 @@ namespace TheEngine
         #region Test
 
         private AnimatedSprite animSprite;
+        private Slider slider;
 
         #endregion
 
@@ -89,6 +90,8 @@ namespace TheEngine
 
             animSprite = new AnimatedSprite("sprite", Contents.adventurer, 50, 37, Vector2.Zero, fps: 10,
                 keyboardInput: KeyboardInput.Default());
+
+            slider = new Slider(new RectangleF(100, 100, 100, 100), 10, 10, 10);
         }
 
         /// <summary>
@@ -119,6 +122,7 @@ namespace TheEngine
 
             EngineUI.Update(gameTime);
             animSprite.Update(gameTime);
+            slider.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
 
@@ -138,6 +142,7 @@ namespace TheEngine
 
             EngineUI.Draw(spriteBatch);
             animSprite.Draw(spriteBatch);
+            slider.Draw(spriteBatch);
 
             spriteBatch.End();
 
