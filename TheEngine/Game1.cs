@@ -28,7 +28,7 @@ namespace TheEngine
 
         #region Test
 
-        private VBox vBox;
+        private AnimatedSprite animSprite;
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace TheEngine
             IsMouseVisible = true;
             Window.AllowUserResizing = true;
 
-            ScreenManager.Update(graphics);
+            ScreenManager.Update();
 
             graphics.PreferredBackBufferWidth = 3000;
             graphics.PreferredBackBufferHeight = 2000;
@@ -84,32 +84,11 @@ namespace TheEngine
             Contents.graphicsDevice = GraphicsDevice;
             Contents.LoadAll(Content, GraphicsDevice);
 
-            vBox = new VBox(new RectangleF(1200, 0, 0, 0), 10, elements: new MenuElement[]
-            {
-                new TextButton(new RectangleF(0, 0, 100, 100), "FirstButton", Color.BlueViolet), // 1
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 2
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 3
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 4
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 5
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 6
-                new TextButton(new RectangleF(0, 0, 100, 100), "LastButton", Color.BlueViolet), // 7
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 8
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 9
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 10
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 11
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 12
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 13
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 14
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 15
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 16
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 17
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 18
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 19
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 20
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 21
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 22
-                new TextButton(new RectangleF(0, 0, 100, 100), "TextButton", Color.BlueViolet), // 23
-            });
+            //animSprite = new AnimatedSprite("sprite", Contents.swordsman, 48, 43, Vector2.Zero, fps : 10, 
+            //    keyboardInput: KeyboardInput.Default());
+
+            animSprite = new AnimatedSprite("sprite", Contents.adventurer, 50, 37, Vector2.Zero, fps: 10,
+                keyboardInput: KeyboardInput.Default());
         }
 
         /// <summary>
@@ -138,21 +117,8 @@ namespace TheEngine
             if (InputManager.OnKeyDown(Keys.Tab))
                 gameConsole.Open(Keys.Tab);
 
-            Game1.gameConsole.Log("MousePosition: " + InputManager.CurrentMousePosition().ToString());
-
             EngineUI.Update(gameTime);
-            vBox.Update(gameTime);
-
-            var _elements = vBox.Elements;
-            for (int i = 0; i < _elements.Count; i++)
-            {
-                if (i == 0)
-                    Game1.gameConsole.Log("First: " + _elements[i].Bounds.ToString(), 5);
-                else if (i == _elements.Count - 1)
-                    Game1.gameConsole.Log("Last: " + _elements[i].Bounds.ToString(), 3);
-                else
-                    Game1.gameConsole.Log(_elements[i].Bounds.ToString());
-            }
+            animSprite.Update(gameTime);
 
             InputManager.UpdatePreviousStates();
 
@@ -171,8 +137,7 @@ namespace TheEngine
             spriteBatch.Begin();
 
             EngineUI.Draw(spriteBatch);
-            vBox.Draw(spriteBatch);
-            // textButton.Draw(spriteBatch);
+            animSprite.Draw(spriteBatch);
 
             spriteBatch.End();
 

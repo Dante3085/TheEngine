@@ -52,7 +52,7 @@ namespace TheEngine.Graphics.EngineUIs
                     new CheckBox(new RectangleF(1000, 100, 100, 100), false),
                     new CheckBox(new RectangleF(1000, 100, 100, 100), false),
                     new MenuButton(new RectangleF(Vector2.Zero, new Vector2(100, 100)), Contents.redButtonNoHover,
-                        Contents.redButtonHover), 
+                        Contents.redButtonHover),
                     new CheckBox(new RectangleF(1000, 100, 100, 100), false),
                     new CheckBox(new RectangleF(1000, 100, 100, 100), false),
                     new MenuButton(new RectangleF(Vector2.Zero, new Vector2(100, 100)), Contents.redButtonNoHover,
@@ -84,7 +84,7 @@ namespace TheEngine.Graphics.EngineUIs
             pointer.Location -= new Vector2(_hBox.Bounds.Width, 0);
             _hBox.Bounds = pointer;
 
-            infoScreenTransition = new TranslateTransition(_hBox.Bounds.Location, Vector2.Zero, 1000, _hBox);
+            infoScreenTransition = new TranslateTransition(_hBox.Bounds.Location, Vector2.Zero, 2000, _hBox);
         }
 
         public static void Update(GameTime gameTime)

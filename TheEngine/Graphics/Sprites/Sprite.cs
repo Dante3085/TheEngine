@@ -81,7 +81,7 @@ namespace TheEngine.Graphics.Sprites
         /// <summary>
         /// RectangleF specifying a Box that can be drawn around the Sprite using Util.DrawBounds()
         /// </summary>
-        protected RectangleF _boundingBox;
+        protected RectangleF _bounds;
 
         /// <summary>
         /// RectangleF array with 4 RectangleF objects, to be used for drawing the BoundingBox with Util.DrawBounds()
@@ -107,7 +107,7 @@ namespace TheEngine.Graphics.Sprites
         /// <summary>
         /// RectangleF specifying a Box that can be drawn around the Sprite using Util.DrawBounds()
         /// </summary>
-        public RectangleF BoundingBox => _boundingBox;
+        public RectangleF BoundingBox => _bounds;
 
         /// <summary>
         /// PlayerIndex of this Sprite.
@@ -206,7 +206,7 @@ namespace TheEngine.Graphics.Sprites
             _isInteractable = isInteractable;
             _collisionHandler = collisionHandler;
 
-            _boundingBox = new RectangleF((int)position.X, (int)position.Y, spritesheet.Width, spritesheet.Height);
+            _bounds = new RectangleF((int)position.X, (int)position.Y, spritesheet.Width, spritesheet.Height);
 
             if (_collisionHandler == null)
             {
@@ -236,7 +236,7 @@ namespace TheEngine.Graphics.Sprites
             _isInteractable = isInteractable;
             _collisionHandler = collisionHandler;
 
-            _boundingBox = new RectangleF((int)position.X, (int)position.Y, spritesheet.Width, spritesheet.Height);
+            _bounds = new RectangleF((int)position.X, (int)position.Y, spritesheet.Width, spritesheet.Height);
 
             if (_collisionHandler == null)
             {
@@ -270,8 +270,8 @@ namespace TheEngine.Graphics.Sprites
             _position.Y += (float)((double)_velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
 
             // Update BoundingBox.
-            _boundingBox.X = (int)_position.X;
-            _boundingBox.Y = (int)_position.Y;
+            _bounds.X = (int)_position.X;
+            _bounds.Y = (int)_position.Y;
 
             // Reset Velocity. Prevents Sprite from moving without there being actual input.
             _velocity = Vector2.Zero;
@@ -293,9 +293,9 @@ namespace TheEngine.Graphics.Sprites
             if (drawBoundingBox)
             {
                 if (_collisionDetected)
-                    Primitives.DrawBounds(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Red, spriteBatch);
+                    Primitives.DrawBounds(_bounds, _boundingBoxLines, Contents.rectangleTex, Color.Red, spriteBatch);
                 else
-                    Primitives.DrawBounds(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Blue, spriteBatch);
+                    Primitives.DrawBounds(_bounds, _boundingBoxLines, Contents.rectangleTex, Color.Blue, spriteBatch);
             }
 
             // Reset flag for collision detection.
@@ -431,7 +431,7 @@ namespace TheEngine.Graphics.Sprites
         public virtual bool CollidesWith(ICollidable partner)
         {
             // true: Es wird nicht mit sich selbst verglichen und die BoundingBoxen überschneiden sich. false: sonst.
-            return !this.Equals(partner) && this._boundingBox.Intersects(partner.BoundingBox);
+            return !this.Equals(partner) && this._bounds.Intersects(partner.BoundingBox);
         }
 
         /// <summary>

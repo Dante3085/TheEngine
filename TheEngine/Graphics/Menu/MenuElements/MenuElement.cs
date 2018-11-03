@@ -120,7 +120,7 @@ namespace TheEngine.Graphics.Menu.MenuElements
         {
             if (_drawBounds)
                 Primitives.DrawBounds(_bounds, _boundLines, Contents.rectangleTex, 
-                    Color.PaleVioletRed, spriteBatch);
+                    Color.Blue, spriteBatch);
         }
 
         /// <summary>

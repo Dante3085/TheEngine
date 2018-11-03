@@ -104,7 +104,7 @@ namespace TheEngine.Graphics.Sprites
         /// <param name="spritesheet"></param>
         /// <param name="keyboardInput"></param>
         /// <param name="gamePadInput"></param>
-        public AnimatedSprite(string name, Texture2D spritesheet, Vector2 position = default(Vector2), 
+        public AnimatedSprite(string name, Texture2D spritesheet, int frameWidth, int frameHeight, Vector2 position = default(Vector2), 
             PlayerIndex playerIndex = PlayerIndex.One, int fps = 20, KeyboardInput keyboardInput = null, 
             GamePadInput gamePadInput = null, bool isInteractable = false) 
             : base(name, spritesheet, position, keyboardInput, gamePadInput, playerIndex, isInteractable)
@@ -119,6 +119,18 @@ namespace TheEngine.Graphics.Sprites
                     { Keys.F, new ComboNode(EAnimation.Melee3, new Dictionary<Keys, ComboNode>(), new ComboNode.Intervall(0, 500), Keys.F, Buttons.X) }
                 }, new ComboNode.Intervall(0, 500), Keys.F, Buttons.X) }
             }, new ComboNode.Intervall(0, 500), Keys.F, Buttons.X), this);
+
+
+            // Default Animations
+            AddAnimation(EAnimation.Idle, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
+            AddAnimation(EAnimation.Left, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
+            AddAnimation(EAnimation.IdleLeft, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
+            AddAnimation(EAnimation.Up, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
+            AddAnimation(EAnimation.IdleUp, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
+            AddAnimation(EAnimation.Right, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
+            AddAnimation(EAnimation.IdleRight, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
+            AddAnimation(EAnimation.Down, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
+            AddAnimation(EAnimation.IdleDown, 1, frameWidth, frameHeight, 0, 0, Vector2.Zero, 1);
         }
 
         /// <summary>
@@ -142,6 +154,11 @@ namespace TheEngine.Graphics.Sprites
                     { Keys.F, new ComboNode(EAnimation.Melee3, new Dictionary<Keys, ComboNode>(), new ComboNode.Intervall(0, 2000), Keys.F, Buttons.X) }
                 }, new ComboNode.Intervall(0, 2000), Keys.F, Buttons.X) }
             }, new ComboNode.Intervall(0, 2000), Keys.F, Buttons.X), this);
+
+            _animations[EAnimation.Idle] = new Rectangle[1]
+            {
+                new Rectangle(0, 0, frameWidth, frameHeight)
+            };
         }
 
         /// <summary>
@@ -321,9 +338,9 @@ namespace TheEngine.Graphics.Sprites
             if (drawBoundingBox)
             {
                 if (_collisionDetected)
-                    Primitives.DrawBounds(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Red, spriteBatch);
+                    Primitives.DrawBounds(_bounds, _boundingBoxLines, Contents.rectangleTex, Color.Red, spriteBatch);
                 else
-                    Primitives.DrawBounds(_boundingBox, _boundingBoxLines, Contents.rectangleTex, Color.Blue, spriteBatch);
+                    Primitives.DrawBounds(_bounds, _boundingBoxLines, Contents.rectangleTex, Color.Blue, spriteBatch);
             }
 
             // Reset flag for collision detection.
@@ -362,8 +379,8 @@ namespace TheEngine.Graphics.Sprites
             }
 
             // Update BoundingBox size to fit current frame size.
-            _boundingBox.Width = _animations[_currentAnimation][_currentFrameIndex].Width;
-            _boundingBox.Height = _animations[_currentAnimation][_currentFrameIndex].Height;
+            _bounds.Width = _animations[_currentAnimation][_currentFrameIndex].Width;
+            _bounds.Height = _animations[_currentAnimation][_currentFrameIndex].Height;
         }
 
         /// <summary>
