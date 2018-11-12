@@ -88,10 +88,28 @@ namespace TheEngine
             //animSprite = new AnimatedSprite("sprite", Contents.swordsman, 48, 43, Vector2.Zero, fps : 10, 
             //    keyboardInput: KeyboardInput.Default());
 
-            animSprite = new AnimatedSprite("sprite", Contents.adventurer, 50, 37, Vector2.Zero, fps: 10,
-                keyboardInput: KeyboardInput.Default());
+            AnimatedSprite swordsman = new AnimatedSprite
+                ("Swordsman", Contents.swordsman, 48, 43 , Vector2.Zero, 
+                PlayerIndex.One, isInteractable: true, keyboardInput: KeyboardInput.None());
 
-            slider = new Slider(new RectangleF(100, 100, 100, 100), 10, 10, 10);
+            // Idle Animation that is played on startup
+            swordsman.AddAnimation(EAnimation.Idle, 4, 48, 43, 433, 0, new Vector2(0, 0), 5);
+
+            // Idle Animations for each direction.
+            swordsman.AddAnimation(EAnimation.IdleLeft, 4, 48, 43, 528, 4, new Vector2(0, 0), 5);
+            swordsman.AddAnimation(EAnimation.IdleUp, 4, 48, 43, 528, 0, new Vector2(0, 0), 5);
+            swordsman.AddAnimation(EAnimation.IdleRight, 4, 48, 43, 480, 0, new Vector2(0, 0), 5);
+            swordsman.AddAnimation(EAnimation.IdleDown, 4, 48, 43, 433, 0, new Vector2(0, 0), 5);
+
+            // Movement Animations for each direction.
+            swordsman.AddAnimation(EAnimation.Left, 8, 50, 50, 100, 0, new Vector2(0, 0), 12);
+            swordsman.AddAnimation(EAnimation.Up, 12, 50, 50, 50, 0, new Vector2(0, 0), 15);
+            swordsman.AddAnimation(EAnimation.Right, 8, 50, 50, 100, 8, new Vector2(0, 0), 12);
+            swordsman.AddAnimation(EAnimation.Down, 12, 50, 50, 0, 0, new Vector2(0, 0), 15);
+
+            swordsman.SetAnimation(EAnimation.Idle);
+
+            slider = new Slider(new RectangleF(2000, 100, 100, 100));
         }
 
         /// <summary>

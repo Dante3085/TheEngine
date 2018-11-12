@@ -24,7 +24,9 @@ namespace TheEngine.Graphics.Primitive
         /// <param name="lines"></param>
         /// <param name="texture"></param>
         /// <param name="color"></param>
-        public static void DrawBounds(RectangleF rec, Rectangle[] lines, Texture2D texture, Color color, SpriteBatch spriteBatch)
+        /// <param name="lineThickness"></param>
+        public static void DrawBounds(RectangleF rec, Rectangle[] lines, Texture2D texture, Color color, SpriteBatch spriteBatch,
+            int lineThickness = 2)
         {
             if (lines.Length != 4)
                 throw new ArgumentException("'lines' has to bee an array of exactly 4 RectangleF objects!");
@@ -32,26 +34,26 @@ namespace TheEngine.Graphics.Primitive
             // left
             lines[0].X = (int)rec.X;
             lines[0].Y = (int)rec.Y;
-            lines[0].Width = 2;
+            lines[0].Width = lineThickness;
             lines[0].Height = (int)rec.Height;
 
             // top
             lines[1].X = (int)rec.X;
             lines[1].Y = (int)rec.Y;
             lines[1].Width = (int)rec.Width;
-            lines[1].Height = 2;
+            lines[1].Height = lineThickness;
 
             // right
             lines[2].X = (int)rec.X + (int)rec.Width;
             lines[2].Y = (int)rec.Y;
-            lines[2].Width = 2;
+            lines[2].Width = lineThickness;
             lines[2].Height = (int)rec.Height;
 
             // bottom
             lines[3].X = (int)rec.X;
             lines[3].Y = (int)rec.Y + (int)rec.Height;
             lines[3].Width = (int)rec.Width;
-            lines[3].Height = 2;
+            lines[3].Height = lineThickness;
 
             spriteBatch.Draw(texture, lines[0], color);
             spriteBatch.Draw(texture, lines[1], color);
